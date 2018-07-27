@@ -1,0 +1,180 @@
+
+# ##############################################################################
+# # PROTECT .HTACESS                                                           #
+# ##############################################################################
+
+<files ~ "^.*\.([Hh][Tt][Aa])">
+  order allow,deny
+  deny from all
+  satisfy all
+</files>
+
+<FilesMatch "(^#.*#|\.(bak|config|dist|fla|inc|ini|log|psd|sh|env|sql|sw[op])|~)$">
+  Order allow,deny
+  Deny from all
+  Satisfy All
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>
+
+
+ServerSignature Off
+
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+
+FileETag None
+
+Options -Indexes
+
+DirectoryIndex index.html index.php index.html
+
+# ##############################################################################
+# # COMPRESSION                                                                 #
+# ##############################################################################
+
+<IfModule mod_deflate.c>
+    <IfModule mod_setenvif.c>
+        <IfModule mod_headers.c>
+            SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+            RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+        </IfModule>
+    </IfModule>
+
+    <IfModule filter_module>
+        FilterDeclare   COMPRESS
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/html
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/css
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/plain
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/xml
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/x-component
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/javascript
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/json
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/xml
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/xhtml+xml
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/rss+xml
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/atom+xml
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/vnd.ms-fontobject
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $image/svg+xml
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $image/x-icon
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/x-font-ttf
+        FilterProvider  COMPRESS  DEFLATE resp=Content-Type $font/opentype
+        FilterChain     COMPRESS
+        FilterProtocol  COMPRESS  DEFLATE change=yes;byteranges=no
+    </IfModule>
+
+    <IfModule !mod_filter.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
+        AddOutputFilterByType DEFLATE application/javascript
+        AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
+        AddOutputFilterByType DEFLATE application/xhtml+xml application/rss+xml application/atom+xml
+        AddOutputFilterByType DEFLATE image/x-icon image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype
+    </IfModule>
+</IfModule>
+
+# ##############################################################################
+# # CACHE                                                                #
+# ##############################################################################
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresDefault                          "access plus 1 month"
+  ExpiresByType text/cache-manifest       "access plus 0 seconds"
+
+  # Html
+  ExpiresByType text/html                 "access plus 0 seconds"
+
+  # Data
+  ExpiresByType text/xml                  "access plus 0 seconds"
+  ExpiresByType application/xml           "access plus 0 seconds"
+  ExpiresByType application/json          "access plus 0 seconds"
+
+  # Feed
+  ExpiresByType application/rss+xml       "access plus 1 hour"
+  ExpiresByType application/atom+xml      "access plus 1 hour"
+
+  # Favicon
+  ExpiresByType image/x-icon              "access plus 1 week"
+
+  # Media: images, video, audio
+  ExpiresByType image/gif                 "access plus 1 month"
+  ExpiresByType image/png                 "access plus 1 month"
+  ExpiresByType image/jpg                 "access plus 1 month"
+  ExpiresByType image/jpeg                "access plus 1 month"
+  ExpiresByType video/ogg                 "access plus 1 month"
+  ExpiresByType audio/ogg                 "access plus 1 month"
+  ExpiresByType video/mp4                 "access plus 1 month"
+  ExpiresByType video/webm                "access plus 1 month"
+
+  # HTC files
+  ExpiresByType text/x-component          "access plus 1 month"
+
+  # Webfonts
+  ExpiresByType application/x-font-ttf    "access plus 1 month"
+  ExpiresByType font/opentype             "access plus 1 month"
+  ExpiresByType application/x-font-woff   "access plus 1 month"
+  ExpiresByType image/svg+xml             "access plus 1 month"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+
+  # CSS / JS
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|xml|gz)$">
+    Header append Vary: Accept-Encoding
+  </FilesMatch>
+</IfModule>
+
+# ##############################################################################
+# # INTERNET EXPLORER                                                          #
+# ##############################################################################
+
+<IfModule mod_headers.c>
+    Header set X-UA-Compatible "IE=Edge,chrome=1"
+    <FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|oex|xpi|safariextz|vcf)$" >
+        Header unset X-UA-Compatible
+    </FilesMatch>
+</IfModule>
+
+<FilesMatch "\.(ico|pdf|flv)$">
+Header set Cache-Control "max-age=1000, public"
+</FilesMatch>
+
+<FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+Header set Cache-Control "max-age=1000, public"
+</FilesMatch>
+
+<FilesMatch "\.(xml|txt|css|js|svg|svgz|eot|ttf|otf)$">
+Header set Cache-Control "max-age=1000, proxy-revalidate"
+</FilesMatch>
+
+<FilesMatch "\.(html|htm)$">
+Header set Cache-Control "max-age=1000, private, proxy-revalidate"
+</FilesMatch>
+
+<FilesMatch "\.(eot|ttf|otf|woff)$">
+Header set Cache-Control "max-age=1000, public"
+</FilesMatch>

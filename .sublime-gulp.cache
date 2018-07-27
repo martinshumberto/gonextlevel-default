@@ -1,0 +1,1 @@
+{"C:\\xampp7\\htdocs\\gonextlevel_\\gulpfile.js":{"sha1":"ca111c31b2a5e3acdf776f0ea15dbfafe4cb386e","tasks":{"all":{"name":"all","dependencies":""},"default":{"name":"default","dependencies":"all"},"tdd":{"name":"tdd","dependencies":""},"watch":{"name":"watch","dependencies":"default"},"less":{"name":"less","dependencies":""}}}}
