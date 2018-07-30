@@ -57,6 +57,9 @@
     </div>
 
 
+    <!-- Register Modal -->
+    @include('client.includes.register')
+
     <input type="hidden" name="app_url" id="app_url" value="{!!url("/")!!}">
 
     <script src="{!!url("/")!!}/public/libs/jquery/dist/jquery.min.js"></script>
@@ -86,9 +89,11 @@
     <script src="{!!url("/")!!}/public/libs/bootstrap/js/dist/modal.js"></script>
     <script src="{!!url("/")!!}/public/libs/bootstrap/js/dist/tab.js"></script>
     <script src="{!!url("/")!!}/public/libs/bootstrap/js/dist/tooltip.js"></script>
-    <script src="{!!url("/")!!}/public/libs/bootstrap/js/dist/popover.js"></script>
-    <script src="{!!url("/")!!}/public/js/demo_customizer.js?version=4.4.0"></script>
-    <script src="{!!url("/")!!}/public/js/main.js?version=4.4.0"></script>
+    <script src="{!!url("/")!!}/public/libs/bootstrap/js/dist/popover.js"></script>    
+    <script src="{!!url("/")!!}/public/libs/dragula.js/dist/dragula.min.js"></script>
+    <script src="{!!url("/")!!}/public/js/demo_customizer.js?version={!!time()!!}"></script>
+    <script src="{!!url("/")!!}/public/js/main.js?version={!!time()!!}"></script>
+    <script src="{!!url("/")!!}/public/js/all.js?version={!!time()!!}"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

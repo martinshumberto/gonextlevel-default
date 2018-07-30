@@ -1,0 +1,18 @@
+
+
+07-30-2018 17:19:
+C:\Users\Suporte\AppData\Roaming\Sublime Text 3\Packages\Gulp\write_tasks_to_cache.js:31
+        throw ex;
+        ^
+
+TypeError: mix.javascript is not a function
+    at C:\xampp7\htdocs\gonextlevel\.sublime-gulp-tmp.js:16:6
+    at global.Elixir (C:\xampp7\htdocs\gonextlevel\node_modules\laravel-elixir\dist\index.js:21:5)
+    at Object.<anonymous> (C:\xampp7\htdocs\gonextlevel\.sublime-gulp-tmp.js:3:1)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)

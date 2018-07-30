@@ -4,13 +4,16 @@ elixir(function(mix) {
 
 	/*
 		CSS & LESS
-	*/
-	mix.less([
-		'library.less',
-		]);
+		*/
+		mix.less([
+			'library.less',
+			]);
 
 	/*
 		JavaScript & jQuery
-	*/
+		*/
+		mix.scripts([
+			'components/Auth-pirpeline.js',
+			]);
 
-});
+	});
