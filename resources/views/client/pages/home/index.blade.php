@@ -3,5 +3,9 @@
 
 @section('content')
 
-<h1>dashboard</h1>
+
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+</ul>
+
 @endsection

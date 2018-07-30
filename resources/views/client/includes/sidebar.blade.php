@@ -1,6 +1,7 @@
 <!--------------------
 START - Mobile Menu
 -------------------->
+
 <div class="menu-mobile menu-activated-on-click color-scheme-dark">
 	<div class="mm-logo-buttons-w">
 		<a class="mm-logo" href="/"><img src="{{ asset('public/img/logo.png') }}"><span>Go Next Level</span></a>
@@ -33,79 +34,116 @@ START - Mobile Menu
 					<span>Dashboard</span>
 				</a>
 			</li>
-			<li class="has-sub-menu">
-				<a href="">
+			<li class="selected has-sub-menu">
+				<a href="index.html">
 					<div class="icon-w">
-						<div class="icon-feather-trending-up"></div>
+						<div class="os-icon os-icon-layout"></div>
 					</div>
-					<span>Prospectos</span>
-				</a>
-				<ul class="sub-menu">
-					<li><a href="/prospectos" data-target="#modal-register" data-toggle="modal">Adicionar</a></li>
-					<li><a href="/prospectos/pipeline">Pipeline de Prospectos</a></li>
-					<li><a href="/prospectos/visao-geral">Visão Geral</a></li>
-					<li><a href="/prospectos/relatorio">Relatório <strong class="badge badge-danger">Novidade</strong></a></li>
-				</ul>
-			</li>
-			<li class="has-sub-menu">
-				<a href="">
-					<div class="icon-w">
-						<div class="icon-feather-play-circle"></div>
+					<span>Dashboard</span></a>
+					<div class="sub-menu-w">
+						<div class="sub-menu-header">
+							Dashboard
+						</div>
+						<div class="sub-menu-icon">
+							<i class="os-icon os-icon-layout"></i>
+						</div>
+						<div class="sub-menu-i">
+							<ul class="sub-menu">
+								<li>
+									<a href="index.html">Dashboard 1</a>
+								</li>
+								<li>
+									<a href="apps_crypto.html">Crypto Dashboard <strong class="badge badge-danger">Hot</strong></a>
+								</li>
+								<li>
+									<a href="apps_support_dashboard.html">Dashboard 3</a>
+								</li>
+								<li>
+									<a href="apps_projects.html">Dashboard 4</a>
+								</li>
+								<li>
+									<a href="apps_bank.html">Dashboard 5</a>
+								</li>
+								<li>
+									<a href="layouts_menu_top_image.html">Dashboard 6</a>
+								</li>
+							</ul>
+						</div>
 					</div>
-					<span>Treinamentos</span>
-				</a>
-				<ul class="sub-menu">
-					<li><a href="/treinamentos/convidar">Convidar</a></li>
-					<li><a href="/treinamentos/apresentar">Apresentar</a></li>
-					<li><a href="/treinamentos/acompanhar">Acompanhar</a></li>
-					<li><a href="/treinamentos/fechamento">Fechamento</a></li>
-					<li><a href="/treinamentos/seta">SETA</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="/material-de-apoio">
-					<div class="icon-w">
-						<div class="icon-feather-folder"></div>
-					</div>
-					<span>Material de Apoio</span>
-				</a>
-			</li>
-			<li class="sub-header"><span>Apps</span></li>
-			<li>
-				<a href="/chat">
-					<div class="icon-w">
-						<div class="icon-feather-message-square"></div>
-					</div>
-					<span>Chat</span>
-				</a>
-			</li>
-			<li>
-				<a href="/equipe">
-					<div class="icon-w">
-						<div class="icon-feather-users"></div>
-					</div>
-					<span>Equipe</span>
-				</a>
-			</li>
-			<li class="sub-header"><span>Config</span></li>
-			<li>
-				<a href="/configuracoes/grupos">
-					<div class="icon-w">
-						<div class="icon-feather-list"></div>
-					</div>
-					<span>Grupos</span>
-				</a>
-			</li>
-			<li>
-				<a href="/configuracoes/modelos-de-email">
-					<div class="icon-w">
-						<div class="icon-feather-mail"></div>
-					</div>
-					<span>Modelos de E-mail</span>
-				</a>
-			</li>
+				</li>
+				<li class="has-sub-menu">
+					<a href="">
+						<div class="icon-w">
+							<div class="icon-feather-trending-up"></div>
+						</div>
+						<span>Prospectos</span>
+					</a>
+					<ul class="sub-menu">
+						<li><a href="/prospectos" data-target="#modal-register" data-toggle="modal">Adicionar</a></li>
+						<li><a href="/prospectos/pipeline">Pipeline de Prospectos</a></li>
+						<li><a href="/prospectos/visao-geral">Visão Geral</a></li>
+						<li><a href="/prospectos/relatorio">Relatório <strong class="badge badge-danger">Novidade</strong></a></li>
+					</ul>
+				</li>
+				<li class="has-sub-menu">
+					<a href="">
+						<div class="icon-w">
+							<div class="icon-feather-play-circle"></div>
+						</div>
+						<span>Treinamentos</span>
+					</a>
+					<ul class="sub-menu">
+						<li><a href="/treinamentos/convidar">Convidar</a></li>
+						<li><a href="/treinamentos/apresentar">Apresentar</a></li>
+						<li><a href="/treinamentos/acompanhar">Acompanhar</a></li>
+						<li><a href="/treinamentos/fechamento">Fechamento</a></li>
+						<li><a href="/treinamentos/seta">SETA</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="/material-de-apoio">
+						<div class="icon-w">
+							<div class="icon-feather-folder"></div>
+						</div>
+						<span>Material de Apoio</span>
+					</a>
+				</li>
+				<li class="sub-header"><span>Apps</span></li>
+				<li>
+					<a href="/chat">
+						<div class="icon-w">
+							<div class="icon-feather-message-square"></div>
+						</div>
+						<span>Chat</span>
+					</a>
+				</li>
+				<li>
+					<a href="/equipe">
+						<div class="icon-w">
+							<div class="icon-feather-users"></div>
+						</div>
+						<span>Equipe</span>
+					</a>
+				</li>
+				<li class="sub-header"><span>Config</span></li>
+				<li>
+					<a href="/configuracoes/grupos">
+						<div class="icon-w">
+							<div class="icon-feather-list"></div>
+						</div>
+						<span>Grupos</span>
+					</a>
+				</li>
+				<li>
+					<a href="/configuracoes/modelos-de-email">
+						<div class="icon-w">
+							<div class="icon-feather-mail"></div>
+						</div>
+						<span>Modelos de E-mail</span>
+					</a>
+				</li>
 
-		</ul>
+			</ul>
 		<!--------------------
 		END - Mobile Menu List
 		-------------------->
