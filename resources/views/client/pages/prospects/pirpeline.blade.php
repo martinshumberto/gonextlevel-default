@@ -51,8 +51,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="pipeline-body">
-								<div class="pipeline-item">
+							<div data-strutude="1:A" class="pipeline-body">
+								<div data-strutude="1:1" class="pipeline-item">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Qualifique seu prospecto."></i>
@@ -84,7 +84,7 @@
 										</a>
 									</div>
 								</div>
-								<div class="pipeline-item">
+								<div data-strutude="1:2" class="pipeline-item">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Convide seu prospecto para uma APN."></i>
@@ -130,7 +130,7 @@
 										</a>
 									</div>
 								</div>
-								<div class="pipeline-item">
+								<div data-strutude="1:3" class="pipeline-item">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Convide seu prospecto para uma APN."></i>
@@ -176,7 +176,7 @@
 										</a>
 									</div>
 								</div>
-								<div class="pipeline-item">
+								<div data-strutude="1:4" class="pipeline-item">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Convide seu prospecto para uma APN."></i>
@@ -242,7 +242,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="pipeline-body">
+							<div data-strutude="2:A"  class="pipeline-body">
 								<div class="pipeline-item">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\ClientController;
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
 
 
 class ProspectsController extends ClientController
@@ -16,6 +19,8 @@ class ProspectsController extends ClientController
 	{
 		return view("client/pages/prospects/pirpeline");
 	}	
+
+
 
 
 }

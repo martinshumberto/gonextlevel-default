@@ -28,6 +28,7 @@ Route::prefix('painel')->namespace('Client')->group(function () {
 	/* Prospects */
 	Route::get('/prospectos/visao-geral', array('as' => 'client-prospect', 'uses' => 'ProspectsController@index'));
 	Route::get('/prospectos/pirpeline', array('as' => 'client-prospect-pirpeline', 'uses' => 'ProspectsController@pirpeline'));
+
 });
 
 
