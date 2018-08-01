@@ -194,10 +194,10 @@ START - Main Menu
 				<div class="sub-menu-icon"><i class="icon-feather-trending-up"></i></div>
 				<div class="sub-menu-i">
 					<ul class="sub-menu">
-						<li><a href="/prospectos" data-target="#modal-register" data-toggle="modal">Adicionar</a></li>
-						<li><a href="/prospectos/pipeline">Pipeline de Prospectos</a></li>
-						<li><a href="/prospectos/visao-geral">Visão Geral</a></li>
-						<li><a href="/prospectos/relatorio">Relatório <strong class="badge badge-danger">Novidade</strong></a></li>
+						<li><a href="" data-target="#modal-register" data-toggle="modal">Adicionar</a></li>
+						<li><a href="{!!route('client-prospect-pirpeline')!!}">Pipeline de Prospectos</a></li>
+						<li><a href="{!!route('client-prospect')!!}">Visão Geral</a></li>
+						<li><a href="{!!route('client-prospect-reports')!!}">Relatório <strong class="badge badge-danger">Novidade</strong></a></li>
 					</ul>
 				</div>
 			</div>

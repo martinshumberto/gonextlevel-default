@@ -17,4 +17,8 @@ class ProspectosController extends ClientController
   		return response()->json($request);
 
   }
+  public function create(Request $request)
+  {
+
+  }
 }
