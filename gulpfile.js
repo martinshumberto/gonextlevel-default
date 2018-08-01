@@ -15,6 +15,7 @@ elixir(function(mix) {
 		mix.scripts([
 			'libs/sweetalert2.all.min.js',
 			'components/Auth-pirpeline.js',
+			'components/Auth-profile.js',
 			]);
 
 	});

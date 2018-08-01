@@ -4,7 +4,7 @@ START - Mobile Menu
 
 <div class="menu-mobile menu-activated-on-click color-scheme-dark">
 	<div class="mm-logo-buttons-w">
-		<a class="mm-logo" href="/"><img src="{{ asset('public/img/logo.png') }}"><span>Go Next Level</span></a>
+		<a class="mm-logo" href="{!!route('client-dashboard')!!}"><img src="{{ asset('public/img/logo.png') }}"><span>Go Next Level</span></a>
 		<div class="mm-buttons">
 			<div class="content-panel-open">
 				<div class="os-icon os-icon-grid-circles"></div>
@@ -18,8 +18,8 @@ START - Mobile Menu
 		<div class="logged-user-w">
 			<div class="avatar-w"><img alt="" src="{{ asset('public/img/avatar1.jpg') }}"></div>
 			<div class="logged-user-info-w">
-				<div class="logged-user-name">Humberto Martins</div>
-				<div class="logged-user-role">Consultor</div>
+				<div class="logged-user-name">{!!Auth::user()->name!!}</div>
+				<div class="logged-user-role">{!!Auth::user()->stage()!!}</div>
 			</div>
 		</div>
 		<!--------------------
@@ -27,7 +27,7 @@ START - Mobile Menu
 		-------------------->
 		<ul class="main-menu">
 			<li>
-				<a href="/">
+				<a href="{!!route('client-dashboard')!!}">
 					<div class="icon-w">
 						<div class="os-icon os-icon-layout"></div>
 					</div>
@@ -39,37 +39,8 @@ START - Mobile Menu
 					<div class="icon-w">
 						<div class="os-icon os-icon-layout"></div>
 					</div>
-					<span>Dashboard</span></a>
-					<div class="sub-menu-w">
-						<div class="sub-menu-header">
-							Dashboard
-						</div>
-						<div class="sub-menu-icon">
-							<i class="os-icon os-icon-layout"></i>
-						</div>
-						<div class="sub-menu-i">
-							<ul class="sub-menu">
-								<li>
-									<a href="index.html">Dashboard 1</a>
-								</li>
-								<li>
-									<a href="apps_crypto.html">Crypto Dashboard <strong class="badge badge-danger">Hot</strong></a>
-								</li>
-								<li>
-									<a href="apps_support_dashboard.html">Dashboard 3</a>
-								</li>
-								<li>
-									<a href="apps_projects.html">Dashboard 4</a>
-								</li>
-								<li>
-									<a href="apps_bank.html">Dashboard 5</a>
-								</li>
-								<li>
-									<a href="layouts_menu_top_image.html">Dashboard 6</a>
-								</li>
-							</ul>
-						</div>
-					</div>
+					<span>Dashboard</span>
+				</a>					
 				</li>
 				<li class="has-sub-menu">
 					<a href="">
@@ -79,10 +50,10 @@ START - Mobile Menu
 						<span>Prospectos</span>
 					</a>
 					<ul class="sub-menu">
-						<li><a href="/prospectos" data-target="#modal-register" data-toggle="modal">Adicionar</a></li>
-						<li><a href="/prospectos/pipeline">Pipeline de Prospectos</a></li>
-						<li><a href="/prospectos/visao-geral">Visão Geral</a></li>
-						<li><a href="/prospectos/relatorio">Relatório <strong class="badge badge-danger">Novidade</strong></a></li>
+						<li><a href="{!!route('client-prospect-create')!!}" data-target="#modal-register" data-toggle="modal">Adicionar</a></li>
+						<li><a href="{!!route('client-prospect-pirpeline')!!}">Pipeline de Prospectos</a></li>
+						<li><a href="{!!route('client-prospect')!!}">Visão Geral</a></li>
+						<li><a href="{!!route('client-prospect-reports')!!}">Relatório <strong class="badge badge-danger">Novidade</strong></a></li>
 					</ul>
 				</li>
 				<li class="has-sub-menu">
@@ -163,36 +134,36 @@ START - Main Menu
 -------------------->
 <div class="menu-w selected-menu-color-light menu-has-selected-link menu-activated-on-click color-scheme-light color-style-transparent sub-menu-color-light menu-position-side menu-side-left menu-layout-compact sub-menu-style-inside">
 	<div class="logo-w">
-		<a class="logo" href="/">
+		<a class="logo" href="{!!route('client-dashboard')!!}">
 			<div class="logo-element"></div>
 			<div class="logo-label">Go Next Level</div>
 		</a>
 	</div>
 	<div class="logged-user-w avatar-inline">
 		<div class="logged-user-i">
-			<div class="avatar-w"><img alt="" src="{{ asset('public/img/avatar1.jpg') }}"></div>
+			<div class="avatar-w"><img alt="" src="{!!url("/")!!}/public/img/{!!Auth::user()->image!!}"></div>
 			<div class="logged-user-info-w">
-				<div class="logged-user-name">Humberto Martins</div>
-				<div class="logged-user-role">Consultor</div>
+				<div class="logged-user-name">{!!Auth::user()->name!!}</div>
+				<div class="logged-user-role">{!!Auth::user()->stage()!!}</div>
 			</div>
 			<div class="logged-user-toggler-arrow">
 				<div class="os-icon os-icon-chevron-down"></div>
 			</div>
 			<div class="logged-user-menu color-style-bright">
 				<div class="logged-user-avatar-info">
-					<div class="avatar-w"><img alt="" src="{{ asset('public/img/avatar1.jpg') }}"></div>
+					<div class="avatar-w"><img alt="" src="{!!url("/")!!}/public/img/{!!Auth::user()->image!!}"></div>
 					<div class="logged-user-info-w">
-						<div class="logged-user-name">Humberto Martins</div>
-						<div class="logged-user-role">Consultor</div>
+						<div class="logged-user-name">{!!Auth::user()->name!!}</div>
+						<div class="logged-user-role">{!!Auth::user()->stage()!!}</div>
 					</div>
 				</div>
 				<div class="bg-icon"><i class="icon-feather-user"></i></div>
 				<ul>
-					<li><a href="#"><i class="os-icon os-icon-ui-46"></i><span>Meus dados</span></a></li>
-					<li><a href="/perfil"><i class="os-icon os-icon-user-male-circle2"></i><span>Perfil</span></a></li>
-					<li><a href="/assinatura"><i class="icon-feather-award"></i><span>Assinatura</span></a></li>
-					<li><a href="/notificacoes"><i class="os-icon os-icon-others-43"></i><span>Notificações</span></a></li>
-					<li><a href="/sair"><i class="os-icon os-icon-signs-11"></i><span>Sair</span></a></li>
+					<li><a href="{!!route('client-info')!!}"><i class="os-icon os-icon-ui-46"></i><span>Meus dados</span></a></li>
+					<li><a href="{!!route('client-profile')!!}"><i class="os-icon os-icon-user-male-circle2"></i><span>Perfil</span></a></li>
+					<li><a href="{!!route('client-singatures')!!}"><i class="icon-feather-award"></i><span>Assinatura</span></a></li>
+					<li><a href="{!!route('client-notifications')!!}"><i class="os-icon os-icon-others-43"></i><span>Notificações</span></a></li>
+					<li><a href="{!!route('client-logout')!!}"><i class="os-icon os-icon-signs-11"></i><span>Sair</span></a></li>
 				</ul>
 			</div>
 		</div>

@@ -13,8 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 Route::post('prospectos/auth/pipeline',"Api\ProspectosController@pipeline");
+
+//Route::post('graph',"Api\GraphController@show");
+Route::post('states/{code}',"Api\StatesController@show");
+Route::post('update/photo/{key}', 'Api\ProfileController@uploadPhoto');

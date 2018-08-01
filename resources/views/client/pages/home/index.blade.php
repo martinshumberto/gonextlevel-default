@@ -181,8 +181,8 @@
 								{{--<div class="user-avatar"><img alt="" src="{{ asset('img/avatar1.jpg') }}"></div>--}}
 							</div>
 							<div class="user-name">
-								<h6 class="user-title">Humberto Martins</h6>
-								<div class="user-role">Consultor</div>
+								<h6 class="user-title">{!!$client->name!!}</h6>
+								<div class="user-role">{{!!$client->stage()!!}}</div>
 							</div>
 							<a class="user-action" href="#">
 								<div class="os-icon os-icon-mail-07"></div>
