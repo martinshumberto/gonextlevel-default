@@ -34,6 +34,8 @@ Route::prefix('painel')->middleware('client')->namespace('Client')->group(functi
 	Route::get('/prospectos/cadastrar', array('as' => 'client-prospect-create', 'uses' => 'ProspectsController@create'));
 	Route::get('/prospectos/pirpeline', array('as' => 'client-prospect-pirpeline', 'uses' => 'ProspectsController@pirpeline'));
 	Route::get('/prospectos/relatorios', array('as' => 'client-prospect-reports', 'uses' => 'ProspectsController@report'));
+	Route::get('/prospectos/arquivar/{id}', array('as' => 'client-prospect-archivament', 'uses' => 'ProspectsController@archivament'));
+	Route::get('/prospectos/apagar/{id}', array('as' => 'client-prospect-trash', 'uses' => 'ProspectsController@trash'));
 
 	/* Info Client */
 	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@index'));

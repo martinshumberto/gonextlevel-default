@@ -23,6 +23,9 @@
     <link href="{!!url("/")!!}/public/iconfonts/feather/style.css" rel="stylesheet">
 
     <link href="{!!url("/")!!}/public/libs/slick-carousel/slick/slick.css" rel="stylesheet">
+
+    <link href="{!!url("/")!!}/public/css/datepicker.min.css" rel="stylesheet" type="text/css">
+
     <link href="{!!url("/")!!}/public/css/main.css?version=4.4.0" rel="stylesheet">
     <link href="{!!url("/")!!}/public/css/gonextlevel.css?version=4.4.0" rel="stylesheet">
 
@@ -92,6 +95,13 @@
     <script src="{!!url("/")!!}/public/libs/bootstrap/js/dist/popover.js"></script>    
     <script src="{!!url("/")!!}/public/libs/dragula.js/dist/dragula.min.js"></script>
     <script src="{!!url("/")!!}/public/js/demo_customizer.js?version={!!time()!!}"></script>
+    
+    <script src="{!!url("/")!!}/public/js/datepicker.min.js"></script>
+
+    <!-- Include English language -->
+    <script src="{!!url("/")!!}/public/js/i18n/datepicker.pt-BR.js"></script>
+
+    
     <script src="{!!url("/")!!}/public/js/main.js?version={!!time()!!}"></script>
     <script src="{!!url("/")!!}/public/js/all.js?version={!!time()!!}"></script>
     <script>

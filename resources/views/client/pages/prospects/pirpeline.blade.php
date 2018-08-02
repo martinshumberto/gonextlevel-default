@@ -45,46 +45,16 @@
 							<div class="pipeline-header">
 								<h5 class="pipeline-name">CONVIDAR</h5>
 								<div class="pipeline-header-numbers">
-									<div class="pipeline-count">3 prospecto(s)</div>
+									<div class="pipeline-count">{!!count($prospect_convit)!!} prospecto(s)</div>
 									<div class="pipeline-settings os-dropdown-trigger" data-target="#modal-invite" data-toggle="modal">
 										<i class="icon-feather-help-circle fa-2x"></i>
 									</div>
 								</div>
 							</div>
 							<div data-strutude="1:A" class="pipeline-body">
-								<div data-strutude="1:1" class="pipeline-item">
-									<div class="pi-controls">
-										<div class="pi-settings os-dropdown-trigger">
-											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Qualifique seu prospecto."></i>
-										</div>
-										<div class="pi-settings os-dropdown-trigger"><i class="os-icon os-icon-ui-46"></i>
-											<div class="os-dropdown">
-												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
-												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver Prospecto</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="pi-body">
-										<div class="pi-info">
-											<div class="h6 pi-name">João Pereira</div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="tel:(62) 99999-9999">(62) 99999-9999</a></div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="mailto:pereirajoao@gmail.com">pereirajoao@gmail.com</a></div>
-										</div>
-									</div>
-									<div class="pi-foot">
-										<div class="tags">
-											<a class="tag" href="#" data-target="#modal-qualify" data-toggle="modal">Qualificar</a>
-										</div>
-										<a class="extra-info" href="#">
-											<i class="os-icon os-icon-mail-12" data-placement="top" data-toggle="tooltip" title="1 Nota(s)"></i>
-										</a>
-									</div>
-								</div>
-								<div data-strutude="1:2" class="pipeline-item">
+								@if(count($prospect_convit) != 0)
+								@foreach($prospect_convit as $convit)
+								<div data-strutude="1:{!!$convit->prospect_id!!}" class="pipeline-item">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Convide seu prospecto para uma APN."></i>
@@ -102,9 +72,9 @@
 									</div>
 									<div class="pi-body">
 										<div class="pi-info">
-											<div class="h6 pi-name">Maria Soares</div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="tel:(62) 99999-9999">(62) 99999-9999</a></div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="mailto:mariasoares23@gmail.com">mariasoares23@gmail.com</a></div>
+											<div class="h6 pi-name">{!!$convit->name!!}</div>
+											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="tel:{!!$convit->phone!!}">{!!$convit->phone!!}</a></div>
+											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="mailto:{!!$convit->email!!}">{!!$convit->email!!}</a></div>
 										</div>
 									</div>
 									<div class="pi-controls-second pi-settings os-dropdown-trigger toggle-accordion" data-placement="top" data-toggle="tooltip" title="Mais informações">
@@ -130,98 +100,17 @@
 										</a>
 									</div>
 								</div>
-								<div data-strutude="1:3" class="pipeline-item">
-									<div class="pi-controls">
-										<div class="pi-settings os-dropdown-trigger">
-											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Convide seu prospecto para uma APN."></i>
-										</div>
-										<div class="pi-settings os-dropdown-trigger"><i class="os-icon os-icon-ui-46"></i>
-											<div class="os-dropdown">
-												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
-												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver Prospecto</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
-												</ul>
-											</div>
-										</div>
+								@endforeach
+								@else
+								<div data-count="1:0"  class="profile-tile file-not">	
+									<div class="profile-tile-meta btn-warning">
+										<li style="list-style: none; padding-top: 12px; padding-bottom:12px;">
+											<i class="os-icon os-icon-others-43"></i>
+											<strong style="margin-left: 0;">Nenhum Prospecto</strong>
+										</li>
 									</div>
-									<div class="pi-body">
-										<div class="pi-info">
-											<div class="h6 pi-name">Jonas Silva</div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="tel:(62) 99999-9999">(62) 99999-9999</a></div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="mailto:jonassilva@gmail.com">jonassilva@gmail.com</a></div>
-										</div>
-									</div>
-									<div class="pi-controls-second pi-settings os-dropdown-trigger toggle-accordion" data-placement="top" data-toggle="tooltip" title="Mais informações">
-										<i class="os-icon os-icon-arrow-down"></i>
-									</div>
-									<div class="pi-body accordion-body">
-										<div class="pi-info">
-											<hr>
-											<div class="el-infos pi-sub">
-												<div class="infos-value-w">
-													<div class="infos-pin"><i class="os-icon os-icon-ui-02"></i></div>
-													<div class="infos-value">12 Pontos</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="pi-foot">
-										<div class="tags">
-											<a class="tag" href="#" data-target="#modal-new-apn" data-toggle="modal">Marcar APN</a>
-										</div>
-										<a class="extra-info" href="#">
-											<i class="os-icon os-icon-mail-12" data-placement="top" data-toggle="tooltip" title="0 Nota(s)"></i>
-										</a>
-									</div>
-								</div>
-								<div data-strutude="1:4" class="pipeline-item">
-									<div class="pi-controls">
-										<div class="pi-settings os-dropdown-trigger">
-											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Convide seu prospecto para uma APN."></i>
-										</div>
-										<div class="pi-settings os-dropdown-trigger"><i class="os-icon os-icon-ui-46"></i>
-											<div class="os-dropdown">
-												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
-												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver Prospecto</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="pi-body">
-										<div class="pi-info">
-											<div class="h6 pi-name">Jessica Menezes</div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="tel:(62) 99999-9999">(62) 99999-9999</a></div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="mailto:jessicamenezes@gmail.com">jessicamenezes@gmail.com</a></div>
-										</div>
-									</div>
-									<div class="pi-controls-second pi-settings os-dropdown-trigger toggle-accordion" data-placement="top" data-toggle="tooltip" title="Mais informações">
-										<i class="os-icon os-icon-arrow-down"></i>
-									</div>
-									<div class="pi-body accordion-body">
-										<div class="pi-info">
-											<hr>
-											<div class="el-infos pi-sub">
-												<div class="infos-value-w">
-													<div class="infos-pin"><i class="os-icon os-icon-ui-02"></i></div>
-													<div class="infos-value">25 Pontos</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="pi-foot">
-										<div class="tags">
-											<a class="tag" href="#" data-target="#modal-new-apn" data-toggle="modal">Marcar APN</a>
-										</div>
-										<a class="extra-info" href="#">
-											<i class="os-icon os-icon-mail-12" data-placement="top" data-toggle="tooltip" title="2 Nota(s)"></i>
-										</a>
-									</div>
-								</div>
+								</div>	
+								@endif								
 							</div>
 						</div>
 						<!--------------------
@@ -236,14 +125,17 @@
 							<div class="pipeline-header">
 								<h5 class="pipeline-name">APRESENTAR</h5>
 								<div class="pipeline-header-numbers">
-									<div class="pipeline-count">2 prospecto(s)</div>
+									<div class="pipeline-count">{!!count($prospect_show)!!}  prospecto(s)</div>
 									<div class="pipeline-settings os-dropdown-trigger" data-target="#modal-present" data-toggle="modal">
 										<i class="icon-feather-help-circle fa-2x"></i>
 									</div>
 								</div>
 							</div>
+
 							<div data-strutude="2:A"  class="pipeline-body">
-								<div class="pipeline-item">
+								@if(count($prospect_show) != 0)
+								@foreach($prospect_show as $show)
+								<div data-strutude="2:{!!$convit->prospect_id!!}" class="pipeline-item">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Não se esqueça de chegar 30 minutos antes do horário marcado!"></i>
@@ -261,9 +153,9 @@
 									</div>
 									<div class="pi-body">
 										<div class="pi-info">
-											<div class="h6 pi-name">Sergio Ramos</div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="tel:(62) 99999-9999">(62) 99999-9999</a></div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="mailto:sergioramos@gmail.com">sergioramos@gmail.com</a></div>
+											<div class="h6 pi-name">{!!$show->name!!}</div>
+											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="tel:{!!$show->phone!!}">{!!$show->phone!!}</a></div>
+											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="mailto:{!!$show->email!!}">{!!$show->email!!}</a></div>
 										</div>
 									</div>
 									<div class="pi-controls-second pi-settings os-dropdown-trigger toggle-accordion" data-placement="top" data-toggle="tooltip" title="Mais informações">
@@ -293,7 +185,18 @@
 										</a>
 									</div>
 								</div>
-								<div class="pipeline-item border-l-warning">
+								@endforeach
+								@else
+								<div data-count="2:0"  class="profile-tile file-not">	
+									<div class="profile-tile-meta btn-warning">
+										<li style="list-style: none; padding-top: 12px; padding-bottom:12px;">
+											<i class="os-icon os-icon-others-43"></i>
+											<strong style="margin-left: 0;">Nenhum Prospecto</strong>
+										</li>
+									</div>
+								</div>	
+								@endif
+								<div style="display: none;" class="pipeline-item border-l-warning">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Acompanhe seu prospecto após atualiza-lo."></i>
@@ -361,58 +264,16 @@
 							<div class="pipeline-header">
 								<h5 class="pipeline-name">ACOMPANHAR</h5>
 								<div class="pipeline-header-numbers">
-									<div class="pipeline-count">3 prospecto(s)</div>
+									<div class="pipeline-count">{!!count($prospect_mananger)!!} prospecto(s)</div>
 									<div class="pipeline-settings os-dropdown-trigger" data-target="#modal-follow" data-toggle="modal">
 										<i class="icon-feather-help-circle fa-2x"></i>
 									</div>
 								</div>
 							</div>
-							<div class="pipeline-body">
-								<div class="pipeline-item">
-									<div class="pi-controls">
-										<div class="pi-settings os-dropdown-trigger">
-											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Faça o máximo de etapas do acompanhamento."></i>
-										</div>
-										<div class="pi-settings os-dropdown-trigger"><i class="os-icon os-icon-ui-46"></i>
-											<div class="os-dropdown">
-												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
-												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver Prospecto</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="pi-body">
-										<div class="pi-info">
-											<div class="h6 pi-name">Marcelo Siqueira</div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="tel:(62) 99999-9999">(62) 99999-9999</a></div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="mailto:marcelosiqueira@gmail.com">marcelosiqueira@gmail.com</a></div>
-										</div>
-									</div>
-									<div class="pi-controls-second pi-settings os-dropdown-trigger toggle-accordion" data-placement="top" data-toggle="tooltip" title="Mais informações">
-										<i class="os-icon os-icon-arrow-down"></i>
-									</div>
-									<div class="pi-body accordion-body">
-										<div class="pi-info">
-											<div class="pi-sub">
-												<div class="progress" data-placement="bottom" data-toggle="tooltip" title="Você concluiu 1 das 4 etapas do acompanhamento.">
-													<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="pi-foot">
-										<div class="tags">
-											<a class="tag" href="#">Etapas</a>
-										</div>
-										<a class="extra-info" href="#">
-											<i class="os-icon os-icon-mail-12" data-placement="top" data-toggle="tooltip" title="3 Nota(s)"></i>
-										</a>
-									</div>
-								</div>
-								<div class="pipeline-item">
+							<div data-strutude="3:A"  class="pipeline-body">
+								@if(count($prospect_mananger) != 0)
+								@foreach($prospect_mananger as $mananger)
+								<div data-strutude="3:{!!$mananger->prospect_id!!}" class="pipeline-item">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Faça o máximo de etapas do acompanhamento."></i>
@@ -471,7 +332,18 @@
 										</a>
 									</div>
 								</div>
-								<div class="pipeline-item border-l-warning">
+								@endforeach
+								@else
+								<div data-count="3:0"  class="profile-tile file-not">	
+									<div class="profile-tile-meta btn-warning">
+										<li style="list-style: none; padding-top: 12px; padding-bottom:12px;">
+											<i class="os-icon os-icon-others-43"></i>
+											<strong style="margin-left: 0;">Nenhum Prospecto</strong>
+										</li>
+									</div>
+								</div>	
+								@endif
+								<div style="display: none;" class="pipeline-item border-l-warning">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Faça o máximo de etapas do acompanhamento."></i>
@@ -548,14 +420,16 @@
 							<div class="pipeline-header">
 								<h5 class="pipeline-name">FECHAMENTO</h5>
 								<div class="pipeline-header-numbers">
-									<div class="pipeline-count">1 prospecto(s)</div>
+									<div class="pipeline-count">{!!count($prospect_close)!!} prospecto(s)</div>
 									<div class="pipeline-settings os-dropdown-trigger" data-target="#modal-closing" data-toggle="modal">
 										<i class="icon-feather-help-circle fa-2x"></i>
 									</div>
 								</div>
 							</div>
-							<div class="pipeline-body">
-								<div class="pipeline-item">
+							<div data-strutude="4:A"  class="pipeline-body">
+								@if(count($prospect_close) != 0)
+								@foreach($prospect_close as $close)
+								<div data-strutude="4:{!!$close->prospect_id!!}" class="pipeline-item">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Faça o fechamento ou reacomponhe seu prospecto."></i>
@@ -588,6 +462,17 @@
 										</a>
 									</div>
 								</div>
+								@endforeach
+								@else
+								<div data-count="4:0"  class="profile-tile file-not">	
+									<div class="profile-tile-meta btn-warning">
+										<li style="list-style: none; padding-top: 12px; padding-bottom:12px;">
+											<i class="os-icon os-icon-others-43"></i>
+											<strong style="margin-left: 0;">Nenhum Prospecto</strong>
+										</li>
+									</div>
+								</div>	
+								@endif
 							</div>
 						</div>
 						<!--------------------
@@ -769,7 +654,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
+</div>
 	<!-----------------------
 	END - Modal - New APN
 	------------------------>
@@ -818,7 +703,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
+</div>
 	<!-----------------------
 	END - Modal - Change APN
 	------------------------>
@@ -934,7 +819,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
+</div>
 	<!-----------------------
 	END - Modal - Qualify
 	------------------------>

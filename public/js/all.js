@@ -13,8 +13,12 @@
 
 	    	var EleMentStrutude = $(el).attr('data-strutude');
 	    	var cOntainerStrutude = $(container).attr('data-strutude');
-	    	/*var ElementIndex = EleMentStrutude.split(':');
-	    	var ContainerIndex = cOntainerStrutude.split(':');*/
+	    	/*var ElementIndex = EleMentStrutude.split(':');*/
+	    	var ContainerIndex = cOntainerStrutude.split(':');
+
+	    	var fadeOutElement = ContainerIndex[0]+":0";
+	    	$('[data-count="'+fadeOutElement+'"]').hide();
+	    
 	    	$.ajax({
 	    		url: $("#app_url").val() + "/api/prospectos/auth/pipeline",
 	    		type: 'POST',
@@ -125,19 +129,21 @@ new AuthPirpeline();
 						title: 'Legal...',
 						text: 'Prospecto cadastrado com sucesso!'
 					}).then((result) => {
-						if (result.value) {
-							
+						if (result.value) {						
 							location.reload();
 						}
 					})
 				},
 				error: function()
 				{
-					alert("ALGO DEU ERRADO");
+					swal({
+						type: 'error',
+						title: 'Ops...',
+						text: 'Algo deu errado!'
+					})
 				}
 			});
 		});
-
 	}
 	new Prospect();
 

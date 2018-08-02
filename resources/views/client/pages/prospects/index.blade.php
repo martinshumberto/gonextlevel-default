@@ -19,7 +19,7 @@ END - Breadcrumbs
 				<div class="col-8 col-lg-7">
 					<form action="#" class="form-inline">
 						<div class="form-group mr-4">
-							<a class="btn btn-sm btn-secondary btn-upper" href="/prospectos">
+							<a class="btn btn-sm btn-secondary btn-upper" href="{!!route('client-prospect-pirpeline')!!}">
 								<i class="os-icon os-icon-grid-squares-22"></i><span>Pipeline de Prospectos</span>
 							</a>
 						</div>
@@ -36,53 +36,62 @@ END - Breadcrumbs
 			</div>
 		</div>
 
+		@if($errors->any())            
+		<div style="padding-top: 15px; padding-bottom: 15px; margin-bottom:20px; font-size: 16px;" class="col-md-12  btn-{{$errors->first('type')}} " href="#">{{$errors->first('msg')}}</div>
+		@endif
+
 		<div class="element-box">
-			<h5 class="form-header">Faça sua Busca</h5>
-			<div class="form-desc">Consulte todos os seus prospectos já cadastrados na plataforma, também podendo ser consultado aqueles concluidos e arquivos.</div>
+			<form method="get" action="{!!route('client-prospect')!!}">
+				
+				<h5 class="form-header">Faça sua Busca</h5>
+				<div class="form-desc">Consulte todos os seus prospectos já cadastrados na plataforma, também podendo ser consultado aqueles concluidos e arquivos.</div>
 
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label for=""> Nome do Prospecto</label>
-						<input class="form-control" placeholder="Nome completo prospecto ou parte dele" type="text">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for=""> Nome do Prospecto</label>
+							<input name="name" class="form-control" placeholder="Nome completo prospecto ou parte dele" type="text">
+						</div>
 					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label for=""> Etapa</label>
-						<select class="form-control">
-							<option selected></option>
-							<option>Convite</option>
-							<option>Apresentar</option>
-							<option>Acompanhar</option>
-							<option>Fechamento</option>
-						</select>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label for=""> Status</label>
-						<select class="form-control">
-							<option selected></option>
-							<option>Ativo</option>
-							<option>Perdido</option>
-							<option>Arquivado</option>
-							<option>Concluido</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label for=""> Escolha o Período</label>
-						<div class="date-input">
-							<input class="multi-daterange form-control" value="01/01/2018 - 01/12/2018" type="text">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for=""> Etapa</label>
+							<select name="stage" class="form-control">
+								<option selected=""></option>
+								<option value="1">Convite</option>
+								<option value="2">Apresentar</option>
+								<option value="3">Acompanhar</option>
+								<option value="4">Fechamento</option>
+							</select>
 						</div>
 					</div>
 				</div>
-			</div>
+
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for=""> Status</label>
+							<select name="status" class="form-control">
+								<option selected=""></option>
+								<option value="0">Inativo</option>
+								<option value="1">Ativo</option>
+								<option value="2">Arquivado</option>
+								<option value="3">Concluido</option>
+								<option value="4">Perdido</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for=""> Escolha o Período</label>
+							<div class="date-input">
+								<input name='date-interval'  autocomplete='off' data-range='true' data-multiple-dates-separator=" - " type='text' class='datepicker-here form-control' data-language='pt-BR' />
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="btn  btn-secondary" type="submit">Buscar</button>
+			</form>
 		</div>
 
 		<div class="element-box">
@@ -122,46 +131,29 @@ END - Breadcrumbs
 						</thead>
 
 						<tbody>
+							@foreach ($prospects as $key => $value)
 							<tr>
 								<td><input class="form-control" type="checkbox"></td>
-								<td>1</td>
-								<td>Simone Soares</td>
-								<td>Convite</td>
-								<td class="text-center"><span class="status-pill smaller green"></span><span>Ativo</span></td>
-								<td class="row-actions text-right"><a href="#"><i class="os-icon os-icon-user-male-circle2"></i></a><a href="#"><i class="os-icon os-icon-ui-44"></i></a><a class="danger" href="#"><i class="os-icon os-icon-ui-15"></i></a></td>
+								<td>{!! $value->prospect_id !!}</td>
+								<td>{!! $value->name !!}</td>
+								<td>{!! $value->stage() !!}</td>
+								<td class="text-center">
+									<span class="status-pill smaller {!!$value->color()!!}"></span>
+									<span>{!! $value->status() !!}</span>
+								</td>
+								<td class="row-actions text-right">
+									<a href="#">
+										<i class="os-icon os-icon-user-male-circle2"></i>
+									</a>
+									<a href="{!!route('client-prospect-archivament',$value->prospect_id)!!}">
+										<i class="os-icon os-icon-ui-44"></i>
+									</a>
+									<a class="danger" href="{!!route('client-prospect-trash',$value->prospect_id)!!}">
+										<i class="os-icon os-icon-ui-15"></i>
+									</a>
+								</td>
 							</tr>
-							<tr>
-								<td><input class="form-control" type="checkbox"></td>
-								<td>2</td>
-								<td>Thiago Silva</td>
-								<td>Fechamento</td>
-								<td class="text-center"><span class="status-pill smaller green"></span><span>Ativo</span></td>
-								<td class="row-actions text-right"><a href="#"><i class="os-icon os-icon-user-male-circle2"></i></a><a href="#"><i class="os-icon os-icon-ui-44"></i></a><a class="danger" href="#"><i class="os-icon os-icon-ui-15"></i></a></td>
-							</tr>
-							<tr>
-								<td><input class="form-control" type="checkbox"></td>
-								<td>3</td>
-								<td>Felipe Souza</td>
-								<td>Convite</td>
-								<td class="text-center"><span class="status-pill smaller green"></span><span>Ativo</span></td>
-								<td class="row-actions text-right"><a href="#"><i class="os-icon os-icon-user-male-circle2"></i></a><a href="#"><i class="os-icon os-icon-ui-44"></i></a><a class="danger" href="#"><i class="os-icon os-icon-ui-15"></i></a></td>
-							</tr>
-							<tr>
-								<td><input class="form-control" type="checkbox"></td>
-								<td>4</td>
-								<td>Hugo Ferreira</td>
-								<td>Convite</td>
-								<td class="text-center"><span class="status-pill smaller green"></span><span>Ativo</span></td>
-								<td class="row-actions text-right"><a href="#"><i class="os-icon os-icon-user-male-circle2"></i></a><a href="#"><i class="os-icon os-icon-ui-44"></i></a><a class="danger" href="#"><i class="os-icon os-icon-ui-15"></i></a></td>
-							</tr>
-							<tr>
-								<td><input class="form-control" type="checkbox"></td>
-								<td>5</td>
-								<td>Barbara Silva</td>
-								<td>Acompanhar</td>
-								<td class="text-center"><span class="status-pill smaller green"></span><span>Ativo</span></td>
-								<td class="row-actions text-right"><a href="#"><i class="os-icon os-icon-user-male-circle2"></i></a><a href="#"><i class="os-icon os-icon-ui-44"></i></a><a class="danger" href="#"><i class="os-icon os-icon-ui-15"></i></a></td>
-							</tr>
+							@endforeach							
 						</tbody>
 					</table>
 					<!--------------------
@@ -172,29 +164,11 @@ END - Breadcrumbs
 					START - Controls Below Table
 					-------------------->
 					<div class="controls-below-table">
-						<div class="table-records-info">Mostrando registros 1 - 5 de 30 registros</div>
-						<div class="table-records-pages">
-							<ul>
-								<li>
-									<a href="#">Anterior</a>
-								</li>
-								<li>
-									<a class="current" href="#">1</a>
-								</li>
-								<li>
-									<a href="#">2</a>
-								</li>
-								<li>
-									<a href="#">3</a>
-								</li>
-								<li>
-									<a href="#">4</a>
-								</li>
-								<li>
-									<a href="#">Próximo</a>
-								</li>
-							</ul>
+
+						<div style="display: block;" class="table-records-info">
 						</div>
+
+						{!!$prospects->appends(Request::input())->render()!!}      
 					</div>
 					<!--------------------
 					END - Controls Below Table

@@ -89,10 +89,10 @@ class Clients extends Authenticatable
             break;
         }
     }
-    /*
+    
     public function prospect()
     {
-        return $this->hasMany('App\Model\Prospects', 'user_id');
-    }*/
+        return $this->hasMany('App\Model\Prospects', 'client_id');
+    }
 
 }
