@@ -51,7 +51,7 @@
 									</div>
 								</div>
 							</div>
-							<div data-strutude="1:A" class="pipeline-body">
+							<div data-count-rows="1:{!!count($prospect_convit)!!}" data-strutude="1:A" class="pipeline-body">
 								@if(count($prospect_convit) != 0)
 								@foreach($prospect_convit as $convit)
 								<div data-strutude="1:{!!$convit->prospect_id!!}" class="pipeline-item">
@@ -102,14 +102,6 @@
 								</div>
 								@endforeach
 								@else
-								<div data-count="1:0"  class="profile-tile file-not">	
-									<div class="profile-tile-meta btn-warning">
-										<li style="list-style: none; padding-top: 12px; padding-bottom:12px;">
-											<i class="os-icon os-icon-others-43"></i>
-											<strong style="margin-left: 0;">Nenhum Prospecto</strong>
-										</li>
-									</div>
-								</div>	
 								@endif								
 							</div>
 						</div>
@@ -132,10 +124,10 @@
 								</div>
 							</div>
 
-							<div data-strutude="2:A"  class="pipeline-body">
+							<div data-count-rows="2:{!!count($prospect_show)!!}" data-strutude="2:A"  class="pipeline-body">
 								@if(count($prospect_show) != 0)
 								@foreach($prospect_show as $show)
-								<div data-strutude="2:{!!$convit->prospect_id!!}" class="pipeline-item">
+								<div data-strutude="2:{!!$show->prospect_id!!}" class="pipeline-item">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Não se esqueça de chegar 30 minutos antes do horário marcado!"></i>
@@ -187,14 +179,6 @@
 								</div>
 								@endforeach
 								@else
-								<div data-count="2:0"  class="profile-tile file-not">	
-									<div class="profile-tile-meta btn-warning">
-										<li style="list-style: none; padding-top: 12px; padding-bottom:12px;">
-											<i class="os-icon os-icon-others-43"></i>
-											<strong style="margin-left: 0;">Nenhum Prospecto</strong>
-										</li>
-									</div>
-								</div>	
 								@endif
 								<div style="display: none;" class="pipeline-item border-l-warning">
 									<div class="pi-controls">
@@ -270,7 +254,7 @@
 									</div>
 								</div>
 							</div>
-							<div data-strutude="3:A"  class="pipeline-body">
+							<div data-count-rows="3:{!!count($prospect_mananger)!!}" data-strutude="3:A"  class="pipeline-body">
 								@if(count($prospect_mananger) != 0)
 								@foreach($prospect_mananger as $mananger)
 								<div data-strutude="3:{!!$mananger->prospect_id!!}" class="pipeline-item">
@@ -334,14 +318,6 @@
 								</div>
 								@endforeach
 								@else
-								<div data-count="3:0"  class="profile-tile file-not">	
-									<div class="profile-tile-meta btn-warning">
-										<li style="list-style: none; padding-top: 12px; padding-bottom:12px;">
-											<i class="os-icon os-icon-others-43"></i>
-											<strong style="margin-left: 0;">Nenhum Prospecto</strong>
-										</li>
-									</div>
-								</div>	
 								@endif
 								<div style="display: none;" class="pipeline-item border-l-warning">
 									<div class="pi-controls">
@@ -426,7 +402,7 @@
 									</div>
 								</div>
 							</div>
-							<div data-strutude="4:A"  class="pipeline-body">
+							<div data-count-rows="4:{!!count($prospect_close)!!}" data-strutude="4:A"  class="pipeline-body">
 								@if(count($prospect_close) != 0)
 								@foreach($prospect_close as $close)
 								<div data-strutude="4:{!!$close->prospect_id!!}" class="pipeline-item">
@@ -447,9 +423,9 @@
 									</div>
 									<div class="pi-body">
 										<div class="pi-info">
-											<div class="h6 pi-name">José Pinheiro</div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="tel:(62) 99999-9999">(62) 99999-9999</a></div>
-											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="mailto:zepinheiro@gmail.com">zepinheiro@hotmail.com</a></div>
+											<div class="h6 pi-name">{!!$close->name!!}</div>
+											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="tel:{!!$close->phone!!}">{!!$close->phone!!}</a></div>
+											<div class="pi-sub"><a class="btn-link btn-upper mr-4 d-none d-lg-inline-block" href="mailto:{!!$close->email!!}">{!!$close->email!!}</a></div>
 										</div>
 									</div>
 									<div class="pi-foot">
@@ -464,14 +440,6 @@
 								</div>
 								@endforeach
 								@else
-								<div data-count="4:0"  class="profile-tile file-not">	
-									<div class="profile-tile-meta btn-warning">
-										<li style="list-style: none; padding-top: 12px; padding-bottom:12px;">
-											<i class="os-icon os-icon-others-43"></i>
-											<strong style="margin-left: 0;">Nenhum Prospecto</strong>
-										</li>
-									</div>
-								</div>	
 								@endif
 							</div>
 						</div>

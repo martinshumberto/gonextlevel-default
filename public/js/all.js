@@ -8,17 +8,19 @@
   if ($('.pipeline').length) {
 	    // INIT DRAG AND DROP FOR PIPELINE ITEMS
 	    var dragulaObj = dragula($('.pipeline-body').toArray(), {})
-	    .on('drag', function () {})
+	    .on('drag', function (el, container) {
+
+
+	    })
 	    .on('drop', function(el, container ){
 
+
+	    	// Elements Update for SQL/PHP
 	    	var EleMentStrutude = $(el).attr('data-strutude');
 	    	var cOntainerStrutude = $(container).attr('data-strutude');
-	    	/*var ElementIndex = EleMentStrutude.split(':');*/
-	    	var ContainerIndex = cOntainerStrutude.split(':');
 
-	    	var fadeOutElement = ContainerIndex[0]+":0";
-	    	$('[data-count="'+fadeOutElement+'"]').hide();
-	    
+
+
 	    	$.ajax({
 	    		url: $("#app_url").val() + "/api/prospectos/auth/pipeline",
 	    		type: 'POST',
