@@ -30,6 +30,38 @@
 	    });
 	}
 
+	$(document).on("click", ".apn-create", function(){
+		var prospct_id = $(this).attr('data-reference');
+		$("input[name='auth']").val(prospct_id);
+		$('.create-apn-btn').click( function(){
+			var dados = $(".form-apn").serialize();
+			$.ajax({
+				type: "POST",
+				url: $("#app_url").val() + "/api/prospectos/auth/apn",
+				data: dados,
+				success: function( data )
+				{
+					swal({
+						type: 'success',
+						title: 'Legal...',
+						text: 'Apresentacao marcada com sucesso!'
+					}).then((result) => {
+						if (result.value) {						
+							location.reload();
+						}
+					})
+				},
+				error: function()
+				{
+					swal({
+						type: 'error',
+						title: 'Ops...',
+						text: 'Algo deu errado!'
+					})
+				}
+			});
+		});
+	});
 }
 new AuthPirpeline();
 }(jQuery));

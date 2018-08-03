@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ClientController;
 
 use App\Model\Prospects;
+use App\Model\Apresentations;
 
 use Auth;
 
@@ -56,5 +57,40 @@ class ProspectosController extends ClientController
 		response()->
 		json("SUCESSO");
 
+	}
+	public function apresentation(Request $request)
+	{
+		$client_id =  criptBySystem( $request->input('key'), 'd' );
+		try{
+
+			$prospect = Prospects::find($request->input('auth'));
+			$prospect->stage = 2;
+			$prospect->save();
+
+
+			$date = str_replace("/", "-", $request->input('date'));
+			$date = date('Y-m-d', strtotime($date));
+			$hour = date('H:i:s', strtotime($request->input('hour')));
+
+			$apresentation = Apresentations::create([
+				'client_id' => $client_id,
+				'prospect_id' => $request->input('auth'),
+				'date' => $date,
+				'hour' => $hour,
+				'locate' => $request->input('locate'),
+				'status' => 1,
+			]);
+			return 
+		response()->
+		json("SUCESSO");
+		} catch (Exception $e) {
+			return 
+		response()->
+		json("error");
+		}
+		return 
+		response()->
+		json("error");
+		
 	}
 }

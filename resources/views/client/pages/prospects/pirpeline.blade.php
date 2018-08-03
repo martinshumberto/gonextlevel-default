@@ -93,7 +93,7 @@
 									</div>
 									<div class="pi-foot">
 										<div class="tags">
-											<a class="tag" href="#" data-target="#modal-new-apn" data-toggle="modal">Marcar APN</a>
+											<a class="tag apn-create" data-reference="{!!$convit->prospect_id!!}"  href="#" data-target="#modal-new-apn" data-toggle="modal">Marcar APN</a>
 										</div>
 										<a class="extra-info" href="#">
 											<i class="os-icon os-icon-mail-12" data-placement="top" data-toggle="tooltip" title="3 Nota(s)"></i>
@@ -589,13 +589,15 @@
 						<div class="onboarding-content with-gradient">
 							<h4 class="onboarding-title">Marcar Apresentação</h4>
 							<div class="onboarding-text">Parar marcar apresentação com o respectivo prospecto preencha as informações abaixo</div>
-							<form>
+							<form class="form-apn">
 								<div class="row">
+									<input type="hidden" name="key" value="{!!criptBySystem(Auth::user()->client_id, 'e' )!!}">
+									<input type="hidden" name="auth" value="">
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="">Data</label>
 											<div class="date-input">
-												<input class="single-daterange form-control" placeholder="Data" value="01/01/2018" type="text">
+												<input class=" form-control" placeholder="Data" value="{!!date("d/m/Y")!!}" type="text" name="date">
 											</div>
 										</div>
 									</div>
@@ -603,20 +605,20 @@
 										<div class="form-group">
 											<label for="">Horario</label>
 											<div class="date-input">
-												<input class="timepicker timepicker-without-dropdown form-control" placeholder="00:00" value="00:00" type="text">
+												<input class="timepicker timepicker-without-dropdown form-control" placeholder="00:00" name="hour" value="00:00" type="text">
 											</div>
 										</div>
 									</div>
 									<div class="col-sm-12">
 										<div class="form-group">
 											<label for="">Local</label>
-											<textarea class="form-control" placeholder="Onde acontecerá a apresentação?" value=""></textarea>
+											<textarea name="locate" class="form-control" placeholder="Onde acontecerá a apresentação?" value=""></textarea>
 										</div>
 									</div>
 								</div>
 							</form>
 						</div>
-						<button class="slick-complete-r slick-arrow mt-15" aria-label="Gravar" type="button" aria-disabled="false">Gravar</button>
+						<button class="create-apn-btn slick-complete-r slick-arrow mt-15" aria-label="Gravar" type="button" aria-disabled="false">Gravar</button>
 					</div>
 				</div>
 			</div>
@@ -638,13 +640,13 @@
 						<div class="onboarding-content with-gradient">
 							<h4 class="onboarding-title">Alterar Apresentação</h4>
 							<div class="onboarding-text">Parar alterar dia e local da apresentação corrija as informações abaixo</div>
-							<form>
+							<form class="form-apn">
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="">Data</label>
 											<div class="date-input">
-												<input class="single-daterange form-control" value="06/06/2018" type="text">
+												<input class=" form-control" value="06/06/2018" type="text">
 											</div>
 										</div>
 									</div>

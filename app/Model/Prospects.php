@@ -83,9 +83,13 @@ class Prospects extends Authenticatable
             break;
         }
     }
-    public function user()
+    public function client()
     {
         return $this->belongsTo('App\Model\Clients', 'client_id', 'client_id');
+    }
+    public function apresentation()
+    {
+        return $this->hasOne('App\Model\Apresentations', 'prospect_id', 'prospect_id');
     }
 
 

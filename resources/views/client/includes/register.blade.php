@@ -138,7 +138,7 @@ START - Modal - Register
 
 								</form>
 							</div>
-							<button class="slick-complete-r slick-arrow" aria-label="Concluir" type="button" aria-disabled="false">Concluir</button>
+							<button class="create-prospect slick-complete-r slick-arrow" aria-label="Concluir" type="button" aria-disabled="false">Concluir</button>
 						</div>
 					</div>
 				</div>

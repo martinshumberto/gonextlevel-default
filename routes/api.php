@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 
 Route::post('prospectos/auth/pipeline',"Api\ProspectosController@pipeline");
 Route::post('prospectos/auth/cadastro', 'Api\ProspectosController@create');
+Route::post('prospectos/auth/apn', 'Api\ProspectosController@apresentation');
 
 //Route::post('graph',"Api\GraphController@show");
 Route::post('states/{code}',"Api\StatesController@show");

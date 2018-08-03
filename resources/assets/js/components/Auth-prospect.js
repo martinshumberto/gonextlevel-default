@@ -2,7 +2,7 @@
 
 	function Prospect(){
 
-		$(document).on("click", ".slick-complete-r", function(){
+		$(document).on("click", ".create-prospect", function(){
 			var dados = $("#register-new-prospect").serialize();
 			$.ajax({
 				type: "POST",
