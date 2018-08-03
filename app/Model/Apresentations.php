@@ -16,8 +16,11 @@ class Apresentations extends Authenticatable
     public function status()
     {   
         switch ($this->status) {
-            case '4':
+            case '5':
             return 'Vencida';
+            break;
+            case '4':
+            return 'Remarcada';
             break;
             case '3':
             return 'Nao Realizada';
@@ -30,7 +33,7 @@ class Apresentations extends Authenticatable
             break;
         }
     }    
-    public function prospect()
+    public function apresentation()
     {
         return $this->belongsTo('App\Model\Prospects', 'prospect_id', 'prospect_id');
     }

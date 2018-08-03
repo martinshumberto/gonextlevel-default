@@ -1,6 +1,9 @@
 ;(function($){
 
 	function AuthPirpeline() {
+
+		// MASK FUNCTIONS
+		$('.MaskHour').mask('00:00');
 		
   // #15. CRM PIPELINE
   if ($('.pipeline').length) {
@@ -31,6 +34,7 @@
 	}
 
 	$(document).on("click", ".apn-create", function(){
+		$('.datepicker ').css("z-index", "999999");
 		var prospct_id = $(this).attr('data-reference');
 		$("input[name='auth']").val(prospct_id);
 		$('.create-apn-btn').click( function(){
@@ -41,15 +45,66 @@
 				data: dados,
 				success: function( data )
 				{
+					if(data.result == "success"){
+						swal({
+							type: 'success',
+							title: 'Legal...',
+							text: 'Apresentacao marcada com sucesso!'
+						}).then((result) => {
+							if (result.value) {						
+								location.reload();
+							}
+						})
+
+					}else if(data.result == "error"){
+						swal({
+							type: 'error',
+							title: 'Ops...',
+							text: 'Algo deu errado!'
+						})
+					}
+				},
+				error: function()
+				{
 					swal({
-						type: 'success',
-						title: 'Legal...',
-						text: 'Apresentacao marcada com sucesso!'
-					}).then((result) => {
-						if (result.value) {						
-							location.reload();
-						}
+						type: 'error',
+						title: 'Ops...',
+						text: 'Algo deu errado!'
 					})
+				}
+			});
+		});
+	});
+	$(document).on("click", ".apn-update", function(){
+		$('.datepicker ').css("z-index", "999999");
+		var prospct_id = $(this).attr('data-reference');
+		$("input[name='auth']").val(prospct_id);
+		$('.update-apn-btn').click( function(){
+			var dados = $(".form-apn-update").serialize();
+			$.ajax({
+				type: "POST",
+				url: $("#app_url").val() + "/api/prospectos/auth/apn",
+				data: dados,
+				success: function( data )
+				{
+					if(data.result == "success"){
+						swal({
+							type: 'success',
+							title: 'Legal...',
+							text: 'Apresentacao alterada com sucesso!'
+						}).then((result) => {
+							if (result.value) {						
+								location.reload();
+							}
+						})
+
+					}else if(data.result == "error"){
+						swal({
+							type: 'error',
+							title: 'Ops...',
+							text: 'Algo deu errado!'
+						})
+					}
 				},
 				error: function()
 				{

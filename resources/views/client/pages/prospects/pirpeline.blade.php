@@ -86,7 +86,7 @@
 											<div class="el-infos pi-sub">
 												<div class="infos-value-w">
 													<div class="infos-pin"><i class="os-icon os-icon-ui-02"></i></div>
-													<div class="infos-value">16 Pontos</div>
+													<div class="infos-value">{!!$convit->count_pont()!!} Pontos</div>
 												</div>
 											</div>
 										</div>
@@ -127,7 +127,7 @@
 							<div data-count-rows="2:{!!count($prospect_show)!!}" data-strutude="2:A"  class="pipeline-body">
 								@if(count($prospect_show) != 0)
 								@foreach($prospect_show as $show)
-								<div data-strutude="2:{!!$show->prospect_id!!}" class="pipeline-item">
+								<div data-strutude="2:{!!$show->prospect_id!!}" class="pipeline-item ">
 									<div class="pi-controls">
 										<div class="pi-settings os-dropdown-trigger">
 											<i class="os-icon os-icon-ui-92" data-placement="top" data-toggle="tooltip" title="Não se esqueça de chegar 30 minutos antes do horário marcado!"></i>
@@ -153,29 +153,75 @@
 									<div class="pi-controls-second pi-settings os-dropdown-trigger toggle-accordion" data-placement="top" data-toggle="tooltip" title="Mais informações">
 										<i class="os-icon os-icon-arrow-down"></i>
 									</div>
+									@if(isset($show->apresentation->date))
 									<div class="pi-body accordion-body">
 										<div class="pi-info">
 											<hr>
 											<div class="el-infos pi-sub">
 												<div class="infos-value-w">
 													<div class="infos-pin"><i class="fa fa-calendar"></i></div>
-													<div class="infos-value">06 de Junho às 12h30</div>
+													<div class="infos-value">{!!dateGetExtencer($show->apresentation->date)!!}</div>
+												</div>
+												<div class="infos-value-w">
+													<div class="infos-pin"><i class="fa fa-clock-o"></i></div>
+													<div class="infos-value">{!!$show->apresentation->hour!!}</div>
 												</div>
 												<div class="infos-value-w">
 													<div class="infos-pin"><i class="fa fa-map-marker"></i></div>
-													<div class="infos-value"><small>Casa do Sergio - Rua Palmeiras Qd. 30 Lt. 05 - Setor dos Afonsos</small></div>
+													<div class="infos-value"><small>{!!$show->apresentation->locate!!}</small></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									@php
+										$todays_date = date("Y-m-d"); 
+										$today = strtotime($todays_date);
+										$expiration_date = strtotime($show->apresentation->date); 
+									@endphp
+									@if($expiration_date < $today)
+									<div class="pi-foot">
+										<a class="extra-info" href="#">
+											<span>Foi feita APN?</span>
+										</a>
+										<div class="btn-group">
+											<a class="mr-2 btn btn-outline-success btn-sm" href="#">Sim</a>
+											<a href="#" data-target="#modal-new-apn" data-toggle="modal" class="mr-2 btn btn-outline-danger btn-sm apn-create" data-reference="{!!$show->prospect_id!!}" >Não</a>
+										</div>
+										<a class="extra-info" href="#">
+											<i class="os-icon os-icon-mail-12" data-placement="top" data-toggle="tooltip" title="" data-original-title="1 Nota(s)"></i>
+										</a>
+									</div>
+									@else
+									<div class="pi-foot">
+										<div class="tags">
+											<a class="apn-update tag" href="#" data-reference="{!!$show->prospect_id!!}" data-target="#modal-change-apn" data-toggle="modal">Alterar</a>
+										</div>
+										<a class="extra-info" href="#">
+											<i class="os-icon os-icon-mail-12" data-placement="top" data-toggle="tooltip" title="3 Nota(s)"></i>
+										</a>
+									</div>
+									@endif
+									@else								
+									<div class="pi-body accordion-body">
+										<div class="pi-info">
+											<hr>
+											<div class="el-infos pi-sub">
+												<div class="infos-value-w">
+													<div class="infos-pin"><i class="os-icon os-icon-ui-02"></i></div>
+													<div class="infos-value">{!!$show->count_pont()!!} Pontos</div>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="pi-foot">
 										<div class="tags">
-											<a class="tag" href="#" data-target="#modal-change-apn" data-toggle="modal">Alterar</a>
+											<a class="tag apn-create" data-reference="{!!$show->prospect_id!!}"  href="#" data-target="#modal-new-apn" data-toggle="modal">Marcar APN</a>
 										</div>
 										<a class="extra-info" href="#">
 											<i class="os-icon os-icon-mail-12" data-placement="top" data-toggle="tooltip" title="3 Nota(s)"></i>
 										</a>
 									</div>
+									@endif
 								</div>
 								@endforeach
 								@else
@@ -597,7 +643,7 @@
 										<div class="form-group">
 											<label for="">Data</label>
 											<div class="date-input">
-												<input class=" form-control" placeholder="Data" value="{!!date("d/m/Y")!!}" type="text" name="date">
+												<input name="date"  type='text' class='datepicker-here form-control' data-language='pt-BR' value="{!!date("d/m/Y")!!}" />
 											</div>
 										</div>
 									</div>
@@ -605,7 +651,7 @@
 										<div class="form-group">
 											<label for="">Horario</label>
 											<div class="date-input">
-												<input class="timepicker timepicker-without-dropdown form-control" placeholder="00:00" name="hour" value="00:00" type="text">
+												<input class="MaskHour timepicker timepicker-without-dropdown form-control" placeholder="00:00" name="hour" type="text">
 											</div>
 										</div>
 									</div>
@@ -639,14 +685,16 @@
 					<div class="onboarding-side-by-side">
 						<div class="onboarding-content with-gradient">
 							<h4 class="onboarding-title">Alterar Apresentação</h4>
-							<div class="onboarding-text">Parar alterar dia e local da apresentação corrija as informações abaixo</div>
-							<form class="form-apn">
+							<div class="onboarding-text">Parar alterar dia e local da apresentação insira as informações abaixo</div>
+							<form class="form-apn-update">
 								<div class="row">
+									<input type="hidden" name="key" value="{!!criptBySystem(Auth::user()->client_id, 'e' )!!}">
+									<input type="hidden" name="auth" value="">
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="">Data</label>
 											<div class="date-input">
-												<input class=" form-control" value="06/06/2018" type="text">
+												<input name="date"  type='text' class='datepicker-here form-control' data-language='pt-BR' value="{!!date("d/m/Y")!!}" />
 											</div>
 										</div>
 									</div>
@@ -654,20 +702,20 @@
 										<div class="form-group">
 											<label for="">Horario</label>
 											<div class="date-input">
-												<input class="timepicker timepicker-without-dropdown form-control" value="12:30" type="text">
+												<input class="MaskHour timepicker timepicker-without-dropdown form-control" placeholder="00:00" name="hour" type="text">
 											</div>
 										</div>
 									</div>
 									<div class="col-sm-12">
 										<div class="form-group">
 											<label for="">Local</label>
-											<textarea class="form-control" placeholder="Onde acontecerá a apresentação?">Casa do Sergio - Rua Palmeiras Qd. 30 Lt. 05 - Setor dos Afonsos</textarea>
+											<textarea name="locate" class="form-control" placeholder="Onde acontecerá a apresentação?" value=""></textarea>
 										</div>
 									</div>
 								</div>
 							</form>
 						</div>
-						<button class="slick-complete-r slick-arrow mt-15" aria-label="Gravar" type="button" aria-disabled="false">Gravar</button>
+						<button class="update-apn-btn slick-complete-r slick-arrow mt-15" aria-label="Gravar" type="button" aria-disabled="false">Gravar</button>
 					</div>
 				</div>
 			</div>

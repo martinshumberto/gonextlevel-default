@@ -14,6 +14,7 @@ elixir(function(mix) {
 		*/
 		mix.scripts([
 			'libs/sweetalert2.all.min.js',
+			'libs/jquery.mask.js',
 			'components/Auth-pirpeline.js',
 			'components/Auth-profile.js',
 			'components/Auth-prospect.js',

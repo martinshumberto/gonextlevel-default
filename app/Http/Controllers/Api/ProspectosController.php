@@ -55,42 +55,63 @@ class ProspectosController extends ClientController
 		]);
 		return 
 		response()->
-		json("SUCESSO");
+		json(array('result' => "success"));
 
 	}
 	public function apresentation(Request $request)
 	{
 		$client_id =  criptBySystem( $request->input('key'), 'd' );
 		try{
-
-			$prospect = Prospects::find($request->input('auth'));
-			$prospect->stage = 2;
-			$prospect->save();
-
-
+			# Recebe Valores de Informacoes
 			$date = str_replace("/", "-", $request->input('date'));
 			$date = date('Y-m-d', strtotime($date));
 			$hour = date('H:i:s', strtotime($request->input('hour')));
 
-			$apresentation = Apresentations::create([
-				'client_id' => $client_id,
-				'prospect_id' => $request->input('auth'),
-				'date' => $date,
-				'hour' => $hour,
-				'locate' => $request->input('locate'),
-				'status' => 1,
-			]);
+			# Verifica se ja tem apresetação marcada
+			$apresentation_find = Apresentations::where('prospect_id', $request->input('auth'))->first();
+
+			
+			$prospect = Prospects::find($request->input('auth'));
+			$prospect->stage = 2;
+			$prospect->save();
+
+			if (is_null($apresentation_find)) {
+				$apresentation = Apresentations::create([
+					'client_id' => $client_id,
+					'prospect_id' => $request->input('auth'),
+					'date' => $date,
+					'hour' => $hour,
+					'locate' => $request->input('locate'),
+					'status' => 1,
+				]);
+
+				return 
+				response()->
+				json(array('result' => "success", 'type' => "create"));
+			} else {
+
+				$ApnUpdate = Apresentations::find($apresentation_find->apresentation_id);
+				$ApnUpdate->date = $date;
+				$ApnUpdate->hour = $hour;
+				$ApnUpdate->locate = $request->input('locate');
+				$ApnUpdate->status = 4;
+				$ApnUpdate->save();
+				return 
+				response()->
+				json(array('result' => "success", 'type' => "update"));
+
+			}
 			return 
-		response()->
-		json("SUCESSO");
+			response()->
+			json(array('result' => "success"));
 		} catch (Exception $e) {
 			return 
-		response()->
-		json("error");
+			response()->
+			json(array('result' => "error"));
 		}
 		return 
 		response()->
-		json("error");
+		json(array('result' => "error"));
 		
 	}
 }
