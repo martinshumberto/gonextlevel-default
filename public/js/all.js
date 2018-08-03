@@ -46,7 +46,7 @@
 					swal({
 						type: 'success',
 						title: 'Legal...',
-						text: 'Prospecto cadastrado com sucesso!'
+						text: 'Apresentacao marcada com sucesso!'
 					}).then((result) => {
 						if (result.value) {						
 							location.reload();
