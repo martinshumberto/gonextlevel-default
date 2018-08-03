@@ -16,7 +16,7 @@ class ProspectsController extends ClientController
 	{
 
 		$client_id = Auth::user()->client_id;
-		$prospects = Prospects::orderBy("prospect_id", "DESC");
+		$prospects = Prospects::orderBy("prospect_id", "DESC")->where('client_id', $client_id);
         # ID USER
 		$prospects->where('client_id', $client_id);
 
@@ -59,28 +59,28 @@ class ProspectsController extends ClientController
 		$wherIn = [1,3,4];
 
 		# Coluna de Convites
-		$prospect_convit = Prospects::orderBy("prospect_id", "DESC")->take(24)->get();
+		$prospect_convit = Prospects::orderBy("prospect_id", "DESC");
 		$prospect_convit->where('client_id', Auth::user()->client_id);
 		$prospect_convit->whereIn('status', $wherIn);
-		$prospect_convit =  $prospect_convit->where('stage', 1);
+		$prospect_convit =  $prospect_convit->where('stage', 1)->take(24)->get();
 
 		# Coluna de Convites
-		$prospect_show = Prospects::orderBy("prospect_id", "DESC")->take(24)->get();
+		$prospect_show = Prospects::orderBy("prospect_id", "DESC");
 		$prospect_show->where('client_id', Auth::user()->client_id);
 		$prospect_show->whereIn('status', $wherIn);
-		$prospect_show =  $prospect_show->where('stage', 2);
+		$prospect_show =  $prospect_show->where('stage', 2)->take(24)->get();
 
 		# Coluna de Convites
-		$prospect_mananger = Prospects::orderBy("prospect_id", "DESC")->take(24)->get();
+		$prospect_mananger = Prospects::orderBy("prospect_id", "DESC");
 		$prospect_mananger->where('client_id', Auth::user()->client_id);
 		$prospect_mananger->whereIn('status', $wherIn);
-		$prospect_mananger =  $prospect_mananger->where('stage', 3);
+		$prospect_mananger =  $prospect_mananger->where('stage', 3)->take(24)->get();
 
 		# Coluna de Convites
-		$prospect_close = Prospects::orderBy("prospect_id", "DESC")->take(24)->get();
+		$prospect_close = Prospects::orderBy("prospect_id", "DESC");
 		$prospect_close->where('client_id', Auth::user()->client_id);
 		$prospect_close->whereIn('status', $wherIn);
-		$prospect_close =  $prospect_close->where('stage', 4);
+		$prospect_close =  $prospect_close->where('stage', 4)->take(24)->get();
 
 
 
