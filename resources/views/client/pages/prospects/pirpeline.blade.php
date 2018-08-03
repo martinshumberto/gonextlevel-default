@@ -174,9 +174,9 @@
 										</div>
 									</div>
 									@php
-										$todays_date = date("Y-m-d"); 
-										$today = strtotime($todays_date);
-										$expiration_date = strtotime($show->apresentation->date); 
+									$todays_date = date("Y-m-d"); 
+									$today = strtotime($todays_date);
+									$expiration_date = strtotime($show->apresentation->date); 
 									@endphp
 									@if($expiration_date < $today)
 									<div class="pi-foot">
@@ -838,15 +838,53 @@
 		</div>
 	</div>
 </div>
-	<!-----------------------
-	END - Modal - Qualify
-	------------------------>
 
-	<script>
-		window.onload = function () {
-			changeBody();
-		}
-	</script>
-	
+<button style="display: none;" class="mr-2 mb-2 btn btn-primary" data-target="#onboardingWideFormModal" data-toggle="modal" type="button">Modal with form</button>
+<div aria-hidden="true" class="onboarding-modal modal fade animated" id="onboardingWideFormModal" role="dialog" tabindex="-1">
+	<div class="modal-dialog modal-lg modal-centered" role="document">
+		<div class="modal-content text-center">
+			<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span class="close-label">Fechar</span><span class="os-icon os-icon-close"></span></button>
+			<div class="onboarding-side-by-side">
+				<div class="onboarding-media">
+					<img alt="" src="{!!url("/")!!}/public/img/bigicon3.png" width="200px">
+				</div>
+				<div class="onboarding-content with-gradient">
+					<h4 class="onboarding-title">
+						Notas do Prospecto
+					</h4>
+					<div class="onboarding-text">
+						Abaixo você pode visualizar todas as notas referente a esse prospecto, e inserir quantas quiser.
+					</div>
+					<form>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label for="">Nota Inserida dia 03 de Agosto de 2018 as 17:30</label>
+									<span style="float: right; ">
+										 
+										<button class="mr-2 mb-2 btn btn-danger btn-sm" type="button"> <i class="fa fa-times-circle" aria-hidden="true"></i></button>
+									</span>
+									<textarea class="form-control" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a nulla rutrum, viverra erat ut, ultricies purus.</textarea>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<div class="form-group">
+									<button class="mr-2 mb-2 btn btn-secondary" type="button"> Inserir nova nota</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-	@endsection
+<script>
+	window.onload = function () {
+		changeBody();
+	}
+</script>
+
+
+@endsection
