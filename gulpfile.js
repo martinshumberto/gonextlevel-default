@@ -18,6 +18,7 @@ elixir(function(mix) {
 			'components/Auth-pirpeline.js',
 			'components/Auth-profile.js',
 			'components/Auth-prospect.js',
+			'components/Auth-mask.js',
 			]);
 
 	});

@@ -89,7 +89,7 @@ class Prospects extends Authenticatable
     }
     public function apresentation()
     {
-        return $this->hasOne('App\Model\Apresentations', 'prospect_id', 'prospect_id');
+        return $this->hasMany('App\Model\Apresentations', 'prospect_id', 'prospect_id');
     }
 
 

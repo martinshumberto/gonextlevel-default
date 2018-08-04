@@ -48,6 +48,15 @@ Route::prefix('painel')->middleware('client')->namespace('Client')->group(functi
 	Route::get('/notificacoes', array('as' => 'client-notifications', 'uses' => 'ClientsController@index'));
 
 });
+/*
+|--------------------------------------------------------------------------
+| Admin Routs
+|--------------------------------------------------------------------------
+*/
 
+Route::prefix('admin')->namespace('Admin')->group(function(){
 
+	/* Dashboard */
+	Route::get('/', array('as' => 'admin-dashboard', 'uses' => 'HomeController@dashboard'));
 
+});

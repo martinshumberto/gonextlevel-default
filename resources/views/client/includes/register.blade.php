@@ -24,7 +24,7 @@ START - Modal - Register
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="">Telefone</label>
-											<input class="form-control" placeholder="(00) 00000-0000" type="tel" value="" name="phone">
+											<input class="form-control MaskPhone" placeholder="(00) 00000-0000" type="tel" value="" name="phone">
 										</div>
 									</div>
 									<div class="col-sm-12">

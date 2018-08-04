@@ -10,6 +10,7 @@ use App\Model\Prospects;
 use App\Model\Apresentations;
 
 use Auth;
+use App\Model\ActivityLog;
 
 
 
@@ -19,15 +20,40 @@ class ProspectosController extends ClientController
 	public function pipeline(Request $request)
 	{
 
+		$client_id =  criptBySystem( $request->input('auth'), 'd' );
 		$allOn = explode(':', $request->input('EleMentStrutude'));
 		$allTwo = explode(':', $request->input('cOntainerStrutude'));
 
 		$prospect_id = $allOn[1];
 		$stage =  $allTwo[0];
 
-		$prospect = Prospects::where('prospect_id', $prospect_id)->first();
+		$prospect = Prospects::where('prospect_id', $prospect_id)->where('client_id', $client_id)->first();
 		$prospect->stage = $stage;
 		$prospect->save();
+
+		switch ($stage) {
+			case 1:
+				$stage_offset = 'Convidar';
+				break;
+			case 2:
+				$stage_offset = 'Apresentar';
+				break;
+			case 3:
+				$stage_offset = 'Acompanhar';
+				break;
+			case 4:
+				$stage_offset = 'Fechamento';
+				break;
+		}
+
+		# Registra Log de Atividade de Usuário
+		ActivityLog::create([
+			'client_id' => $client_id,
+			'text' => 'Prospecto Movido para '.$stage_offset,
+			'ip' => $_SERVER["REMOTE_ADDR"],
+			'action' => 'PP:M:'.$prospect->prospect_id,
+		]);
+
 
 
 		return response()->json($request);
@@ -53,6 +79,15 @@ class ProspectosController extends ClientController
 			'status' => 1,
 			'stage' => 1
 		]);
+
+		# Registra Log de Atividade de Usuário
+		ActivityLog::create([
+			'client_id' => $client_id,
+			'text' => 'Novo prospecto cadastrado',
+			'ip' => $_SERVER["REMOTE_ADDR"],
+			'action' => 'P:C:'.$prospect->prospect_id,
+		]);
+
 		return 
 		response()->
 		json(array('result' => "success"));
@@ -68,14 +103,11 @@ class ProspectosController extends ClientController
 			$hour = date('H:i:s', strtotime($request->input('hour')));
 
 			# Verifica se ja tem apresetação marcada
-			$apresentation_find = Apresentations::where('prospect_id', $request->input('auth'))->first();
+			$apresentation_find = Apresentations::where('prospect_id', $request->input('auth'))
+			->where('status', 1)->where('client_id', $client_id)->get();
 
-			
-			$prospect = Prospects::find($request->input('auth'));
-			$prospect->stage = 2;
-			$prospect->save();
-
-			if (is_null($apresentation_find)) {
+			$count = $apresentation_find->count();
+			if ($count == 0) {
 				$apresentation = Apresentations::create([
 					'client_id' => $client_id,
 					'prospect_id' => $request->input('auth'),
@@ -85,25 +117,80 @@ class ProspectosController extends ClientController
 					'status' => 1,
 				]);
 
+				# Registra Log de Atividade de Usuário
+				ActivityLog::create([
+					'client_id' => $client_id,
+					'text' => 'Nova Apresentacao cadastrado',
+					'ip' => $_SERVER["REMOTE_ADDR"],
+					'action' => 'A:C:'.$apresentation->apresentation_id,
+				]);
+
+				$Prospecto = Prospects::find($request->input('auth'));
+				$Prospecto->stage = 2;
+				$Prospecto->save();
+
+				# Registra Log de Atividade de Usuário
+				ActivityLog::create([
+					'client_id' => $client_id,
+					'text' => 'Prospecto movido para Apresentacao',
+					'ip' => $_SERVER["REMOTE_ADDR"],
+					'action' => 'PP:M:'.$Prospecto->prospect_id,
+				]);
+
 				return 
 				response()->
 				json(array('result' => "success", 'type' => "create"));
-			} else {
+			}else{
 
-				$ApnUpdate = Apresentations::find($apresentation_find->apresentation_id);
-				$ApnUpdate->date = $date;
-				$ApnUpdate->hour = $hour;
-				$ApnUpdate->locate = $request->input('locate');
-				$ApnUpdate->status = 4;
-				$ApnUpdate->save();
+				# Altera a ultima apresentacao marcada para cancelada
+				foreach ($apresentation_find as $key => $value) {
+					$ApnUpdate = Apresentations::find($value->apresentation_id)->where('status', 1)->first();
+					$ApnUpdate->status = 2;
+					$ApnUpdate->save();
+
+					# Registra Log de Atividade de Usuário
+					$prospect = ActivityLog::create([
+						'client_id' => $client_id,
+						'text' => 'Apresentacao alterada',
+						'ip' => $_SERVER["REMOTE_ADDR"],
+						'action' => 'A:U:'.$ApnUpdate->apresentation_id,
+					]);
+				}
+				$apresentation = Apresentations::create([
+					'client_id' => $client_id,
+					'prospect_id' => $request->input('auth'),
+					'date' => $date,
+					'hour' => $hour,
+					'locate' => $request->input('locate'),
+					'status' => 1,
+				]);
+
+				# Registra Log de Atividade de Usuário
+				ActivityLog::create([
+					'client_id' => $client_id,
+					'text' => 'Nova Apresentacao cadastrado',
+					'ip' => $_SERVER["REMOTE_ADDR"],
+					'action' => 'A:C:'.$apresentation->apresentation_id,
+				]);
+
+				$Prospecto = Prospects::find($request->input('auth'));
+				$Prospecto->stage = 2;
+				$Prospecto->save();
+
+				# Registra Log de Atividade de Usuário
+				ActivityLog::create([
+					'client_id' => $client_id,
+					'text' => 'Prospecto movido para Apresentacao',
+					'ip' => $_SERVER["REMOTE_ADDR"],
+					'action' => 'PP:M:'.$Prospecto->prospect_id,
+				]);
+
 				return 
 				response()->
 				json(array('result' => "success", 'type' => "update"));
-
 			}
-			return 
-			response()->
-			json(array('result' => "success"));
+
+
 		} catch (Exception $e) {
 			return 
 			response()->

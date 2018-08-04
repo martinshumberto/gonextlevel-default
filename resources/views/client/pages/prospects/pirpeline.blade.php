@@ -41,6 +41,7 @@
 						<!--------------------
 						START - Pipeline
 						-------------------->
+						<input type="hidden" name="key-auth" value="{!!criptBySystem( Auth::user()->client_id, 'e' );!!}">
 						<div class="pipeline white lined-primary">
 							<div class="pipeline-header">
 								<h5 class="pipeline-name">CONVIDAR</h5>
@@ -153,22 +154,25 @@
 									<div class="pi-controls-second pi-settings os-dropdown-trigger toggle-accordion" data-placement="top" data-toggle="tooltip" title="Mais informações">
 										<i class="os-icon os-icon-arrow-down"></i>
 									</div>
-									@if(isset($show->apresentation->date))
+									@php
+									$apresntation = $show->apresentation->where('status', 1)->first();
+									@endphp
+									@if(isset($apresntation->date))
 									<div class="pi-body accordion-body">
 										<div class="pi-info">
 											<hr>
 											<div class="el-infos pi-sub">
 												<div class="infos-value-w">
 													<div class="infos-pin"><i class="fa fa-calendar"></i></div>
-													<div class="infos-value">{!!dateGetExtencer($show->apresentation->date)!!}</div>
+													<div class="infos-value">{!!dateGetExtencer($apresntation->date)!!}</div>
 												</div>
 												<div class="infos-value-w">
 													<div class="infos-pin"><i class="fa fa-clock-o"></i></div>
-													<div class="infos-value">{!!$show->apresentation->hour!!}</div>
+													<div class="infos-value">{!!$apresntation->hour!!}</div>
 												</div>
 												<div class="infos-value-w">
 													<div class="infos-pin"><i class="fa fa-map-marker"></i></div>
-													<div class="infos-value"><small>{!!$show->apresentation->locate!!}</small></div>
+													<div class="infos-value"><small>{!!$apresntation->locate!!}</small></div>
 												</div>
 											</div>
 										</div>
@@ -176,7 +180,7 @@
 									@php
 									$todays_date = date("Y-m-d"); 
 									$today = strtotime($todays_date);
-									$expiration_date = strtotime($show->apresentation->date); 
+									$expiration_date = strtotime($apresntation->date); 
 									@endphp
 									@if($expiration_date < $today)
 									<div class="pi-foot">

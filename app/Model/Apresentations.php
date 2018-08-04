@@ -16,17 +16,11 @@ class Apresentations extends Authenticatable
     public function status()
     {   
         switch ($this->status) {
-            case '5':
-            return 'Vencida';
-            break;
-            case '4':
-            return 'Remarcada';
-            break;
             case '3':
             return 'Nao Realizada';
             break;
             case '2':
-            return 'Realizada';
+            return 'Cancelada';
             break;
             case '1':
             return 'Marcada';
