@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\ClientController;
 use Auth;
 use App\Model\CLients;
+use App\Model\ActivityLog;
 
 
 class HomeController extends ClientController
@@ -16,8 +17,12 @@ class HomeController extends ClientController
 		$client_id = Auth::user()->client_id;
 		$client = CLients::where('client_id', $client_id)->first();
 
+		# Atividades Recents
+		$activits = ActivityLog::where('client_id', $client_id)->orderBy('activity_id', 'DESC')->take(4)->get();
+
 		return view("client/pages/home/index", array(
-			"client"    => $client
+			"client"    => $client,
+			"activits"    => $activits,
 		));
 
 	}	

@@ -98,3 +98,32 @@ function dateGetExtencer($date){
 
     return $days[$daysnumber].", dia " . $day . " de ". $month;
 }
+
+function getTimeLast($time){
+    $now = strtotime(date('m/d/Y H:i:s'));
+    $time = strtotime($time);
+    $diff = $now - $time;
+
+    $seconds = $diff;
+    $minutes = round($diff / 60);
+    $hours = round($diff / 3600);
+    $days = round($diff / 86400);
+    $weeks = round($diff / 604800);
+    $months = round($diff / 2419200);
+    $years = round($diff / 29030400);
+
+    if ($seconds <= 60) return"1 min";
+    else if ($minutes <= 60) return $minutes==1 ?'1 min':$minutes.' min';
+    else if ($hours <= 24) return $hours==1 ?'1 hora':$hours.' horas';
+    else if ($days <= 7) return $days==1 ?'1 dia':$days.' dias';
+    else if ($weeks <= 4) return $weeks==1 ?'1 semana':$weeks.' semanas';
+    else if ($months <= 12) return $months == 1 ?'1 mês':$months.' meses';
+    else return $years == 1 ? 'um ano':$years.' anos';
+}
+
+
+function percentage($result, $count)
+{
+    $problem = (($result / $count) * 100);
+    return  $problem;
+}

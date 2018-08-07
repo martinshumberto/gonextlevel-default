@@ -14,7 +14,6 @@ class Prospects extends Authenticatable
     'resource','contact', 'status','stage','created_at','updated_at'];
 
 
-
     public function count_pont()
     {
         $one = $this->network;

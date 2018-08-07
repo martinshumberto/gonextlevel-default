@@ -36,6 +36,7 @@ Route::prefix('painel')->middleware('client')->namespace('Client')->group(functi
 	Route::get('/prospectos/relatorios', array('as' => 'client-prospect-reports', 'uses' => 'ProspectsController@report'));
 	Route::get('/prospectos/arquivar/{id}', array('as' => 'client-prospect-archivament', 'uses' => 'ProspectsController@archivament'));
 	Route::get('/prospectos/apagar/{id}', array('as' => 'client-prospect-trash', 'uses' => 'ProspectsController@trash'));
+	Route::get('/prospectos/ver/{id}', array('as' => 'client-prospect-view', 'uses' => 'ProspectsController@ViewProspect'));
 
 	/* Info Client */
 	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@index'));

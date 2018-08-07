@@ -85,11 +85,11 @@ class ProspectsController extends ClientController
 
 
 		return view("client/pages/prospects/pirpeline", array(
-            "prospect_convit" => $prospect_convit,
-            "prospect_show" => $prospect_show,
-            "prospect_mananger" => $prospect_mananger,
-            "prospect_close" => $prospect_close
-        ));
+			"prospect_convit" => $prospect_convit,
+			"prospect_show" => $prospect_show,
+			"prospect_mananger" => $prospect_mananger,
+			"prospect_close" => $prospect_close
+		));
 	}	
 
 	public function trash(Request $request, $id)
@@ -109,6 +109,21 @@ class ProspectsController extends ClientController
 		} catch (Exception $e) {
 			return redirect(route('client-prospect'))->withErrors(array("type" => "danger", "msg" => "Erro: ".$e->getMessage(). " // Contate o Suporte"));
 		}       
+	}
+
+	public function ViewProspect(Request $request, $id)
+	{
+
+
+
+		$prospect = Prospects::where('client_id', Auth::user()->client_id)->where('prospect_id', $id)->first();
+		
+		if(empty($prospect)) {
+				abort(404);
+			}
+		return view("client/pages/prospects/show", array(
+			"prospect" => $prospect
+		));
 	}
 
 }

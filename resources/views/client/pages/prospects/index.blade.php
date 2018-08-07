@@ -142,7 +142,7 @@ END - Breadcrumbs
 									<span>{!! $value->status() !!}</span>
 								</td>
 								<td class="row-actions text-right">
-									<a href="#">
+									<a href="{!!route('client-prospect-view',$value->prospect_id)!!}">
 										<i class="os-icon os-icon-user-male-circle2"></i>
 									</a>
 									<a href="{!!route('client-prospect-archivament',$value->prospect_id)!!}">
