@@ -2,7 +2,7 @@
 START - Mobile Menu
 -------------------->
 
-<div class="menu-mobile menu-activated-on-click color-scheme-dark">
+<div class="menu-mobile menu-activated-on-click ">
 	<div class="mm-logo-buttons-w">
 		<a class="mm-logo" href="{!!route('client-dashboard')!!}"><img src="{{ asset('public/img/logo.png') }}"><span>Go Next Level</span></a>
 		<div class="mm-buttons">

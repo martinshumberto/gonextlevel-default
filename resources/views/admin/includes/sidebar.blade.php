@@ -3,7 +3,7 @@
         -------------------->
         <div class="menu-mobile menu-activated-on-click color-scheme-dark">
           <div class="mm-logo-buttons-w">
-            <a class="mm-logo" href="index.html"><img src="img/logo.png"><span>Clean Admin</span></a>
+            <a class="mm-logo" href="index.html"><img src="{!!url("/")!!}/public/img/logo.png"><span>Clean Admin</span></a>
             <div class="mm-buttons">
               <div class="content-panel-open">
                 <div class="os-icon os-icon-grid-circles"></div>
@@ -16,7 +16,7 @@
           <div class="menu-and-user">
             <div class="logged-user-w">
               <div class="avatar-w">
-                <img alt="" src="img/avatar1.jpg">
+                <img alt="" src="{!!url("/")!!}/public/img/avatar1.jpg">
               </div>
               <div class="logged-user-info-w">
                 <div class="logged-user-name">
@@ -407,7 +407,7 @@
           <div class="logged-user-w avatar-inline">
             <div class="logged-user-i">
               <div class="avatar-w">
-                <img alt="" src="img/avatar1.jpg">
+                <img alt="" src="{!!url("/")!!}/public/img/avatar1.jpg">
               </div>
               <div class="logged-user-info-w">
                 <div class="logged-user-name">
@@ -423,7 +423,7 @@
               <div class="logged-user-menu color-style-bright">
                 <div class="logged-user-avatar-info">
                   <div class="avatar-w">
-                    <img alt="" src="img/avatar1.jpg">
+                    <img alt="" src="{!!url("/")!!}/public/img/avatar1.jpg">
                   </div>
                   <div class="logged-user-info-w">
                     <div class="logged-user-name">

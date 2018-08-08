@@ -5,7 +5,7 @@
             <div class="fancy-selector-w">
               <div class="fancy-selector-current">
                 <div class="fs-img">
-                  <img alt="" src="img/card4.png">
+                  <img alt="" src="{!!url("/")!!}/public/img/card4.png">
                 </div>
                 <div class="fs-main-info">
                   <div class="fs-name">
@@ -22,7 +22,7 @@
               <div class="fancy-selector-options">
                 <div class="fancy-selector-option">
                   <div class="fs-img">
-                    <img alt="" src="img/card2.png">
+                    <img alt="" src="{!!url("/")!!}/public/img/card2.png">
                   </div>
                   <div class="fs-main-info">
                     <div class="fs-name">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="fancy-selector-option active">
                   <div class="fs-img">
-                    <img alt="" src="img/card4.png">
+                    <img alt="" src="{!!url("/")!!}/public/img/card4.png">
                   </div>
                   <div class="fs-main-info">
                     <div class="fs-name">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="fancy-selector-option">
                   <div class="fs-img">
-                    <img alt="" src="img/card3.png">
+                    <img alt="" src="{!!url("/")!!}/public/img/card3.png">
                   </div>
                   <div class="fs-main-info">
                     <div class="fs-name">
@@ -84,7 +84,7 @@
                     <li>
                       <a href="#">
                         <div class="user-avatar-w">
-                          <img alt="" src="img/avatar1.jpg">
+                          <img alt="" src="{!!url("/")!!}/public/img/avatar1.jpg">
                         </div>
                         <div class="message-content">
                           <h6 class="message-from">
@@ -99,7 +99,7 @@
                     <li>
                       <a href="#">
                         <div class="user-avatar-w">
-                          <img alt="" src="img/avatar2.jpg">
+                          <img alt="" src="{!!url("/")!!}/public/img/avatar2.jpg">
                         </div>
                         <div class="message-content">
                           <h6 class="message-from">
@@ -114,7 +114,7 @@
                     <li>
                       <a href="#">
                         <div class="user-avatar-w">
-                          <img alt="" src="img/avatar3.jpg">
+                          <img alt="" src="{!!url("/")!!}/public/img/avatar3.jpg">
                         </div>
                         <div class="message-content">
                           <h6 class="message-from">
@@ -129,7 +129,7 @@
                     <li>
                       <a href="#">
                         <div class="user-avatar-w">
-                          <img alt="" src="img/avatar4.jpg">
+                          <img alt="" src="{!!url("/")!!}/public/img/avatar4.jpg">
                         </div>
                         <div class="message-content">
                           <h6 class="message-from">
@@ -179,12 +179,12 @@
               <div class="logged-user-w">
                 <div class="logged-user-i">
                   <div class="avatar-w">
-                    <img alt="" src="img/avatar1.jpg">
+                    <img alt="" src="{!!url("/")!!}/public/img/avatar1.jpg">
                   </div>
                   <div class="logged-user-menu color-style-bright">
                     <div class="logged-user-avatar-info">
                       <div class="avatar-w">
-                        <img alt="" src="img/avatar1.jpg">
+                        <img alt="" src="{!!url("/")!!}/public/img/avatar1.jpg">
                       </div>
                       <div class="logged-user-info-w">
                         <div class="logged-user-name">

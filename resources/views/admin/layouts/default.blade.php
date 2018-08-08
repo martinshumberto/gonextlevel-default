@@ -20,7 +20,7 @@
     <link href="{!!url("/")!!}/public/css/main.css?version=4.4.0" rel="stylesheet">
 
 </head>
-<body class="menu-position-side menu-side-left full-screen with-content-panel">
+<body class="menu-position-side menu-side-left full-screen with-content-panel ">
 
 
 
