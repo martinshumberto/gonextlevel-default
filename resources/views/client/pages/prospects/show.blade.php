@@ -79,7 +79,7 @@
 												</div>
 
 											</div>											
-											<div class="bar-level-2" style="width: 100%">
+											<div class="bar-level-1" style="width: 100%">
 												<div class="bar-level-3" style="width: {!!percentage($prospect->network, 5)!!}%"></div>
 											</div>
 										</div>
@@ -94,7 +94,7 @@
 													<span class="info">{!!$prospect->credibility!!}/5</span>
 												</div>
 											</div>											
-											<div class="bar-level-2" style="width: 100%">
+											<div class="bar-level-1" style="width: 100%">
 												<div class="bar-level-3" style="width: {!!percentage($prospect->credibility, 5)!!}%"></div>
 											</div>
 										</div>
@@ -109,7 +109,7 @@
 													<span class="info">{!!$prospect->entrepreneur!!}/5</span>
 												</div>
 											</div>											
-											<div class="bar-level-2" style="width: 100%">
+											<div class="bar-level-1" style="width: 100%">
 												<div class="bar-level-3" style="width: {!!percentage($prospect->entrepreneur, 5)!!}%"></div>
 											</div>
 										</div>
@@ -124,7 +124,7 @@
 													<span class="info">{!!$prospect->energy!!}/5</span>
 												</div>
 											</div>											
-											<div class="bar-level-2" style="width: 100%">
+											<div class="bar-level-1" style="width: 100%">
 												<div class="bar-level-3" style="width: {!!percentage($prospect->energy, 5)!!}%"></div>
 											</div>
 										</div>
@@ -139,7 +139,7 @@
 													<span class="info">{!!$prospect->dreamer!!}/5</span>
 												</div>
 											</div>											
-											<div class="bar-level-2" style="width: 100%">
+											<div class="bar-level-1" style="width: 100%">
 												<div class="bar-level-3" style="width: {!!percentage($prospect->dreamer, 5)!!}%"></div>
 											</div>
 										</div>
@@ -154,7 +154,7 @@
 													<span class="info">{!!$prospect->resource!!}/5</span>
 												</div>
 											</div>											
-											<div class="bar-level-2" style="width: 100%">
+											<div class="bar-level-1" style="width: 100%">
 												<div class="bar-level-3" style="width: {!!percentage($prospect->resource, 5)!!}%"></div>
 											</div>
 										</div>
@@ -164,6 +164,51 @@
 							</form>
 						</div>
 					</div>
+					<div >
+						<div class="support-index">
+							<div class="support-tickets">
+								<div class="support-tickets-header">
+									<div class="tickets-control">
+										<h5>
+											Historico de Apresentações
+										</h5>
+									</div>								
+								</div>
+								@foreach($apresentations as $value)
+								<div class="support-ticket @if($value->status == 1) active @endif">
+									<div class="st-meta">
+										<div class="badge badge-{!!$value->tag()!!}-inverted">
+											{!!$value->status()!!}
+										</div>
+										<div class="status-pill {!!$value->color()!!}"></div>
+									</div>
+									<div class="st-body">
+										<div class="ticket-content">
+											<h6 class="ticket-title">
+												<i class="fa fa-map-marker"></i> {!!$value->locate!!}
+											</h6>
+											<div class="ticket-description">
+												<p>
+													<i class="fa fa-calendar"></i> {!!dateGetExtencer($value->date)!!}
+													às <i class="fa fa-clock-o"></i> {!!$value->hour!!}
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="st-foot">
+										<span class="label">Criado em:</span>										
+										<span class="value">{!!$value->created_at!!}</span>
+										<span class="label">Atualizado em:</span>
+										<span class="value">{!!$value->updated_at!!}</span>
+									</div>
+								</div>
+								@endforeach
+							</div>
+						</div>
+					</div>
+
+
+
 				</div>
 				<div class="col-sm-4">
 					<div class="content-panel">
@@ -258,7 +303,6 @@
 				</div>
 			</div>	
 		</div>
-
 	</div>
 </div>
 @endsection

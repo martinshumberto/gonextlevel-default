@@ -16,6 +16,9 @@ class Apresentations extends Authenticatable
     public function status()
     {   
         switch ($this->status) {
+            case '4':
+            return 'Realizada';
+            break;
             case '3':
             return 'Nao Realizada';
             break;
@@ -26,7 +29,43 @@ class Apresentations extends Authenticatable
             return 'Marcada';
             break;
         }
-    }    
+    }
+
+    public function color(){
+        switch ($this->status) {
+            case '4':
+            $color = "green";
+            break;
+            case '3':
+            $color = "red";
+            break;
+            case '2':
+            $color = "yellow";
+            break;
+            case '1':
+            $color = "green";
+            break;
+        }
+        return $color;
+    }
+
+    public function tag(){
+        switch ($this->status) {
+            case '4':
+            $color = "success";
+            break;
+            case '3':
+            $color = "danger";
+            break;
+            case '2':
+            $color = "warning";
+            break;
+            case '1':
+            $color = "success";
+            break;
+        }
+        return $color;
+    }
     public function apresentation()
     {
         return $this->belongsTo('App\Model\Prospects', 'prospect_id', 'prospect_id');

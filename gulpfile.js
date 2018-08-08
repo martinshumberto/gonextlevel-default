@@ -8,6 +8,9 @@ elixir(function(mix) {
 		mix.less([
 			'library.less',
 			]);
+		mix.sass([
+			'application.scss',
+			]);
 
 	/*
 		JavaScript & jQuery

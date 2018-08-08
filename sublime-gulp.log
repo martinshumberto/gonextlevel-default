@@ -16,3 +16,21 @@ TypeError: mix.javascript is not a function
     at Function.Module._load (module.js:497:3)
     at Module.require (module.js:596:17)
     at require (internal/module.js:11:18)
+
+
+08-07-2018 21:21:
+C:\Users\CROWN\AppData\Roaming\Sublime Text 3\Packages\Gulp\write_tasks_to_cache.js:31
+        throw ex;
+        ^
+
+TypeError: mix.scss is not a function
+    at C:\wamp64\www\gonextlevel-default\.sublime-gulp-tmp.js:11:7
+    at global.Elixir (C:\wamp64\www\gonextlevel-default\node_modules\laravel-elixir\dist\index.js:21:5)
+    at Object.<anonymous> (C:\wamp64\www\gonextlevel-default\.sublime-gulp-tmp.js:3:1)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)

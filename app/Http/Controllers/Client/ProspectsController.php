@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Model\Prospects;
+use App\Model\Apresentations;
 use Auth;
+use DB;
 
 class ProspectsController extends ClientController
 {
@@ -114,15 +116,15 @@ class ProspectsController extends ClientController
 	public function ViewProspect(Request $request, $id)
 	{
 
-
-
 		$prospect = Prospects::where('client_id', Auth::user()->client_id)->where('prospect_id', $id)->first();
+		$apresentations = Apresentations::where('client_id', Auth::user()->client_id)->where('prospect_id', $id)->orderBy('created_at', 'DESC')->get();
 		
 		if(empty($prospect)) {
-				abort(404);
-			}
+			abort(404);
+		}
 		return view("client/pages/prospects/show", array(
-			"prospect" => $prospect
+			"prospect" => $prospect,
+			"apresentations" => $apresentations
 		));
 	}
 

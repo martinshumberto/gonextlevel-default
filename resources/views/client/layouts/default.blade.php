@@ -29,6 +29,7 @@
     <link href="{!!url("/")!!}/public/css/main.css?version=4.4.0" rel="stylesheet">
     <link href="{!!url("/")!!}/public/css/gonextlevel.css?version=4.4.0" rel="stylesheet">
 
+    <link href="{!!url("/")!!}/public/css/app.css?version={!!time()!!}" rel="stylesheet">
     <script>
         function changeBody() {
             var scre = $(window).width();
