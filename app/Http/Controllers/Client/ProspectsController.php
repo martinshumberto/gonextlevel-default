@@ -55,7 +55,7 @@ class ProspectsController extends ClientController
 		));
 
 	}		
-	public function pirpeline()
+	public function pipeline()
 	{
 		# Listagem apenas de alguns status
 		$wherIn = [1,3,4];
@@ -86,7 +86,7 @@ class ProspectsController extends ClientController
 
 
 
-		return view("client/pages/prospects/pirpeline", array(
+		return view("client/pages/prospects/pipeline", array(
 			"prospect_convit" => $prospect_convit,
 			"prospect_show" => $prospect_show,
 			"prospect_mananger" => $prospect_mananger,

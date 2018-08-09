@@ -29,29 +29,27 @@
     <link href="{!!url("/")!!}/public/css/main.css?version=4.4.0" rel="stylesheet">
     <link href="{!!url("/")!!}/public/css/gonextlevel.css?version=4.4.0" rel="stylesheet">
 
-    <link href="{!!url("/")!!}/public/css/app.css?version={!!time()!!}" rel="stylesheet">
     <script>
+        /* 
         function changeBody() {
             var scre = $(window).width();
-            /*scre <= 1200 && scre =< 850 */
+            scre <= 1200 && scre =< 850 
             if (scre < 1366) {
                 $('body').addClass('full-screen with-content-panel menu-position-side menu-side-left');
 
             }
         };
+        */
     </script>
 </head>
-<body class="with-content-panel menu-position-side menu-side-left">
+<body class="menu-position-top full-screen with-content-panel">
     <div class="all-wrapper with-side-panel solid-bg-all">
         
         <div class="layout-w">
-            <!-- sidebar content -->
-            @include('client.includes.sidebar')
+            <!-- topbar/menu content -->
+            @include('client.includes.topbar')
 
             <div class="content-w">
-                <!-- Topbar content -->
-                @include('client.includes.topbar')
-
                 <!-- main content -->
                 @yield('content')
             </div>
@@ -99,20 +97,11 @@
     
     <script src="{!!url("/")!!}/public/js/datepicker.min.js"></script>
 
-    <!-- Include English language -->
+    <!-- Include Brazilian language -->
     <script src="{!!url("/")!!}/public/js/i18n/datepicker.pt-BR.js"></script>
+    <script src="{!!url("/")!!}/public/libs/fullcalendar/dist/locale/pt-br.js"></script>
 
-    
     <script src="{!!url("/")!!}/public/js/main.js?version={!!time()!!}"></script>
     <script src="{!!url("/")!!}/public/js/all.js?version={!!time()!!}"></script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-XXXXXXX-9', 'auto');
-      ga('send', 'pageview');
-  </script>
 </body>
 </html>

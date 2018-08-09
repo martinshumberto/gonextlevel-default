@@ -128,16 +128,38 @@
 				<h6 class="element-header">Atividade Recente</h6>
 				<div class="element-box-tp">
 					<div class="activity-boxes-w">
-						@foreach($activits as $value)
 						<div class="activity-box-w">
-							<div class="activity-time">{!!getTimeLast($value->created_at)!!}</div>
+							<div class="activity-time">10 Min</div>
 							<div class="activity-box">
 								<div class="activity-info">
-									<div class="activity-role">{!!$value->ip!!}</div><strong class="activity-title">{!!$value->text!!}</strong>
+									<div class="activity-role">152.202.105.88</div><strong class="activity-title">Novo prospecto cadastrado</strong>
 								</div>
 							</div>
 						</div>
-						@endforeach
+						<div class="activity-box-w">
+							<div class="activity-time">2 Horas</div>
+							<div class="activity-box">
+								<div class="activity-info">
+									<div class="activity-role">152.202.105.88</div><strong class="activity-title">Nota adicionada a prospecto</strong>
+								</div>
+							</div>
+						</div>
+						<div class="activity-box-w">
+							<div class="activity-time">5 Horas</div>
+							<div class="activity-box">
+								<div class="activity-info">
+									<div class="activity-role">152.202.105.88</div><strong class="activity-title">Apresentação marcada</strong>
+								</div>
+							</div>
+						</div>
+						<div class="activity-box-w">
+							<div class="activity-time">2 Dias</div>
+							<div class="activity-box">
+								<div class="activity-info">
+									<div class="activity-role">152.202.105.88</div><strong class="activity-title">Nota adicionada a prospecto</strong>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

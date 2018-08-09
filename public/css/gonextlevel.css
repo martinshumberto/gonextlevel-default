@@ -266,7 +266,13 @@ body .daterangepicker {
 }
 
 
-/* AUTH PAGES */
+/* Auth pages */
 .auth-wrapper .all-wrapper {
     padding: 50px !important;
+}
+
+/* Correção distancia */
+.menu-position-top.menu-w .logged-user-w .logged-user-i .logged-user-menu {
+    right: 10px !important;
+    top: 10px !important;
 }

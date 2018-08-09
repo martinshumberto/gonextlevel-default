@@ -21,7 +21,7 @@ Route::namespace('Guest')->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('painel')->middleware('client')->namespace('Client')->group(function(){
+Route::prefix('apps')->middleware('client')->namespace('Client')->group(function(){
 
 	/* Logout */	
 	Route::get('/logout', array('as' => 'client-logout', 'uses' => 'HomeController@logout'));
@@ -32,11 +32,15 @@ Route::prefix('painel')->middleware('client')->namespace('Client')->group(functi
 	/* Prospects */
 	Route::get('/prospectos/visao-geral', array('as' => 'client-prospect', 'uses' => 'ProspectsController@index'));
 	Route::get('/prospectos/cadastrar', array('as' => 'client-prospect-create', 'uses' => 'ProspectsController@create'));
-	Route::get('/prospectos/pirpeline', array('as' => 'client-prospect-pirpeline', 'uses' => 'ProspectsController@pirpeline'));
+	Route::get('/prospectos/pipeline', array('as' => 'client-prospect-pipeline', 'uses' => 'ProspectsController@pipeline'));
 	Route::get('/prospectos/relatorios', array('as' => 'client-prospect-reports', 'uses' => 'ProspectsController@report'));
 	Route::get('/prospectos/arquivar/{id}', array('as' => 'client-prospect-archivament', 'uses' => 'ProspectsController@archivament'));
 	Route::get('/prospectos/apagar/{id}', array('as' => 'client-prospect-trash', 'uses' => 'ProspectsController@trash'));
 	Route::get('/prospectos/ver/{id}', array('as' => 'client-prospect-view', 'uses' => 'ProspectsController@ViewProspect'));
+
+		/* Apps */
+	Route::get('/apps/calendar', array('as' => 'client-calendar', 'uses' => 'CalendarController@show'));
+
 
 	/* Info Client */
 	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@index'));

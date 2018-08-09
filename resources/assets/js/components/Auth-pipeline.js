@@ -1,6 +1,6 @@
 ;(function($){
 
-	function AuthPirpeline() {
+	function AuthPipeline() {
 
 		$('.accordion-body').hide();
 		$('.toggle-accordion').each(function () {
@@ -131,5 +131,5 @@
 		});
 	});
 }
-new AuthPirpeline();
+new AuthPipeline();
 }(jQuery));
