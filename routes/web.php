@@ -38,18 +38,15 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 	Route::get('/prospectos/apagar/{id}', array('as' => 'client-prospect-trash', 'uses' => 'ProspectsController@trash'));
 	Route::get('/prospectos/ver/{id}', array('as' => 'client-prospect-view', 'uses' => 'ProspectsController@ViewProspect'));
 
-		/* Apps */
+	/* Apps */
 	Route::get('/apps/calendar', array('as' => 'client-calendar', 'uses' => 'CalendarController@show'));
 
 
 	/* Info Client */
 	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@index'));
-
 	Route::get('/perfil', array('as' => 'client-profile', 'uses' => 'ClientsController@index'));
 	Route::post('/perfil/atualizar', array('as' => 'client-profile-update', 'uses' => 'ClientsController@index'));
-
 	Route::get('/assinaturas', array('as' => 'client-singatures', 'uses' => 'ClientsController@index'));
-
 	Route::get('/notificacoes', array('as' => 'client-notifications', 'uses' => 'ClientsController@index'));
 
 });

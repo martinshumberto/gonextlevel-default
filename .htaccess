@@ -2,6 +2,19 @@
 # ##############################################################################
 # # PROTECT .HTACESS                                                           #
 # ##############################################################################
+<files ~ "^.*\.([Hh][Tt][Aa])">
+  order allow,deny
+  deny from all
+  satisfy all
+</files>
+
+<FilesMatch "(^#.*#|\.(bak|config|dist|fla|inc|ini|log|psd|sh|env|sql|sw[op])|~)$">
+  Order allow,deny
+  Deny from all
+  Satisfy All
+</FilesMatch>
+
+
 
 
 <IfModule mod_rewrite.c>
@@ -24,3 +37,16 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
+
+
+ServerSignature Off
+
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+
+FileETag None
+
+Options -Indexes
+
+DirectoryIndex index.html index.php index.html

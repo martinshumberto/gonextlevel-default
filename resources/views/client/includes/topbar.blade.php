@@ -202,7 +202,7 @@ START - Main Menu
 	<h1 class="menu-page-header">Menu</h1>
 	<ul class="main-menu">
 		<li class="sub-header"><span>Navegação</span></li>
-		<li class="selected">
+		<li class="@if(Route::currentRouteName() == 'client-dashboard') selected @endif">
 			<a href="{!!route('client-dashboard')!!}">
 				<div class="icon-w">
 					<div class="os-icon os-icon-layout"></div>
@@ -217,7 +217,7 @@ START - Main Menu
 				</div>
 				<span>Prospectos</span>
 			</a>
-			<div class="sub-menu-w">
+			<div class="sub-menu-w @if(Route::currentRouteName() == 'client-prospect') has-active @endif">
 				<div class="sub-menu-header">Prospectos</div>
 				<div class="sub-menu-icon"><i class="icon-feather-trending-up"></i></div>
 				<div class="sub-menu-i">

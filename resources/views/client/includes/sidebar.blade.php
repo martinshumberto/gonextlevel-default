@@ -33,7 +33,7 @@ START - Mobile Menu
 					</div>
 					<span>Dashboard</span>
 				</a>
-			</li>
+			</li>			
 			<li class="selected has-sub-menu">
 				<a href="{!!route('client-dashboard')!!}">
 					<div class="icon-w">
@@ -174,7 +174,7 @@ START - Main Menu
 	<h1 class="menu-page-header">Menu</h1>
 	<ul class="main-menu">
 		<li class="sub-header"><span>Navegação</span></li>
-		<li class="selected">
+		<li class="">
 			<a href="{!!route('client-dashboard')!!}">
 				<div class="icon-w">
 					<div class="os-icon os-icon-layout"></div>
