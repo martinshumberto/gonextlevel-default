@@ -19,7 +19,7 @@ END - Breadcrumbs
 				<div class="col-8 col-lg-7">
 					<form action="#" class="form-inline">
 						<div class="form-group mr-4">
-							<a class="btn btn-sm btn-secondary btn-upper" href="{!!route('client-prospect-pirpeline')!!}">
+							<a class="btn btn-sm btn-secondary btn-upper" href="{!!route('client-prospect-pipeline')!!}">
 								<i class="os-icon os-icon-grid-squares-22"></i><span>Pipeline de Prospectos</span>
 							</a>
 						</div>
