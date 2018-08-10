@@ -85,7 +85,7 @@
 			<div class="content-box">
 		        <div class="element-wrapper">
 		        	<!--MESSAGE ALERT-->
-                    <div class="alert alert-warning borderless" style="display: none;">
+                    <div class="alert alert-warning borderless" style="display: block;">
                         <h5 class="alert-heading">Fatura em atraso</h5>
                         <p>Efetue o pagamento ainda hoje e evite o bloqueio de acesso!</p>
                     </div>
