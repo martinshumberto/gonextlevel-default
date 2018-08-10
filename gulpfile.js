@@ -22,6 +22,7 @@ elixir(function(mix) {
 			'components/Auth-profile.js',
 			'components/Auth-prospect.js',
 			'components/Auth-mask.js',
+			'components/Auth-invoice.js',
 			]);
 
 	});

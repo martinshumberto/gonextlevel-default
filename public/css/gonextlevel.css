@@ -285,3 +285,10 @@ body .daterangepicker {
 .invoice-w .infos .info-2 {
     padding-top: 230px !important;
 }
+
+.card-wrapper {
+	padding: 25px 10px ;
+}
+.cardpayment form #name {
+	text-transform: uppercase;
+}

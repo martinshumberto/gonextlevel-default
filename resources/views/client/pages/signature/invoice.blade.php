@@ -84,12 +84,12 @@
 		<div class="col-12 col-sm-12 col-lg-6">
 			<div class="content-box">
 		        <div class="element-wrapper">
-		        	<!--START - MESSAGE ALERT-->
-                    <div class="alert alert-warning borderless">
+		        	<!--MESSAGE ALERT-->
+                    <div class="alert alert-warning borderless" style="display: none;">
                         <h5 class="alert-heading">Fatura em atraso</h5>
                         <p>Efetue o pagamento ainda hoje e evite o bloqueio de acesso!</p>
                     </div>
-                    <!--END - MESSAGE ALERT-->
+                    <!--MESSAGE ALERT-->
 
                     <div class="element-box">
                         <form>
@@ -112,9 +112,85 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="">Forma de pagamento</label>
+                                        <select id="method-payments" name="method-payments" class="form-control">
+                                        	<option selected value="">Selecione</option>
+                                            <option value="method-1">Cartão de Crédito</option>
+                                            <option value="method-2">Boleto</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="method method-2 form-buttons-w text-right compact" style="display: none;">
+                            	<a class="btn btn-primary" href="#"><span>Gerar Boleto</span><i class="os-icon os-icon-grid-18"></i></a>
+                            </div>
                             
                         </form>
                     </div>
+
+                    <div id="select-method-payments" class="select-method-payments">
+
+	                    <div class="method method-1 element-box" style="display:none;">
+	                    	<div class="cardpayment">
+		                    	<form method="POST" action="">
+			                        <h5 class="element-box-header">Cartão de crédito</h5>
+			                        <div class="row">
+			                            <div class="col-sm-12">
+			                            	<div class="card-wrapper"></div>
+			                            	<div class="row">
+				                                <div class="col-sm-6">
+				                                    <div class="form-group">
+				                                    	<label for=""> Número do cartão</label>
+				                                    	<input class="form-control" id="number" name="number" type="text">
+				                                    </div>
+				                                </div>
+				                                <div class="col-sm-6">
+				                                    <div class="form-group">
+				                                    	<label for=""> Nome completo (conforme impresso no cartão)</label>
+				                                    	<input class="form-control" id="name" name="name" type="text">
+				                                    </div>
+				                                </div>
+				                            </div>
+				                            <div class="row">
+				                                <div class="col-sm-6">
+				                                    <div class="form-group">
+				                                    	<label for=""> Válidade do cartão</label>
+				                                    	<input class="form-control" id="expiry" name="expiry" type="text">
+				                                    </div>
+				                                </div>
+				                                <div class="col-sm-6">
+				                                    <div class="form-group">
+				                                    	<label for=""> CVC</label>
+				                                    	<input class="form-control" id="cvc" name="cvc" type="text">
+				                                    </div>
+				                                </div>
+				                            </div>
+				                            <div class="form-buttons-w text-right compact">
+				                            	<a class="btn btn-primary" href="#"><span>Enviar</span> <i class="icon-feather-check"></i></a>
+				                            </div>
+			                            </div>
+			                        </div>
+			                    </form>
+			                </div>
+	                    </div>
+
+	                    <div class="method method-3 element-box" style="display:none;">
+	                        <h5 class="element-box-header">Boleto</h5>
+	                        <div class="row">
+	                            <div class="col-sm-12">
+	                                <object data="https://www.boletobancario.com/boletofacil/img/boleto-facil-exemplo.pdf" 
+	                                type="application/pdf" width="100%" height="600px">
+									    <iframe src="https://docs.google.com/viewer?url=www.boletobancario.com/boletofacil/img/boleto-facil-exemplo.pdf&embedded=true"></iframe>
+									</object>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                </div>
+
 		        </div>
 		    </div>
 		</div>

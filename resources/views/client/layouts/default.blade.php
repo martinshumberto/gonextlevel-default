@@ -101,7 +101,11 @@
     <script src="{!!url("/")!!}/public/js/i18n/datepicker.pt-BR.js"></script>
     <script src="{!!url("/")!!}/public/libs/fullcalendar/dist/locale/pt-br.js"></script>
 
+    <!-- Include Card-->
+    <script src="{!!url("/")!!}/public/libs/card/dist/jquery.card.js"></script>
+
     <script src="{!!url("/")!!}/public/js/main.js?version={!!time()!!}"></script>
     <script src="{!!url("/")!!}/public/js/all.js?version={!!time()!!}"></script>
+
 </body>
 </html>
