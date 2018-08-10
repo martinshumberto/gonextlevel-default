@@ -7,10 +7,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Apresentations extends Authenticatable 
 {
 
-	protected $table = 'tb_apresentations';
-	protected $primaryKey  = 'apresentation_id';
-	protected $fillable  = 
-	['prospect_id','client_id','locate','date','hour','status','created_at','updated_at'];
+    protected $table = 'tb_apresentations';
+    protected $primaryKey  = 'apresentation_id';
+    protected $fillable  = 
+    ['prospect_id','client_id','locate','date','hour','status','created_at','updated_at'];
 
 
     public function status()
