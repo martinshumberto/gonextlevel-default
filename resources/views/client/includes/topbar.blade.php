@@ -82,7 +82,7 @@ START - Mobile Menu
 					</a>
 					<ul class="sub-menu">
 						<li><a href="/aplicativos/chat">Chat <strong class="badge badge-danger">Novo</strong></a></li>
-						<li><a href="{!!route('client-calendar')!!}">Calendário</a></li>
+						<li><a href="{!!route('client-schedule')!!}">Agenda</a></li>
 						<li><a href="/aplicativos/equipe">Gestor de Equipe <strong class="badge badge-danger">Novo</strong></a></li>
 					</ul>
 				</li>
@@ -202,7 +202,7 @@ START - Main Menu
 	<h1 class="menu-page-header">Menu</h1>
 	<ul class="main-menu">
 		<li class="sub-header"><span>Navegação</span></li>
-		<li class="@if(Route::currentRouteName() == 'client-dashboard') selected @endif">
+		<li class="selected">
 			<a href="{!!route('client-dashboard')!!}">
 				<div class="icon-w">
 					<div class="os-icon os-icon-layout"></div>
@@ -217,7 +217,7 @@ START - Main Menu
 				</div>
 				<span>Prospectos</span>
 			</a>
-			<div class="sub-menu-w @if(Route::currentRouteName() == 'client-prospect') has-active @endif">
+			<div class="sub-menu-w">
 				<div class="sub-menu-header">Prospectos</div>
 				<div class="sub-menu-icon"><i class="icon-feather-trending-up"></i></div>
 				<div class="sub-menu-i">
@@ -267,7 +267,7 @@ START - Main Menu
 				<div class="sub-menu-i">
 					<ul class="sub-menu">
 						<li><a href="/aplicativos/chat">Chat <strong class="badge badge-warning">Em breve</strong></a></li>
-						<li><a href="{!!route('client-calendar')!!}">Calendário</a></li>
+						<li><a href="{!!route('client-schedule')!!}">Agenda</a></li>
 						<li><a href="/aplicativos/gestor-de-equipe">Gestor de Equipe <strong class="badge badge-warning">Em breve</strong></a></li>
 					</ul>
 				</div>

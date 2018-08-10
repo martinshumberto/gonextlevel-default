@@ -9,8 +9,8 @@
 	-------------------->
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-		<li class="breadcrumb-item"><a href="/aplicativos">Aplicativos</a></li>
-		<li class="breadcrumb-item"><span>Calendário</span></li>
+		<li class="breadcrumb-item"><a href="#">Aplicativos</a></li>
+		<li class="breadcrumb-item"><span>Agenda</span></li>
 	</ul>
 	<!--------------------
 	END - Breadcrumbs
@@ -19,10 +19,10 @@
 	<div class="content-i">
 	    <div class="content-box">
 	        <div class="element-wrapper">
-	            <h6 class="element-header">Calendário</h6>
+	            <h6 class="element-header">Agenda</h6>
 	            <div class="element-box">
-	                <h5 class="form-header">Gerenciar Calendário</h5>
-	                <div class="form-desc">Gerencie suas apn's, reuniões e compromissos marcados através do calendário. </div>
+	                <h5 class="form-header">Gerenciar Agenda</h5>
+	                <div class="form-desc">Gerencie suas apn's, reuniões e compromissos marcados através de nossa plataforma. </div>
 	                <div id="fullCalendar"></div>
 	            </div>
 	        </div>

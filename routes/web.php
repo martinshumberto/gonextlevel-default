@@ -36,11 +36,13 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 	Route::get('/prospectos/relatorios', array('as' => 'client-prospect-reports', 'uses' => 'ProspectsController@report'));
 	Route::get('/prospectos/arquivar/{id}', array('as' => 'client-prospect-archivament', 'uses' => 'ProspectsController@archivament'));
 	Route::get('/prospectos/apagar/{id}', array('as' => 'client-prospect-trash', 'uses' => 'ProspectsController@trash'));
-	Route::get('/prospectos/ver/{id}', array('as' => 'client-prospect-view', 'uses' => 'ProspectsController@ViewProspect'));
 
 	/* Apps */
-	Route::get('/apps/calendar', array('as' => 'client-calendar', 'uses' => 'CalendarController@show'));
+	Route::get('/aplicativos/agenda', array('as' => 'client-schedule', 'uses' => 'ScheduleController@show'));
 
+	/* Signature */
+	Route::get('/assinatura/planos', array('as' => 'client-plans', 'uses' => 'PlansController@show'));
+	Route::get('/assinatura/fatura', array('as' => 'client-plans-invoice', 'uses' => 'OrdersController@show'));
 
 	/* Info Client */
 	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@index'));
