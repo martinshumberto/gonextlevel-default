@@ -43,7 +43,7 @@
 			</div>
 			<div class="form-group">
 				<label for=""> {{ __('messages.create-phone') }}</label>
-				<input class="form-control" placeholder="Enter phone" type="text" name="phone">
+				<input class="form-control MaskPhone" placeholder="Enter phone" type="text" name="phone">
 				<div class="pre-icon icon-feather-phone"></div>
 			</div>
 			@if($errors->any())

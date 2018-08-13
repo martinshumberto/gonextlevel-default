@@ -43,7 +43,8 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 
 	/* Signature */
 	Route::get('/assinatura/planos', array('as' => 'client-plans', 'uses' => 'PlansController@show'));
-	Route::get('/assinatura/fatura', array('as' => 'client-plans-invoice', 'uses' => 'OrdersController@show'));
+	Route::get('/assinatura/fatura', array('as' => 'client-plan-invoice', 'uses' => 'InovicesController@show'));
+	Route::get('/assinatura/criar/fatura/{id}', array('as' => 'client-create-invoice', 'uses' => 'InovicesController@inovice'));
 
 	/* Info Client */
 	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@index'));

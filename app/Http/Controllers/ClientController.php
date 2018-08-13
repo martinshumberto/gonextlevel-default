@@ -8,6 +8,7 @@ use Auth;
 use View;
 
 use App\Model\ActivityLog;
+use App\Model\Clients;
 
 $helper = app_path('Helpers/Helper.php');
 if (file_exists($helper)) {

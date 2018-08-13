@@ -26,5 +26,8 @@
     @yield('content')
 
     <input type="hidden" name="app_url" id="app_url" value="{!!url("/")!!}">
+    <script src="{!!url("/")!!}/public/libs/jquery/dist/jquery.min.js"></script>
+
+    <script src="{!!url("/")!!}/public/js/guest.js?version={!!time()!!}"></script>
 </body>
 </html>

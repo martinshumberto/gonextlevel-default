@@ -99,5 +99,15 @@ class Clients extends Authenticatable
     {
         return $this->hasMany('App\Model\ActivityLog', 'client_id');
     }
+    
+    public function PlanClient()
+    {
+        return $this->hasOne('App\Model\PlansClients', 'client_id');
+    }
+
+    public function Inovices()
+    {
+        return $this->hasMany('App\Model\Inovices', 'client_id');
+    }
 
 }
