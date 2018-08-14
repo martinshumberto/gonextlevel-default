@@ -22,3 +22,6 @@ Route::post('prospectos/auth/apn', 'Api\ProspectosController@apresentation');
 //Route::post('graph',"Api\GraphController@show");
 Route::post('states/{code}',"Api\StatesController@show");
 Route::post('update/photo/{key}', 'Api\ProfileController@uploadPhoto');
+
+// Inovices
+Route::post('inovices/auth/discount', 'Api\InovicesController@discount');

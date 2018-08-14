@@ -109,5 +109,9 @@ class Clients extends Authenticatable
     {
         return $this->hasMany('App\Model\Inovices', 'client_id');
     }
+    public function discount()
+    {
+        return $this->belongsTo('App\Model\DiscountsClients', 'client_id', 'client_id');
+    }
 
 }
