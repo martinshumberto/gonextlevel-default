@@ -59,6 +59,22 @@
                 method: "POST",
                 data: {key: key_auth, code: cupom},
                 dataType: 'json',
+                beforeSend: function(){
+                    swal({
+                      title: 'Aguarde, Verificando Cupom!',
+                      timer: 2000,
+                      onOpen: () => {
+                        swal.showLoading()
+                        timerInterval = setInterval(() => {
+                          swal.getContent().querySelector('strong')
+                          .textContent = swal.getTimerLeft()
+                      }, 5000)
+                    },
+                    onClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                })
+                },
                 success: function( data )
                 {
                     if(data.result == "invalid"){
@@ -95,12 +111,20 @@
                             var price = data.price;
                             var total = price * (percentagem/100);
 
-                            $( "#total-inovice" ).hide();
+                            $( "#total-inovice" ).remove();
                             $(".discount").append("<td class='text-right'>- "+typeDescount+""+percentagem+"</td>");
 
+                            $('#price_now').val(total);
                         }else if(data.discount_type == 2){
                             var typeDescount = "R$";
-                            $(".discount").append("<td class='text-right'> "+typeDescount+""+percentagem+"</td>");
+                            var descount = data.discount_price;
+                            var price = data.price;
+                            var total = price - descount;
+
+                            $( "#total-inovice" ).remove();
+                            $(".discount").append("<td class='text-right'>- "+typeDescount+""+descount+"</td>");
+
+                            $('#price_now').val(total);
                         }
                         $(".total-tr").append("<td id='total-inovice' class='text-right' colspan='2'>R$ "+total+"</td>");
                         $("#price_refresh").val(total);
@@ -117,27 +141,38 @@
             });
         });
         $('#cicle-payament').on('change', function(){
+
+            var valor_real = $("#price_now").val();
+
+
+            $( "#total-inovice" ).remove();
+
             $('.descount_attr').remove();
-            if($(this).val() == 1){
+            if($(this).val() == 0){
+                $(".total-tr").append("<td id='total-inovice' class='text-right' colspan='2'>R$ "+valor_real+"</td>");
+            }else if($(this).val() == 1){
                 $(".t_body").append("<td class='descount_attr'>Desconto Trimestral </td>");
                 $(".t_body").append("<td class='text-right descount_attr'> - %5</td>");
 
+                var price = ($("#price_now").val() * 3);
                 var percentagem = parseFloat(0.05);
-                var price = $("#price_refresh").val();
-                var total = price * (percentagem/100);
-                var result = (price - total)* 3;
-                $("#price_refresh").val(result);
+                var desconto = price * percentagem;
+                var total = price - desconto ;
+                $("#price_refresh").val(total.toFixed(2));
+
+                $(".total-tr").append("<td id='total-inovice' class='text-right' colspan='2'>R$ "+total.toFixed(2)+"</td>");
             }else if($(this).val() == 2){
                 $(".t_body").append("<td class='descount_attr'>Desconto Anual </td>");
                 $(".t_body").append("<td class='text-right descount_attr'> - %15</td>");
 
+                var price = ($("#price_now").val() * 12);
                 var percentagem = parseFloat(0.15);
-                var price = $("#price_refresh").val();
-                var total = price * (percentagem/100);
-                var result = (price - total) * 12;
+                var desconto = price * percentagem;
+                var total = price - desconto ;
+                $("#price_refresh").val(total.toFixed(2));
 
-                $("#price_refresh").val(result);
 
+                $(".total-tr").append("<td id='total-inovice' class='text-right' colspan='2'>R$ "+total.toFixed(2)+"</td>");  
             }
 
         });

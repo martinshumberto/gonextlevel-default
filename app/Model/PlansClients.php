@@ -29,7 +29,7 @@ class PlansClients extends Authenticatable
             return 'Expirado/Vencido';
             break;
             case '2':
-            return 'Inativo';
+            return 'Pendente';
             break;
             case '1':
             return 'Ativo';

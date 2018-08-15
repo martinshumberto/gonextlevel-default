@@ -10,7 +10,7 @@
 		<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
 		<li class="breadcrumb-item"><a href="/assinatura">Assinatura</a></li>
 		<li class="breadcrumb-item"><a href="/assinatura/planos">Planos</a></li>
-		<li class="breadcrumb-item"><span>Nova Fatura</span></li>
+		<li class="breadcrumb-item"><span>GO-#{!!$inovice->inovice_id!!}</span></li>
 	</ul>
 	<!--------------------
 	END - Breadcrumbs
@@ -34,12 +34,12 @@
 						</div>
 						<div class="invoice-heading">
 							<h3>Criada em</h3>
-							<div class="invoice-date">{!!strftime('%A, %d de %B de %Y', strtotime('today'))!!}</div>
+							<div class="invoice-date">{!!$inovice->created_at!!}</div>
 						</div>
 						<div class="invoice-body">
 							<div class="invoice-desc" style="display: none;">
 								<div class="desc-label">Fatura</div>
-								<div class="desc-value"># GO-{!!$planClient->plan_client_id	!!}</div>
+								<div class="desc-value"># GO-{!!$inovice->inovice_id!!}</div>
 							</div>
 							<div class="invoice-table">
 								<input type="hidden" id="key_auth" name="key_auth" value="{!!$key_auth!!}">
