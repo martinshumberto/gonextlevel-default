@@ -15,6 +15,15 @@
 </FilesMatch>
 
 
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault A0
+    ExpiresByType text/html A0
+    # Set up caching on media files for 1 year
+    <FilesMatch "\.(jpg|png|gif|js|css|ico|woff|woff2|eot|svg|ttf)$">
+        ExpiresDefault A31536000
+    </FilesMatch>
+</IfModule>
 
 
 <IfModule mod_rewrite.c>
