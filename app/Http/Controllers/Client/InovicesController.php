@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\ClientController;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Carbon\Carbon;
 
 use App\Model\Plans;
 use App\Model\PlansClients;
@@ -98,43 +99,34 @@ class InovicesController extends ClientController
 			$phone = preg_replace("/[^0-9]/", "", $client->phone);
 			$ddd = substr($phone, 0, 2);
 			$phone = substr($phone, 2);		
-
+			$birthdate = Carbon::createFromFormat('d/m/Y', $client->birthdate)->format('Y-m-d');
 
 			# Cria um Cliente dentro do MOIP
-
-			echo "<pre>";
-
 			$customer = $moip->customers()->setOwnId(uniqid())
 			->setFullname($client->name)
 			->setEmail($client->email)
-			->setBirthDate('$client->email')
-			->setTaxDocument('22222222222')
-			->setPhone(11, 66778899)
+			->setBirthDate($birthdate)
+			->setTaxDocument($cpf)
+			->setPhone($ddd, $phone)
 			->addAddress('BILLING',
 				'Rua de teste', 123,
 				'Bairro', 'Sao Paulo', 'SP',
 				'01234567', 8)
-			->addAddress('SHIPPING',
-				'Rua de teste do SHIPPING', 123,
-				'Bairro do SHIPPING', 'Sao Paulo', 'SP',
-				'01234567', 8)
 			->create();
+
+			# DEBUG CLIENT
 			print_r($customer);
+			//die;
 
+			# Cria pedido
+			$order = $moip->orders()->setOwnId($customer->ownId)
+			->addItem("Descrição do pedido",1, "Mensalidade Startup Go Next Level ".$cicle)
+			->setShippingAmount(59)->setAddition(0)->setDiscount(0)
+			->setCustomerId($customer->id)
+			->create();
 
-			// $customer = $moip->customers()->setOwnId(uniqid())
-			// ->setFullname($client->name)
-			// ->setEmail($client->email)
-			// ->setBirthDate($client->birthdate)
-			// ->setTaxDocument($client->cpf)
-			// ->setPhone($ddd, $phone)
-			// ->addAddress("SHIPPING",
-		 //  	"Avenida Atlântica", 60,
-		 //    "Ipanema", "Rio de Janeiro", "RJ",
-		 //    "01234000")
-			// ->create();
-
-			// print_r($customer);
+			# DEBUG ORDER
+			print_r($order);
 			die;
 
 
