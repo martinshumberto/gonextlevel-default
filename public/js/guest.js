@@ -617,9 +617,10 @@
 	};
 	function AuthMask() {
 		$('.MaskHour').mask('00:00');
+		$('.MaskDate').mask('00/00/0000');
 		$('.MaskPhone').mask(SPMaskBehavior, spOptions);
 		$('.MaskCpf').mask('000.000.000-00');
-		$('.MaskCpf').mask('000.000.000-00');
+		$('.MaskZipcode').mask('00.000-000');
 		$('.MasMoney').mask('000.000.000.000.000,00', {reverse: true});
 	}
 

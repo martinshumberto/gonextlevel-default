@@ -863,9 +863,10 @@ new AuthPipeline();
 	};
 	function AuthMask() {
 		$('.MaskHour').mask('00:00');
+		$('.MaskDate').mask('00/00/0000');
 		$('.MaskPhone').mask(SPMaskBehavior, spOptions);
 		$('.MaskCpf').mask('000.000.000-00');
-		$('.MaskCpf').mask('000.000.000-00');
+		$('.MaskZipcode').mask('00.000-000');
 		$('.MasMoney').mask('000.000.000.000.000,00', {reverse: true});
 	}
 
@@ -1023,7 +1024,6 @@ new AuthPipeline();
 
             $('.descount_attr').remove();
             if($(this).val() == 0){
-                alert(valor_real);
                 $(".total-tr").append("<td id='total-inovice' class='text-right' colspan='2'>R$ "+valor_real+"</td>");
             }else if($(this).val() == 1){
                 $(".t_body").append("<td class='descount_attr'>Desconto Trimestral </td>");
@@ -1050,6 +1050,10 @@ new AuthPipeline();
                 $(".total-tr").append("<td id='total-inovice' class='text-right' colspan='2'>R$ "+total.toFixed(2)+"</td>");  
             }
 
+        });
+
+        $(document).on('click', '.btn-send-card', function(){
+            //alert("algo");
         });
     }
     new ChangeMethod();

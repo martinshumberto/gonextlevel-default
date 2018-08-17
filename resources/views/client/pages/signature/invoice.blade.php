@@ -91,11 +91,14 @@
 						<p>Efetue o pagamento ainda hoje e evite o bloqueio de acesso!</p>
 					</div>
 					<!--MESSAGE ALERT-->
+					@if($errors->any())
+					<div style="padding-top: 6px;padding-bottom: 6px;padding-left: 7px;padding-right: 7px;background: #dc0000;color:  white;border: solid 1px #f51111;border-radius:  5px; margin-bottom: 10px;" class="alert alert-{{$errors->first('type')}}" role="alert">{{$errors->first('msg')}}</div>
+					@endif
 
 					<div class="element-box">
 						<form method="POST" action="{!!route('client-generate-inovice')!!}">
-						{{ csrf_field() }}
-						{{ method_field('PUT') }}
+							{{ csrf_field() }}
+							{{ method_field('PUT') }}
 
 							<h5 class="element-box-header">Informações adicionais para pagamento</h5>
 							<div class="row">
@@ -130,7 +133,7 @@
 								</div>
 							</div>
 							<div class="method method-2 form-buttons-w text-right compact" style="display: none;">
-								<button type="submit" class="btn btn-primary" ><span>Gerar Boleto</span><i class="os-icon os-icon-grid-18"></i></button>
+								<button type="submit" class="btn btn-primary btn-generate-bolet" ><span>Gerar Boleto</span><i class="os-icon os-icon-grid-18"></i></button>
 							</div>
 
 						</form>
@@ -174,7 +177,7 @@
 												</div>
 											</div>
 											<div class="form-buttons-w text-right compact">
-												<a class="btn btn-primary" href="#"><span>Enviar</span> <i class="icon-feather-check"></i></a>
+												<a class="btn btn-primary btn-send-card" href="#"><span>Enviar</span> <i class="icon-feather-check"></i></a>
 											</div>
 										</div>
 									</div>

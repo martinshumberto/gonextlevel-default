@@ -238,6 +238,11 @@
 										<div class="help-block form-text with-errors form-control-feedback"></div>
 									</div>
 									<div class="form-group">
+										<label for=""> CPF</label>
+										<input name="cpf" class="form-control MaskCpf" data-error="Informe seu CPF" placeholder="Entre com seu CPF" required="required" type="text" value="{!!$client->cpf!!}">
+										<div class="help-block form-text with-errors form-control-feedback"></div>
+									</div>
+									<div class="form-group">
 										<label for=""> E-mail</label><input class="form-control" data-error="Por favor coloque um email" placeholder="Informe seu email" required="required" value="{!!$client->email!!}" name="email" >
 										<div class="help-block form-text with-errors form-control-feedback"></div>
 									</div>								
@@ -258,21 +263,28 @@
 											<option selected="selected">--CIDADES--</option>
 										</select>
 									</div>	
+									<div class="form-group">
+										<label for=""> Endereço</label>
+										<input name="address" class="form-control" data-error="Informe seu endereço" placeholder="Entre com seu Endereço" required="required" type="text" value="{!!$client->address!!}">
+										<div class="help-block form-text with-errors form-control-feedback"></div>
+									</div>	
+									<div class="form-group">
+										<label for=""> CEP</label>
+										<input name="zipcode" class="form-control MaskZipcode" data-error="Informe seu CEP" placeholder="Entre com seu CEP" required="required" type="text" value="{!!$client->zipcode!!}">
+										<div class="help-block form-text with-errors form-control-feedback"></div>
+									</div>
 
 									<div class="row">
 										<div class="col-sm-6">
 											<div class="form-group">
-												<label for=""> Data de Aniversário</label><input class=" form-control" placeholder="Date of birth" type="text" value="{!!$client->birthdate!!}" name="birthdate">
+												<label for=""> Data de Aniversário</label><input class="MaskDate form-control" placeholder="Date of birth" type="text" value="{!!$client->birthdate!!}" name="birthdate">
 											</div>
 										</div>
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label for="">Telefone</label>
-												<div class="input-group">
-													<div class="input-group-addon">
-														+55
-													</div>
-													<input required="required" data-error="Informe um Telefone Valido" class="form-control" placeholder="65 9 9999 9999" type="text" name="phone" value="{!!$client->phone!!}">
+												<div class="input-group">													
+													<input required="required" data-error="Informe um Telefone Valido" class="form-control MaskPhone" placeholder="65 9 9999 9999" type="text" name="phone" value="{!!$client->phone!!}">
 												</div>
 											</div>
 										</div>

@@ -12,9 +12,15 @@ use App\Model\Inovices;
 use App\Model\Clients;
 use Auth;
 
+#MOIP REQUIRE
+use Moip\Moip;
+use Moip\Auth\BasicAuth;
 
 class InovicesController extends ClientController
 {
+
+	private $token = 'U7UTQTPXDYZVFNXDWNKUXFFWKBB0EPA6';
+	private $key = 'CFLJ745JZ3OKMOSZEAUUJGP3UY5EEIZABZRXJUGX';
 
 	public function show()
 	{
@@ -44,22 +50,9 @@ class InovicesController extends ClientController
 	{
 		try{
 
+			$moip = new Moip(new BasicAuth($this->token, $this->key), Moip::ENDPOINT_SANDBOX);
 
-
-		# Recebe informação de Ciclo de Pagamento
-			switch ($request->input('cicle-payament')) {
-				case '2':
-				$validate = date('Y-m-d', strtotime('+365 days'));
-				break;
-				case '1':
-				$validate = date('Y-m-d', strtotime('+90 days'));
-				break;
-				case '0':
-				$validate = date('Y-m-d', strtotime('+30 days'));
-				break;
-			}
-
-		# Recebe Metodo de Pagamento
+			# Recebe Metodo de Pagamento
 			switch ($request->input('method-payments')) {
 				case 'method-2':
 				$method = 2;
@@ -69,7 +62,26 @@ class InovicesController extends ClientController
 				break;
 			}
 
-		# Discript Security Auth
+
+
+			# Recebe informação de Ciclo de Pagamento
+			switch ($request->input('cicle-payament')) {
+				case '2':
+				$validate = date('Y-m-d', strtotime('+365 days'));
+				$cicle = "1 Ano";
+				break;
+				case '1':
+				$validate = date('Y-m-d', strtotime('+90 days'));
+				$cicle = "3 Meses";
+				break;
+				case '0':
+				$validate = date('Y-m-d', strtotime('+30 days'));
+				$cicle = "1 Mês";
+				break;
+			}
+
+
+			# Discript Security Auth
 			$key = criptBySystem($request->input('security_key'), 'd');
 			$key = explode(":", $key);
 
@@ -79,16 +91,80 @@ class InovicesController extends ClientController
 			if(Auth::user()->client_id != $client_id){
 				return redirect(route('client-create-invoice', $plan_id))->withErrors(array("type" => "error", "msg" => "Erro, conta invalida"));
 			}
-
-		# Busca Cliente
+			# Busca Cliente
 			$client = CLients::where('client_id', Auth::user()->client_id)->first();
-		# Busca Plano Selecionado
+
+			$cpf = preg_replace("/[^0-9]/", "", $client->cpf);
+			$phone = preg_replace("/[^0-9]/", "", $client->phone);
+			$ddd = substr($phone, 0, 2);
+			$phone = substr($phone, 2);		
+
+
+			# Cria um Cliente dentro do MOIP
+
+			echo "<pre>";
+
+			$customer = $moip->customers()->setOwnId(uniqid())
+			->setFullname($client->name)
+			->setEmail($client->email)
+			->setBirthDate('$client->email')
+			->setTaxDocument('22222222222')
+			->setPhone(11, 66778899)
+			->addAddress('BILLING',
+				'Rua de teste', 123,
+				'Bairro', 'Sao Paulo', 'SP',
+				'01234567', 8)
+			->addAddress('SHIPPING',
+				'Rua de teste do SHIPPING', 123,
+				'Bairro do SHIPPING', 'Sao Paulo', 'SP',
+				'01234567', 8)
+			->create();
+			print_r($customer);
+
+
+			// $customer = $moip->customers()->setOwnId(uniqid())
+			// ->setFullname($client->name)
+			// ->setEmail($client->email)
+			// ->setBirthDate($client->birthdate)
+			// ->setTaxDocument($client->cpf)
+			// ->setPhone($ddd, $phone)
+			// ->addAddress("SHIPPING",
+		 //  	"Avenida Atlântica", 60,
+		 //    "Ipanema", "Rio de Janeiro", "RJ",
+		 //    "01234000")
+			// ->create();
+
+			// print_r($customer);
+			die;
+
+
+			# Busca Plano Selecionado
 			$plan = Plans::where('plan_id', $plan_id)->where('status', '1')->first();
 
-		# Verifica Qual Plano o Cliente Está
+
+
+			# Verifica Qual Plano o Cliente Está
 			$plan_client = PlansClients::where('client_id', $client->client_id)->where('status', '<>', '5')->first();
 
-		# Altera Inforamções desse Plano_Cliente
+
+			
+			# Informação de Ordem
+			$item_cart_text = "Mensalidae Plataforma *Go Next Level* - " . $cicle;
+			$customer = $client_id;
+
+			$order = $moip->orders()->setOwnId(uniqid())
+			->addItem($item_cart_text,1, "GONEXTLEVEL", 10000)
+			->setShippingAmount($plan->price)->setAddition(1000)->setDiscount(0)
+			->setCustomer($customer)
+			->create();
+
+			var_dump($order);
+
+			die;
+
+
+
+			# Altera Inforamções desse Plano_Cliente
 			$plan_client->plan_id = $plan->plan_id;
 			$plan_client->validate = $validate;
 			$plan_client->date_recurrent = date("d");
@@ -111,8 +187,6 @@ class InovicesController extends ClientController
 			echo $inovice->inovice_id;
 			return redirect(route('client-view-invoice', $inovice->inovice_id))->withErrors(array("type" => "success", "msg" => "Fatura Criada Com Sucesso!"));
 
-		//return var_dump($request->all());
-		//return var_dump($request->all());
 			die;
 		}catch(\Exception $e){
 			return redirect(route('client-create-invoice', $plan_id))->withErrors(array("type" => "danger", "msg" => "Erro: ".$e->getMessage(). " // Contate o Suporte"));

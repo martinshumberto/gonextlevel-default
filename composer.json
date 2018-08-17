@@ -11,6 +11,7 @@
         "jenssegers/date": "^3.4",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
+        "moip/moip-sdk-php": "^3.1",
         "predis/predis": "^1.1"
     },
     "require-dev": {

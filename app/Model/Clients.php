@@ -15,17 +15,25 @@ class Clients extends Authenticatable
 	protected $primaryKey  = 'client_id';
 	protected $fillable  = 
 	['name', 'cpf','email','login','password','phone','birthdate','hinode_id',
-    'states_id','cities_id', 'status', 'stage','remember_token','created_at','updated_at'];
+    'states_id','cities_id', 'address', '', 'zipcode', 'status', 'stage','remember_token','created_at','updated_at'];
     
     public function setPasswordAttribute($password)
     {   
         $this->attributes['password'] = Hash::make($password);
     }
 
+    # Formata de Fora para o Banco;
     public function setBirthdateAttribute($birthdate)
     {
-        $this->attributes['birthdate'] = Carbon::parse($birthdate)->format('Y-m-d');
+        $this->attributes['birthdate'] = Carbon::createFromFormat('d/m/Y', $birthdate)->format('Y-m-d');
     }
+
+    # Formata do Banco para Fora;
+    public function getBirthdateAttribute($birthdate)
+    {
+       return Carbon::createFromFormat('Y-m-d', $birthdate)->format('d/m/Y');
+    }
+
 
     public function status()
     {   

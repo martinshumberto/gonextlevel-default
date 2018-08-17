@@ -69,16 +69,6 @@ class InovicesController extends ClientController
 				}
 			}
 
-			$discountsClients = DiscountsClients::create([
-				'discount_id' => $discount->discount_id,
-				'client_id' => $key_auth[2],
-				'plan_id' => $plan->plan_id,
-				'discount_code' => $code,
-				'discount_price' => $discount->value,
-				'discount_type' => $discount->type,
-				'status' => 1, #Pendente (so valida apos criar fatura)
-			]);
-
 			return 
 			response()->
 			json(array('result' => "success", 'discount_type' => $discount->type, 'discount_price' => $discount->value, 'price' => $plan->price));

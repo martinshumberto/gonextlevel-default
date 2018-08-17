@@ -39,8 +39,10 @@ class ClientsController extends ClientController
 	}
 	public function update(Request $request)
 	{
-		$user = Users::find(Auth::user()->user_id);
-		$user->update($request->all());
+
+
+		$client = Clients::find(Auth::user()->client_id);
+		$client->update($request->all());
 
 		return redirect(route('client-profile'));
 	}	
