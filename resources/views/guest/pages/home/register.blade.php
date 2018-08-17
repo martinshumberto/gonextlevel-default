@@ -6,7 +6,7 @@
 <div class="all-wrapper menu-side with-pattern">
 	<div class="auth-box-w wider">
 		<div class="logo-w">
-			<a href="http://localhost/gonextlevel-web-laravel"><img alt="" src="img/logo-big.png"></a>
+			<a href="http://localhost/gonextlevel-web-laravel"><img alt="" src="{!!url("/")!!}/public/img/logo-big.png"></a>
 		</div>
 		<h4 class="auth-header">{{ __('messages.create-header') }}</h4>
 		<form action="{!!route('guest-register-create')!!}" method="post">
@@ -22,9 +22,9 @@
 				<div class="pre-icon os-icon os-icon-email-2-at2"></div>
 			</div>
 			<div class="form-group">
-				<label for=""> {{ __('messages.create-idhinode') }}</label>
-				<input class="form-control" placeholder="Enter ID" type="text" name="hinode_id" required="required">
-				<div class="pre-icon os-icon os-icon-ui-02"></div>
+				<label for=""> Data de Nascimento</label>
+				<input class="form-control MaskDate" placeholder="Enter Birthdate" type="text" name="birthdate" required="required">
+				<div class="pre-icon os-icon os-icon-basic-2-259-calendar"></div>
 			</div>
 			<div class="row">
 				<div class="col-sm-6">

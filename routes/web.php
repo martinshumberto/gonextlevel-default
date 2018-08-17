@@ -50,7 +50,7 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 
 
 	/* Info Client */
-	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@index'));
+	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@info'));
 	Route::get('/perfil', array('as' => 'client-profile', 'uses' => 'ClientsController@index'));
 	Route::post('/perfil/atualizar', array('as' => 'client-profile-update', 'uses' => 'ClientsController@update'));
 	Route::get('/assinaturas', array('as' => 'client-singatures', 'uses' => 'ClientsController@index'));

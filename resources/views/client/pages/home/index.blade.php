@@ -6,7 +6,7 @@
 
 {{--content here--}}
 
-	<?php
+<?php
 
 //	$dtToday = date("Y-m-d");
 //	$dtPrev = date("Y-m-d", strtotime("-1 months"));
@@ -21,25 +21,25 @@
 //";
 
 
-	$status = [
-		'convidar' => [
-			'quantidade' => 90,
-			'percent' => 12,
-		],
-		'apresentar' => [
-			'quantidade' => 5,
-			'percent' => 12,
-		],
-		'acompanhar' => [
-			'quantidade' => 2,
-			'percent' => -9,
-		],
-		'fechamento' => [
-			'quantidade' => 5,
-			'percent' => -9,
-		]
-	];
-	?>
+$status = [
+	'convidar' => [
+		'quantidade' => 90,
+		'percent' => 12,
+	],
+	'apresentar' => [
+		'quantidade' => 5,
+		'percent' => 12,
+	],
+	'acompanhar' => [
+		'quantidade' => 2,
+		'percent' => -9,
+	],
+	'fechamento' => [
+		'quantidade' => 5,
+		'percent' => -9,
+	]
+];
+?>
 
 	<!--------------------
 	START - Breadcrumbs
@@ -55,6 +55,36 @@
 		<div class="content-box">
 			<div class="row">
 				<div class="col-sm-12">
+					<!-- Alerts -->
+
+					@if($client->status == 0)
+					<div class="alert alert-warning alert-dismissible fade show" role="alert">
+						<button aria-label="Close" class="close" data-dismiss="alert" type="button">
+							<span aria-hidden="true"> ×</span>
+						</button>
+						<strong>Atenção! </strong>
+						Seu cadastro não está <b>Completo</b>, por favor preencha todas as informações necessárias para concluir.
+						<br>Acesse <a href="{!!route('client-info')!!}"><b><i class="os-icon os-icon-cv-2"></i> Minhas Informações</b></a> para completar.
+					</div>
+					@endif
+
+					<div class="alert alert-warning alert-dismissible fade show" role="alert" style="display: none;">
+						<button aria-label="Close" class="close" data-dismiss="alert" type="button">
+							<span aria-hidden="true"> ×</span>
+						</button>
+						<strong>Atenção! </strong>
+						Seu plano está para vencer, não fique sem usar o <b>Sistema</b>.
+						<br>Acesse <a href="{!!route('client-plans')!!}"><b>Planos</b></a> e ecolha.
+					</div>
+
+					<!-- ERROS DE SISTEMA -->
+					@if($errors->any())
+					<div style="padding-top: 6px;padding-bottom: 6px;padding-left: 7px;padding-right: 7px;background: #dc0000;color:  white;border: solid 1px #f51111;border-radius:  5px; margin-bottom: 10px;" class="alert alert-{{$errors->first('type')}}" role="alert">{{$errors->first('msg')}}</div>
+					@endif
+
+					<!-- Close Alerts -->
+
+
 					<div class="element-wrapper">
 						<div class="element-actions">
 							<form class="form-inline justify-content-sm-end">
@@ -236,4 +266,4 @@
 		-------------------->
 	</div>
 
-@endsection
+	@endsection

@@ -31,8 +31,8 @@ class RegisterController extends GuestController
             
             $client = Clients::create([
                 'name' => $request->input('name'),
-                'email' => $request->input('email'),
-                'hinode_id' => $request->input('hinode_id'),
+                'email' => $request->input('email'),                
+                'birthdate' => $request->input('birthdate'),
                 'password' => $request->input('password'),
                 'phone' => $request->input('phone'),
                 'status' => 0

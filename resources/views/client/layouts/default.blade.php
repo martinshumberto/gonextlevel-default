@@ -106,6 +106,7 @@
 
     <script src="{!!url("/")!!}/public/js/main.js?version={!!time()!!}"></script>
     <script src="{!!url("/")!!}/public/js/all.js?version={!!time()!!}"></script>
+    <script src="{!!url("/")!!}/public/js/app.js?version={!!time()!!}"></script>
 
 </body>
 </html>

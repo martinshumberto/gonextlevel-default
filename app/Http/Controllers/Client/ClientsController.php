@@ -27,7 +27,7 @@ class ClientsController extends ClientController
 
 		$client_id = Auth::user()->client_id;
 		$usuario = Clients::where('client_id', $client_id)->first();
-		$states = States::orderBy("name", "ASC")->paginate(50);
+		$states = States::orderBy("name", "ASC")->get();
 
 		$client_id = criptBySystem($client_id, 'e');
 
@@ -40,6 +40,9 @@ class ClientsController extends ClientController
 	public function update(Request $request)
 	{
 
+		#Adicionar em All
+		// $request->merge(array(
+		// 	'status' => 2));
 
 		$client = Clients::find(Auth::user()->client_id);
 		$client->update($request->all());
@@ -47,6 +50,18 @@ class ClientsController extends ClientController
 		return redirect(route('client-profile'));
 	}	
 
+	public function info()
+	{
+
+		$client_id = Auth::user()->client_id;
+		$usuario = Clients::where('client_id', $client_id)->first();
+		$states = States::orderBy("name", "ASC")->get();
+
+		return view("client/pages/clients/info", array(
+			"states"    => $states,
+			"client" => $usuario
+		));
+	}
 
 
 }
