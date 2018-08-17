@@ -16,7 +16,7 @@ class CreateTbClientsTable extends Migration {
 		{
 			$table->increments('client_id');
 			$table->string('name');
-			$table->integer('cpf')->nullable();
+			$table->string('cpf', 15)->nullable();
 			$table->string('email', 100);
 			$table->string('login', 100)->nullable();
 			$table->text('password', 65535);
@@ -26,6 +26,8 @@ class CreateTbClientsTable extends Migration {
 			$table->string('image')->nullable()->default('default_user.png');
 			$table->integer('states_id')->nullable();
 			$table->integer('cities_id')->nullable();
+			$table->text('address', 65535)->nullable();
+			$table->string('zipcode', 150)->nullable();
 			$table->integer('status')->nullable();
 			$table->integer('stage')->nullable()->default(0);
 			$table->string('remember_token', 100)->nullable();

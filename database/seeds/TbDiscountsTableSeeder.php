@@ -31,6 +31,20 @@ class TbDiscountsTableSeeder extends Seeder
                 'created_at' => '2018-08-14 00:00:00',
                 'updated_at' => NULL,
             ),
+            1 => 
+            array (
+                'discount_id' => 2,
+                'title' => '10$ de Desconto',
+                'type' => 2,
+                'value' => '10',
+                'amount' => NULL,
+                'amount_client' => NULL,
+                'validate' => NULL,
+                'discount_code' => 'GO10MTA',
+                'status' => 1,
+                'created_at' => '2018-08-14 00:00:00',
+                'updated_at' => NULL,
+            ),
         ));
         
         
