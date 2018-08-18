@@ -21,6 +21,11 @@
 		<div class="content-box">
 			<div class="row">
 				<div class="col-sm-12">
+
+					@if($errors->any())
+					<div style="padding-top: 6px;padding-bottom: 6px;padding-left: 7px;padding-right: 7px;background: #dc0000;color:  white;border: solid 1px #f51111;border-radius:  5px; margin-bottom: 10px;" class="alert alert-{{$errors->first('type')}}" role="alert">{{$errors->first('msg')}}</div>
+					@endif
+
 					<div class="element-wrapper">
 						<div class="element-box">
 							<form id="formValidate" method="post" action="{!!route('client-profile-update')!!}">
@@ -100,7 +105,7 @@
 									<div class="col-sm-4">
 										<div class="form-group">
 											<label for=""> Bairro</label>
-											<input name="cpf" class="form-control " data-error="Informe seu Bairro" placeholder="Entre com seu Bairro" required="required" type="text" value="{!!$client->cpf!!}">
+											<input name="district" class="form-control " data-error="Informe seu Bairro" placeholder="Entre com seu Bairro" required="required" type="text" value="{!!$client->district!!}">
 											<div class="help-block form-text with-errors form-control-feedback"></div>
 										</div>	
 									</div>
@@ -116,7 +121,7 @@
 									<div class="col-sm-1">
 										<div class="form-group">
 											<label for=""> Numero</label>
-											<input name="zipcode" class="form-control" data-error="Numero da Casa" placeholder="Numero da Casa" required="required" type="text" value="{!!$client->zipcode!!}">
+											<input name="number" class="form-control" data-error="Numero da Casa" placeholder="Numero da Casa" required="required" type="text" value="{!!$client->number!!}">
 											<div class="help-block form-text with-errors form-control-feedback"></div>
 										</div>
 									</div>

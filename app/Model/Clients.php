@@ -14,8 +14,8 @@ class Clients extends Authenticatable
 	protected $table = 'tb_clients';
 	protected $primaryKey  = 'client_id';
 	protected $fillable  = 
-	['name', 'cpf','email','login','password','phone','birthdate','hinode_id',
-    'states_id','cities_id', 'address', '', 'zipcode', 'status', 'stage','remember_token','created_at','updated_at'];
+	['moip_id','name', 'cpf','email','login','password','phone','birthdate','hinode_id',
+    'states_id','cities_id', 'district', 'address', 'number', 'zipcode', 'status', 'stage','remember_token','created_at','updated_at'];
     
     public function setPasswordAttribute($password)
     {   
@@ -38,17 +38,14 @@ class Clients extends Authenticatable
     public function status()
     {   
         switch ($this->status) {
-            case '4':
+            case '3':
             return 'Bloqueado';
             break;
-            case '3':
+            case '2':
             return 'Inativo';
             break;
-            case '2':
-            return 'Ativo';
-            break;
             case '1':
-            return 'Verificado';
+            return 'Ativo';
             break;
             case '0':
             return 'Não Verificado';
@@ -120,6 +117,16 @@ class Clients extends Authenticatable
     public function discount()
     {
         return $this->belongsTo('App\Model\DiscountsClients', 'client_id', 'client_id');
+    }
+
+
+    public function citie()
+    {
+        return $this->hasOne('App\Model\Cities', 'cities_id', 'cities_id');
+    }
+    public function state()
+    {
+        return $this->hasOne('App\Model\States', 'states_id', 'states_id');
     }
 
 }

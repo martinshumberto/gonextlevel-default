@@ -16,5 +16,9 @@ class States extends Model
         return $this->hasMany('App\Model\Cities', 'states_id', 'states_id');
     }
 
+    public function clients()
+    {
+        return $this->hasMany('App\Model\Clients', 'states_id');
+    }
 
 }
