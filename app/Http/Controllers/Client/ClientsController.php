@@ -62,6 +62,9 @@ class ClientsController extends ClientController
 	{
 		$moip = new Moip(new BasicAuth($this->token, $this->key), Moip::ENDPOINT_SANDBOX);
 
+		# Debu
+		echo "<pre>";
+
 		try{
 			$create_moip = 0;
 
@@ -102,12 +105,8 @@ class ClientsController extends ClientController
 				->create();
 
 			# DEBUG CLIENT
-				// echo "<pre>";
-				// print_r($customer);
-				// die;
-
-				$client->moip_id = $customer->id;
-				$client->save();
+				print_r($customer);
+				die;
 
 			}
 

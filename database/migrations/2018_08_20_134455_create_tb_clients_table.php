@@ -26,7 +26,9 @@ class CreateTbClientsTable extends Migration {
 			$table->string('image')->nullable()->default('default_user.png');
 			$table->integer('states_id')->nullable();
 			$table->integer('cities_id')->nullable();
+			$table->string('district')->nullable();
 			$table->text('address', 65535)->nullable();
+			$table->string('number', 100)->nullable();
 			$table->string('zipcode', 150)->nullable();
 			$table->integer('status')->nullable();
 			$table->integer('stage')->nullable()->default(0);
