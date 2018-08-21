@@ -82,17 +82,19 @@ class ClientsController extends ClientController
 			$client = Clients::where('client_id', $client->client_id)->first();
 			if($create_moip == 1){
 
-		 	# Formatar Data de Aniversario
+		 		# Formatar Data de Aniversario
 				$birthdate = Carbon::createFromFormat('d/m/Y', $client->birthdate)->format('Y-m-d');
-			# Retira Pontos de CPF
+
+				# Retira Pontos de CPF
 				$cpf = preg_replace("/[^0-9]/", "", $client->cpf);
-			# Recebe Telefone
+				# Recebe Telefone
 				$phone = preg_replace("/[^0-9]/", "", $client->phone);
 				$ddd = substr($phone, 0, 2);
 				$phone = substr($phone, 2);		
 
-			# Cria um Cliente dentro do MOIP
+				# Cria um Cliente dentro do MOIP
 				$customer = $moip->customers()->setOwnId(uniqid())
+				->setOwnId($client->client_id)
 				->setFullname($client->name)
 				->setEmail($client->email)
 				->setBirthDate($birthdate)
@@ -104,9 +106,14 @@ class ClientsController extends ClientController
 					$client->zipcode, 8)
 				->create();
 
-			# DEBUG CLIENT
+				# DEBUG CLIENT
+
 				print_r($customer);
+
+				//echo $customer['data']->id;
 				die;
+				$client->moip_id = $customer->id;
+				$client->save();
 
 			}
 

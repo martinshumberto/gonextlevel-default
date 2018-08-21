@@ -15,6 +15,7 @@ class CreateTbClientsTable extends Migration {
 		Schema::create('tb_clients', function(Blueprint $table)
 		{
 			$table->increments('client_id');
+			$table->string('moip_id')->nullable();
 			$table->string('name');
 			$table->string('cpf', 15)->nullable();
 			$table->string('email', 100);
