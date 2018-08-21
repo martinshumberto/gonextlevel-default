@@ -20,8 +20,8 @@ use Moip\Auth\BasicAuth;
 class ClientsController extends ClientController
 {
 
-	private $token = 'U7UTQTPXDYZVFNXDWNKUXFFWKBB0EPA6';
-	private $key = 'CFLJ745JZ3OKMOSZEAUUJGP3UY5EEIZABZRXJUGX';
+	private $token = 'QRCHHIZYDFJPASWASI1DUC7FZ0UGH3ZO';
+	private $key = 'AM7AS2B66JSB882MNCDPA9TQUDCY128ADKSQAQ2M';
 
 	public function index()
 	{	
@@ -60,33 +60,32 @@ class ClientsController extends ClientController
 
 	public function update(Request $request)
 	{
-		$moip = new Moip(new BasicAuth($this->token, $this->key), Moip::ENDPOINT_SANDBOX);
 
 		# Debu
 		echo "<pre>";
 
-		try{
-			$create_moip = 0;
+		# Instacia Moip
+		$moip = new Moip(new BasicAuth($this->token, $this->key), Moip::ENDPOINT_SANDBOX);
+		
+		# Busca Client
+		$client = Clients::where('client_id', Auth::user()->client_id)->first();
 
-		# Info Client
-			$client = Clients::where('client_id', Auth::user()->client_id)->first();
+
+		try{
 
 			if($client->status == 0){
 				$request->merge(array(
 					'status' => 1));
-				$create_moip = 1;
-			}
 
-			$client->update($request->all());
-
-			$client = Clients::where('client_id', $client->client_id)->first();
-			if($create_moip == 1){
-
+				# Atualza Informações Necessárias
+				$client->update($request->all());
+			
 		 		# Formatar Data de Aniversario
 				$birthdate = Carbon::createFromFormat('d/m/Y', $client->birthdate)->format('Y-m-d');
 
 				# Retira Pontos de CPF
 				$cpf = preg_replace("/[^0-9]/", "", $client->cpf);
+				
 				# Recebe Telefone
 				$phone = preg_replace("/[^0-9]/", "", $client->phone);
 				$ddd = substr($phone, 0, 2);
@@ -107,15 +106,15 @@ class ClientsController extends ClientController
 				->create();
 
 				# DEBUG CLIENT
-
 				print_r($customer);
-
-				//echo $customer['data']->id;
 				die;
-				$client->moip_id = $customer->id;
-				$client->save();
-
-			}
+				
+			}else{
+				
+				# Atualza Informações Necessárias
+				$client->update($request->all());
+				
+			}		
 
 			return redirect(route('client-info'))->withErrors(array("type" => "success", "msg" => "Informacoes atualizada com sucesso!"));
 

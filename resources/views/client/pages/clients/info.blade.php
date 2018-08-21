@@ -23,7 +23,7 @@
 				<div class="col-sm-12">
 
 					@if($errors->any())
-					<div style="padding-top: 6px;padding-bottom: 6px;padding-left: 7px;padding-right: 7px;background: #dc0000;color:  white;border: solid 1px #f51111;border-radius:  5px; margin-bottom: 10px;" class="alert alert-{{$errors->first('type')}}" role="alert">{{$errors->first('msg')}}</div>
+					<div class="alert alert-{{$errors->first('type')}}" role="alert">{{$errors->first('msg')}}</div>
 					@endif
 
 					<div class="element-wrapper">
