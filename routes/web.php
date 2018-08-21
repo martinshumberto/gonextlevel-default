@@ -47,13 +47,14 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 	Route::get('/assinatura/criar/fatura/{id}', array('as' => 'client-create-invoice', 'uses' => 'InovicesController@inovice'));
 	Route::put('/assinatura/gerar/fatura/', array('as' => 'client-generate-inovice', 'uses' => 'InovicesController@store'));
 	Route::get('/assinatura/visualizar/fatura/{id}', array('as' => 'client-view-invoice', 'uses' => 'InovicesController@view'));
+	Route::get('/assinatura/historico-faturas', array('as' => 'client-historic-invoice', 'uses' => 'InovicesController@historic'));
 
 
 	/* Info Client */
 	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@info'));
 	Route::get('/perfil', array('as' => 'client-profile', 'uses' => 'ClientsController@index'));
 	Route::post('/perfil/atualizar', array('as' => 'client-profile-update', 'uses' => 'ClientsController@update'));
-	Route::get('/assinaturas', array('as' => 'client-singatures', 'uses' => 'ClientsController@index'));
+	Route::get('/assinaturas', array('as' => 'client-signature', 'uses' => 'ClientsController@index'));
 	Route::get('/notificacoes', array('as' => 'client-notifications', 'uses' => 'ClientsController@index'));
 
 });

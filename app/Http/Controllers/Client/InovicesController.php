@@ -29,6 +29,12 @@ class InovicesController extends ClientController
 
 	}	
 
+	public function historic()
+	{
+		return view("client/pages/signature/historic-invoice");
+
+	}	
+
 	public function inovice(Request $request, $id)
 	{
 		

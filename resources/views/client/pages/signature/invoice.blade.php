@@ -29,6 +29,8 @@
 							</div>
 							<div class="info-2">
 								<div class="company-name">{!!$client->name!!}</div>
+								<div class="company-extra">{!!$client->email!!}</div>
+								<div class="company-address">{!!$client->cpf!!}</div>
 
 							</div>
 						</div>
@@ -37,9 +39,9 @@
 							<div class="invoice-date">{!!strftime('%A, %d de %B de %Y', strtotime('today'))!!}</div>
 						</div>
 						<div class="invoice-body">
-							<div class="invoice-desc" style="display: none;">
-								<div class="desc-label">Fatura</div>
-								<div class="desc-value"># GO-{!!$planClient->plan_client_id	!!}</div>
+							<div class="invoice-desc">
+								<div class="desc-label">Fatura #</div>
+								<div class="desc-value">GNL-{!!$planClient->plan_client_id!!}</div>
 							</div>
 							<div class="invoice-table">
 								<input type="hidden" id="key_auth" name="key_auth" value="{!!$key_auth!!}">
@@ -69,7 +71,9 @@
 									</tfoot>
 								</table>
 								<div class="terms">
-									<div class="terms-header">Termos e Condições</div>
+									<div class="terms-header">Assinando você estará concordando com os <a href="#">Termos e Condições</a></div>
+									<div class="terms-content">Daremos automaticamente continuidade à sua assinatura e cobraremos ${!!$plan->price()!!} até você cancelar ou alterar.</div>
+									<div class="terms-content">Não haverá reembolsos ou créditos por meses parciais.</div>
 									<div class="terms-content">Após vencimento da fatura, será cobrado uma multa no valor de R$ 2,00.</div>
 								</div>
 							</div>
@@ -126,14 +130,14 @@
 										<label for="">Forma de pagamento</label>
 										<select id="method-payments" name="method-payments" class="form-control">
 											<option selected value="">Selecione</option>
-											<option value="method-1">Cartão de Crédito</option>
-											<option value="method-2">Boleto</option>
+											<option value="method-1">Cartão de crédito</option>
+											<option value="method-2">Boleto bancário</option>
 										</select>
 									</div>
 								</div>
 							</div>
 							<div class="method method-2 form-buttons-w text-right compact" style="display: none;">
-								<button type="submit" class="btn btn-primary btn-generate-bolet" ><span>Gerar Boleto</span><i class="os-icon os-icon-grid-18"></i></button>
+								<button type="submit" class="btn btn-primary btn-generate-bolet" ><span>Gerar boleto</span><i class="os-icon os-icon-grid-18"></i></button>
 							</div>
 
 						</form>
@@ -186,7 +190,7 @@
 						</div>
 
 						<div class="method method-3 element-box" style="display:none;">
-							<h5 class="element-box-header">Boleto</h5>
+							<h5 class="element-box-header">Boleto bancário</h5>
 							<div class="row">
 								<div class="col-sm-12">
 									<object data="https://www.boletobancario.com/boletofacil/img/boleto-facil-exemplo.pdf" 

@@ -64,9 +64,24 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver Prospecto</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
+													<li>
+														<a href="#">
+															<i class="os-icon os-icon-ui-49"></i>
+															<span>Ver Prospecto</span>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<i class="os-icon os-icon-ui-44"></i>
+															<span>Arquivar</span>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<i class="os-icon os-icon-ui-15"></i>
+															<span>Remover</span>
+														</a>
+													</li>
 												</ul>
 											</div>
 										</div>

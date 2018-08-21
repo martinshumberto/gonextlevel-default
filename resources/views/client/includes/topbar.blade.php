@@ -192,7 +192,7 @@ START - Main Menu
 				<ul>
 					<li><a href="{!!route('client-info')!!}"><i class="os-icon os-icon-ui-46"></i><span>Meus dados</span></a></li>
 					<li><a href="{!!route('client-profile')!!}"><i class="os-icon os-icon-user-male-circle2"></i><span>Perfil</span></a></li>
-					<li><a href="{!!route('client-singatures')!!}"><i class="icon-feather-award"></i><span>Assinatura</span></a></li>
+					<li><a href="{!!route('client-signature')!!}"><i class="icon-feather-award"></i><span>Assinatura</span></a></li>
 					<li><a href="{!!route('client-notifications')!!}"><i class="os-icon os-icon-others-43"></i><span>Notificações</span></a></li>
 					<li><a href="{!!route('client-logout')!!}"><i class="os-icon os-icon-signs-11"></i><span>Sair</span></a></li>
 				</ul>

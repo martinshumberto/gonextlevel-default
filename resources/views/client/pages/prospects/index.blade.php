@@ -7,7 +7,15 @@
 START - Breadcrumbs
 -------------------->
 <ul class="breadcrumb">
-	<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+	<li class="breadcrumb-item">
+		<a href="{!!route('client-dashboard')!!}">Dashboard</a>
+	</li>
+	<li class="breadcrumb-item">
+		<a href="{!!route('client-prospect')!!}">Prospectos</a>
+	</li>
+	<li class="breadcrumb-item">
+		<span>Visão geral</span>
+	</li>
 </ul>
 <!--------------------
 END - Breadcrumbs
@@ -20,7 +28,7 @@ END - Breadcrumbs
 					<form action="#" class="form-inline">
 						<div class="form-group mr-4">
 							<a class="btn btn-sm btn-secondary btn-upper" href="{!!route('client-prospect-pipeline')!!}">
-								<i class="os-icon os-icon-grid-squares-22"></i><span>Pipeline de Prospectos</span>
+								<i class="os-icon os-icon-grid-squares-22"></i><span>Pipeline de prospectos</span>
 							</a>
 						</div>
 						<div class="form-group d-none d-md-flex">
@@ -43,13 +51,13 @@ END - Breadcrumbs
 		<div class="element-box">
 			<form method="get" action="{!!route('client-prospect')!!}">
 				
-				<h5 class="form-header">Faça sua Busca</h5>
+				<h5 class="form-header">Faça sua busca</h5>
 				<div class="form-desc">Consulte todos os seus prospectos já cadastrados na plataforma, também podendo ser consultado aqueles concluidos e arquivos.</div>
 
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label for=""> Nome do Prospecto</label>
+							<label for=""> Nome do prospecto</label>
 							<input name="name" class="form-control" placeholder="Nome completo prospecto ou parte dele" type="text">
 						</div>
 					</div>
@@ -83,7 +91,7 @@ END - Breadcrumbs
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label for=""> Escolha o Período</label>
+							<label for=""> Escolha o período</label>
 							<div class="date-input">
 								<input name='date-interval'  autocomplete='off' data-range='true' data-multiple-dates-separator=" - " type='text' class='datepicker-here form-control' data-language='pt-BR' />
 							</div>
@@ -95,7 +103,7 @@ END - Breadcrumbs
 		</div>
 
 		<div class="element-box">
-			<h5 class="form-header">Resultado da Busca</h5>
+			<h5 class="form-header">Resultado da busca</h5>
 			<div class="form-desc">Listagem do resultado da sua consulta referente ao formulário acima.</div>
 				<!--------------------
 				START - Controls Above Table
@@ -106,7 +114,7 @@ END - Breadcrumbs
 							<a class="btn btn-sm btn-secondary" href="#">Arquivar</a>
 							<a class="btn btn-sm btn-danger" href="#">Deletar</a></div>
 							<div class="col-sm-6 form-inline justify-content-sm-end">
-								<a class="btn btn-sm btn-secondary" href="#">Exportar para Excel</a>
+								<a class="btn btn-sm btn-secondary" href="#">Exportar para excel</a>
 							</div>
 						</div>
 					</div>

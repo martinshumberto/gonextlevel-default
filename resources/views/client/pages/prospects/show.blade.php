@@ -7,13 +7,13 @@
 	
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item">
-			<a href="{!!route('client-dashboard')!!}">Home</a>
+			<a href="{!!route('client-dashboard')!!}">Dashboard</a>
 		</li>
 		<li class="breadcrumb-item">
-			<a href="{!!route('client-prospect')!!}">Prospctos</a>
+			<a href="{!!route('client-prospect')!!}">Prospectos</a>
 		</li>
 		<li class="breadcrumb-item">
-			<span>Informações do Prospecto</span>
+			<span>Informações do prospecto</span>
 		</li>
 	</ul>
 	<div class="content-i">
@@ -34,7 +34,7 @@
 										</div>
 										<div class="element-info-text">
 											<h5 class="element-inner-header">
-												Informações do Prospecto
+												Informações do prospecto
 											</h5>
 											<div class="element-inner-desc">
 												Todas infomações relacionadas ao prospecto.
@@ -55,7 +55,7 @@
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for="">Telefone</label>
+											<label for=""> Telefone</label>
 											<div class="input-group">
 												<input class="MaskPhone form-control" type="text" name="phone" value="{!!$prospect->phone!!}">
 											</div>
@@ -64,10 +64,10 @@
 								</div>		
 
 								<div class="form-buttons-w">
-									<button class="btn btn-primary" type="submit"> Salvar Informações</button>
+									<button class="btn btn-primary" type="submit"> Salvar informações</button>
 								</div>				
 								<fieldset class="form-group">
-									<legend><span>Qualificação do Prospecto</span></legend>
+									<legend><span>Qualificação do prospecto</span></legend>
 									<div class="form-group">
 										<div class="os-progress-bar blue">
 											<div class="bar-labels">
@@ -160,7 +160,7 @@
 										</div>
 									</div>
 								</fieldset>
-								<a class="btn btn-dark btn-sm" href="#"><i class="os-icon os-icon-delivery-box-2"></i><span>Requalificar Prospecto</span></a>
+								<a class="btn btn-dark btn-sm" href="#"><i class="os-icon os-icon-delivery-box-2"></i><span>Requalificar prospecto</span></a>
 							</form>
 						</div>
 					</div>
@@ -170,7 +170,7 @@
 								<div class="support-tickets-header">
 									<div class="tickets-control">
 										<h5>
-											Historico de Apresentações
+											Historico de apresentações
 										</h5>
 									</div>								
 								</div>
@@ -217,11 +217,11 @@
 						</div>						
 						<div class="element-wrapper">
 							<h6 class="element-header">
-								Membros da Sua Equipe
+								Equipe do {!!$prospect->name!!}
 							</h6>
 							<div class="element-box-tp">
 								<div class="input-search-w">
-									<input class="form-control rounded bright" placeholder="Search team members..." type="search">
+									<input class="form-control rounded bright" placeholder="Procurar membro..." type="search">
 								</div>
 								<div class="users-list-w">
 									<div class="user-w with-status status-green">
