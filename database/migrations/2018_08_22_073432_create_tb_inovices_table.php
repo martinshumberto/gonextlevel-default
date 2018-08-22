@@ -17,11 +17,11 @@ class CreateTbInovicesTable extends Migration {
 			$table->increments('inovice_id');
 			$table->integer('plan_id');
 			$table->integer('client_id');
-			$table->integer('price');
+			$table->decimal('price', 10);
 			$table->integer('type');
-			$table->integer('gateway');
-			$table->string('gateway_key');
-			$table->string('gateway_response');
+			$table->string('gateway', 100);
+			$table->string('gateway_key')->nullable();
+			$table->string('gateway_response')->nullable();
 			$table->string('discount_code')->nullable();
 			$table->integer('status');
 			$table->timestamps();
