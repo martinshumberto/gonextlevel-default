@@ -11,6 +11,8 @@ use App\Model\Plans;
 use App\Model\PlansClients;
 use App\Model\Inovices;
 use App\Model\Clients;
+use App\Model\Discounts;
+use App\Model\DiscountsClients;
 use Auth;
 
 #MOIP REQUIRE
@@ -20,8 +22,8 @@ use Moip\Auth\BasicAuth;
 class InovicesController extends ClientController
 {
 
-	private $token = 'U7UTQTPXDYZVFNXDWNKUXFFWKBB0EPA6';
-	private $key = 'CFLJ745JZ3OKMOSZEAUUJGP3UY5EEIZABZRXJUGX';
+	private $token = 'QRCHHIZYDFJPASWASI1DUC7FZ0UGH3ZO';
+	private $key = 'AM7AS2B66JSB882MNCDPA9TQUDCY128ADKSQAQ2M';
 
 	public function show()
 	{
@@ -57,110 +59,122 @@ class InovicesController extends ClientController
 	{
 		try{
 
+			echo "<pre>";
+
 			$moip = new Moip(new BasicAuth($this->token, $this->key), Moip::ENDPOINT_SANDBOX);
-
-			# Recebe Metodo de Pagamento
-			switch ($request->input('method-payments')) {
-				case 'method-2':
-				$method = 2;
-				break;
-				case 'method-1':
-				$method = 1;
-				break;
-			}
-
-
-
-			# Recebe informação de Ciclo de Pagamento
-			switch ($request->input('cicle-payament')) {
-				case '2':
-				$validate = date('Y-m-d', strtotime('+365 days'));
-				$cicle = "1 Ano";
-				break;
-				case '1':
-				$validate = date('Y-m-d', strtotime('+90 days'));
-				$cicle = "3 Meses";
-				break;
-				case '0':
-				$validate = date('Y-m-d', strtotime('+30 days'));
-				$cicle = "1 Mês";
-				break;
-			}
 
 
 			# Discript Security Auth
 			$key = criptBySystem($request->input('security_key'), 'd');
 			$key = explode(":", $key);
 
+			# Variaveis Criptgrafada
 			$plan_id = $key[1];
 			$client_id = $key[2];
-
-			if(Auth::user()->client_id != $client_id){
-				return redirect(route('client-create-invoice', $plan_id))->withErrors(array("type" => "error", "msg" => "Erro, conta invalida"));
-			}
-			# Busca Cliente
-			$client = CLients::where('client_id', Auth::user()->client_id)->first();
-
-			$cpf = preg_replace("/[^0-9]/", "", $client->cpf);
-			$phone = preg_replace("/[^0-9]/", "", $client->phone);
-			$ddd = substr($phone, 0, 2);
-			$phone = substr($phone, 2);		
-			$birthdate = Carbon::createFromFormat('d/m/Y', $client->birthdate)->format('Y-m-d');
-
-			# Cria um Cliente dentro do MOIP
-			$customer = $moip->customers()->setOwnId(uniqid())
-			->setFullname($client->name)
-			->setEmail($client->email)
-			->setBirthDate($birthdate)
-			->setTaxDocument($cpf)
-			->setPhone($ddd, $phone)
-			->addAddress('BILLING',
-				'Rua de teste', 123,
-				'Bairro', 'Sao Paulo', 'SP',
-				'01234567', 8)
-			->create();
-
-			# DEBUG CLIENT
-			print_r($customer);
-			//die;
-
-			# Cria pedido
-			$order = $moip->orders()->setOwnId($customer->ownId)
-			->addItem("Descrição do pedido",1, "Mensalidade Startup Go Next Level ".$cicle)
-			->setShippingAmount(59)->setAddition(0)->setDiscount(0)
-			->setCustomerId($customer->id)
-			->create();
-
-			# DEBUG ORDER
-			print_r($order);
-			die;
 
 
 			# Busca Plano Selecionado
 			$plan = Plans::where('plan_id', $plan_id)->where('status', '1')->first();
 
+			# Verifica se Usuário e o mesmo que está logado.
+			if(Auth::user()->client_id != $client_id){
+				return redirect(route('client-create-invoice', $plan_id))->withErrors(array("type" => "error", "msg" => "Erro, conta invalida"));
+			}
+			# Busca Cliente
+			$client = Clients::where('client_id', $client_id)->first();
+
+			$price = $plan->price;
+
+			if($request->input('discount')){
+				$discount = Discounts::where('discount_code', $request->input('discount'))->first();
+
+				if(!is_null($discount)){
+
+					if($discount->type == 1){
+						$descount_value = ($plan->price*$discount->value/100);
+						$price = ($price - $descount_value);
+					}
+
+					if($discount->type == 2){
+						$price = ($plan->price - $discount->value);
+					}
+
+					DiscountsClients::create([
+						'discount_id' 		=> $discount->discount_id,
+						'client_id' 		=> $client->client_id,
+						'plan_id' 			=> $plan->plan_id,
+						'discount_code'		=> $discount->discount_code,
+						'discount_type' 	=> $discount->type,
+						'discount_price' 	=> $discount->value,
+						'status' 			=> 1
+					]);
+
+					$discount_code = $discount->discount_code;
+
+				}else{
+					$discount_code = NULL;
+				}				
+
+			}else{
+				$discount_code = NULL;
+			}
 
 
-			# Verifica Qual Plano o Cliente Está
-			$plan_client = PlansClients::where('client_id', $client->client_id)->where('status', '<>', '5')->first();
+			if($request->input('cicle-payament')){
+
+				if($request->input('cicle-payament') == "1"){					
+					$validate = date('Y-m-d', strtotime('+30 days'));
+					$cicle = "1 Mês";
+				}
+
+				if($request->input('cicle-payament') == "2"){					
+					$validate = date('Y-m-d', strtotime('+3 Month'));
+					$cicle = "3 Meses";
+					$price = ($price * 3);
+					$desconto = ($price * 0.05);
+					$price = ($price - $desconto);
+
+				}
+
+				if($request->input('cicle-payament') == "3"){					
+					$validate = date('Y-m-d', strtotime('+12 Month'));
+					$cicle = "1 Ano";
+					$price = ($price * 12);
+					$desconto = ($price * 0.15);
+					$price = ($price - $desconto);
+				}
+				
+			}
+
+			if($request->input('method-payments')){
+				$method = $request->input('method-payments');
+				switch ($method) {
+					case 'method-1':
+					$type = 1;
+					break;
+					case 'method-2':
+					$type = 2;
+					$logo_uri = 'https://cdn.moip.com.br/wp-content/uploads/2016/05/02163352/logo-moip.png';
+					$instruction_lines = ['Atenção,', 'fique atento à data de vencimento do boleto.', 'Pague em qualquer casa lotérica.'];
+					$expiration_date = date('Y-m-d', strtotime('+3 days'));
+					break;
+				}
+			}
 
 
-			
-			# Informação de Ordem
-			$item_cart_text = "Mensalidae Plataforma *Go Next Level* - " . $cicle;
-			$customer = $client_id;
+			# Cria a Fatura no Banco de Dados
+			$inovice = Inovices::create([
+				'plan_id' 			=> $plan->plan_id,
+				'client_id' 		=> $client->client_id,
+				'type' 				=> $type,
+				'price'				=> $price,
+				'gateway' 			=> 'MOIP',
+				'discount_code' 	=> $discount_code,
+				'status' 			=> 1
+			]);
 
-			$order = $moip->orders()->setOwnId(uniqid())
-			->addItem($item_cart_text,1, "GONEXTLEVEL", 10000)
-			->setShippingAmount($plan->price)->setAddition(1000)->setDiscount(0)
-			->setCustomer($customer)
-			->create();
-
-			var_dump($order);
-
-			die;
-
-
+			# Procura Plano de Cliente
+			$plan_client = PlansClients::where('client_id', $client->client_id)->first();
 
 			# Altera Inforamções desse Plano_Cliente
 			$plan_client->plan_id = $plan->plan_id;
@@ -169,17 +183,40 @@ class InovicesController extends ClientController
 			$plan_client->status = 2;
 			$plan_client->save();
 
-			$inovice = Inovices::create([
-				'plan_id' 			=> $plan->plan_id,
-				'client_id' 		=> $client->client_id,
-				'type' 				=> $method,
-				'price'				=> $method,
-				'gateway' 			=> $method,
-				'gateway_key' 		=> $method,
-				'gateway_response' 	=> $method,
-				'discount_code' 	=> $method,
-				'status' 			=> 2,
-			]);
+
+			# Informação de Ordem
+			$item_cart_text = "Mensalidae Plataforma *Go Next Level* - " . $cicle;
+
+			$price = (int) $price;
+			$order = $moip->orders()->setOwnId($inovice->inovice_id)
+			->addItem("Descrição do pedido",1, $item_cart_text, $price)
+			->setShippingAmount(0)->setAddition(0)->setDiscount(0)
+			->setCustomerId($client->moip_id)
+			->create();
+
+			print_r($order);
+			die;
+
+			
+			if($type == 1){
+
+
+				$payment = $order->payments()  
+				->setBoleto($expiration_date, $logo_uri, $instruction_lines)
+				->setStatementDescriptor("Go Next Level")
+				->execute();
+				print_r($payment);
+			}
+			
+			if($type == 2){
+				$payment = $order->payments()  
+				->setBoleto($expiration_date, $logo_uri, $instruction_lines)
+				->execute();
+				print_r($payment);
+			}
+
+
+			die;
 
 
 			echo $inovice->inovice_id;

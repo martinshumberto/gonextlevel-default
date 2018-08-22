@@ -41,7 +41,7 @@
 						<div class="invoice-body">
 							<div class="invoice-desc">
 								<div class="desc-label">Fatura #</div>
-								<div class="desc-value">GNL-{!!$planClient->plan_client_id!!}</div>
+								<div class="desc-value"></div>
 							</div>
 							<div class="invoice-table">
 								<input type="hidden" id="key_auth" name="key_auth" value="{!!$key_auth!!}">
@@ -117,9 +117,9 @@
 									<div class="form-group">
 										<label for="">Ciclo de pagamento</label>
 										<select id="cicle-payament" name="cicle-payament" class="form-control">
-											<option value="0">Mensal</option>
-											<option value="1">Trimestral (-5%)</option>
-											<option value="2">Anual (-15%)</option>
+											<option value="1">Mensal</option>
+											<option value="2">Trimestral (-5%)</option>
+											<option value="3">Anual (-15%)</option>
 										</select>
 									</div>
 								</div>

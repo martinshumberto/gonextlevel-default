@@ -79,7 +79,7 @@ class ClientsController extends ClientController
 
 				# Atualza Informações Necessárias
 				$client->update($request->all());
-			
+
 		 		# Formatar Data de Aniversario
 				$birthdate = Carbon::createFromFormat('d/m/Y', $client->birthdate)->format('Y-m-d');
 
@@ -106,8 +106,12 @@ class ClientsController extends ClientController
 				->create();
 
 				# DEBUG CLIENT
-				print_r($customer);
-				die;
+				echo "<pre>";
+				$response = json_encode($customer);
+				$response = json_decode($response);
+
+				$client->moip_id = $response->id;
+				$client->save();
 				
 			}else{
 				
