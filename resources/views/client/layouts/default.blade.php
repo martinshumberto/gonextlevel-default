@@ -28,6 +28,7 @@
 
     <link href="{!!url("/")!!}/public/css/main.css?version=4.4.0" rel="stylesheet">
     <link href="{!!url("/")!!}/public/css/gonextlevel.css?version=4.4.0" rel="stylesheet">
+    <script type="text/javascript" src="//assets.moip.com.br/v2/moip.min.js"></script>
 
     <script>
         /* 

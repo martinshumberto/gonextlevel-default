@@ -100,7 +100,7 @@
 					@endif
 
 					<div class="element-box">
-						<form method="POST" action="{!!route('client-generate-inovice')!!}">
+						<form method="POST" id="form_one_settings" action="{!!route('client-generate-inovice')!!}">
 							{{ csrf_field() }}
 							{{ method_field('PUT') }}
 
@@ -147,7 +147,12 @@
 
 						<div class="method method-1 element-box" style="display:none;">
 							<div class="cardpayment">
-								<form method="POST" action="">
+								<form id="form-card" method="POST" action="{!!route('client-view-credcard')!!}">
+									@csrf
+									<input type="hidden" name="discount" id="f_discount" value="">
+									<input type="hidden" name="cicle-payament" id="f_cicle" value="">
+									<input type="hidden" name="method-payments" id="f_method" value="">
+									<input type="hidden" name="security_key" value="{!!$key_auth!!}">
 									<h5 class="element-box-header">Cartão de crédito</h5>
 									<div class="row">
 										<div class="col-sm-12">
@@ -180,6 +185,20 @@
 													</div>
 												</div>
 											</div>
+
+											<textarea id="public_key" style="display:none;">
+												-----BEGIN PUBLIC KEY-----
+												MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1AXO/PnINwBQdY1KLIZr
+												2dUHag2AMCMliE1TcnaYckucHKo+a/P4YeoA1p5f1T3HIgkMiMj29uR+PxRNZUmt
+												vj+9+EHAzAHZP7yeoGtdRbQhY3Xrv79oQY43BNJ5P0YwZIy/+jV8Ybq+fuUFZGN0
+												PWcwDP0A2CfIlaoZpHTHq1IdUDQnpOPb9BrgoWkLiCZTQ7S5buC0nEi1ZXEZIPdy
+												gosuxvtBAIYvP5dRczsZ9vby6A0yLfeXzzw++A/5Cr4YdXZfMKN+HvYrxmcxNhaB
+												tL/k6ZvwrBYZn7LqIjJAfX3aL4U41NifQoWBCHZlPEEsvl8g5CjuoRhlItExt2wS
+												SQIDAQAB
+												-----END PUBLIC KEY-----
+											</textarea>
+
+											<input type="hidden" name="encrypted_value" id="encrypted_value">
 											<div class="form-buttons-w text-right compact">
 												<a class="btn btn-primary btn-send-card" href="#"><span>Enviar</span> <i class="icon-feather-check"></i></a>
 											</div>

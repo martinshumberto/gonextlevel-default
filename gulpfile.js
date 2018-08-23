@@ -23,6 +23,7 @@ elixir(function(mix) {
 			'components/Auth-prospect.js',
 			'components/Auth-mask.js',
 			'components/Auth-invoice.js',
+			'components/Auth-moip.js',
 			]);
 
 		mix.scripts([

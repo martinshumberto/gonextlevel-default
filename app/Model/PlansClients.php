@@ -12,7 +12,7 @@ class PlansClients extends Authenticatable
 	protected $table = 'tb_plans_clients';
 	protected $primaryKey  = 'plan_client_id';
 	protected $fillable  = 
-	['plan_id', 'client_id','validate','date_recurrent','status', 'created_at','updated_at'];
+	['plan_id', 'client_id','validate','date_recurrent','type_cicle','status', 'created_at','updated_at'];
     
 
 
@@ -35,6 +35,37 @@ class PlansClients extends Authenticatable
             return 'Ativo';
             break;
         }
+    }
+
+    public function typleCicle()
+    {
+        switch ($this->type_cicle) {
+            case '3':
+            return 'Anual';
+            break;
+            case '2':
+            return 'Trimestral';
+            break;
+            case '1':
+            return 'Mensal';
+            break;
+        }        
+    }
+
+    public function percentage()
+    {
+
+        switch ($this->type_cicle) {
+            case '3':
+            return '-15%';
+            break;
+            case '2':
+            return '-5%';
+            break;
+            case '1':
+            return '';
+            break;
+        } 
     }
 
     public function Plan()

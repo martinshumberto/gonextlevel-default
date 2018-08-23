@@ -40,10 +40,10 @@
 						<div class="invoice-body">
 							<div class="invoice-desc">
 								<div class="desc-label">Fatura #</div>
-								<div class="desc-value">GNL-{!!$inovice->inovice_id!!}</div>
+								<div class="desc-value">GO-{!!$inovice->inovice_id!!}</div>
 							</div>
 							<div class="invoice-table">
-								<input type="hidden" id="key_auth" name="key_auth" value="{!!$key_auth!!}">
+								
 								<table class="table">
 									<thead>
 										<tr>
@@ -56,16 +56,49 @@
 											<td>{!!$plan->title!!}</td>
 											<td class="text-right">R${!!$plan->price()!!}</td>
 										</tr>
-										<tr class="discount" style="display: none;">
-											
+										@if($plan_client->type_cicle != 1)
+										<td class="descount_attr">Desconto {!!$plan_client->typleCicle()!!} </td>
+										<td class="text-right descount_attr"> {!!$plan_client->percentage()!!}</td>
+										@endif
+										@if(!is_null($discounts_client))
+										<tr class="discount" style="">											
+											<td>Cupom de Desconto ({!!$discounts_client->discount->discount_code!!})</td>
+											<td class="text-right">{!!$discounts_client->discount->resultValue()!!}</td>
 										</tr>
+										@endif
 									</tbody>
-									<tfoot>
-										<input type="hidden" name="price_refresh" id="price_refresh" value="">
-										<input type="hidden" name="price_now" id="price_now" value="{!!$plan->price!!}">
+									<tfoot>										
 										<tr class="total-tr">
 											<td>Total</td>
-											<td id="total-inovice" class="text-right" colspan="2">R${!!$plan->price()!!}</td>
+											<td id="total-inovice" class="text-right" colspan="2">R$
+												@php
+												switch ($plan_client->type_cicle) {
+													case 2:
+													$price = ($plan->price * 3);
+													$desconto = ($price * 0.05);
+													$precoAtual = ($price - $desconto);
+
+													break;	
+													case 3:
+													$price = ($plan->price * 12);
+													$desconto = ($price * 0.15);
+													$precoAtual = ($price - $desconto);
+													break;	
+												}
+												switch ($discounts_client->discount->type) {
+													case 2:
+													$precoAtual = ($precoAtual - $discounts_client->discount->value);
+													break;	
+													case 1:
+													$descount_value = ($precoAtual*$discounts_client->discount->value/100);
+													$precoAtual = ($precoAtual - $descount_value);
+													break;	
+												}
+
+												echo $precoAtual;
+
+												@endphp
+											</td>
 										</tr>
 									</tfoot>
 								</table>
@@ -89,110 +122,65 @@
 			<div class="content-box">
 				<div class="element-wrapper">
 					<!--MESSAGE ALERT-->
-					<div class="alert alert-warning borderless" style="display: none;">
-						<h5 class="alert-heading">Fatura em atraso</h5>
+					@if($inovice->status == 1)
+					<div class="alert alert-warning borderless" style="display: block;">
+						<h5 class="alert-heading">Fatura Pendente</h5>
 						<p>Efetue o pagamento ainda hoje e evite o bloqueio de acesso!</p>
 					</div>
+					@endif
+					@if($inovice->status == 2)
+					<div class="alert alert-success borderless" style="display: block;">
+						<h5 class="alert-heading">Fatura Paga</h5>
+						<p>Abaixo Informações de Fatura ja <b>Paga</b>!</p>
+					</div>
+					@endif
+					@if($inovice->status == 3)
+					<div class="alert alert-danger borderless" style="display: block;">
+						<h5 class="alert-heading">Fatura Expirada</h5>
+						<p>Fatura Expirada, consulte o <b>suporte</b> para mais informações!</p>
+					</div>
+					@endif
+					@if($inovice->status == 4)
+					<div class="alert alert-danger borderless" style="display: block;">
+						<h5 class="alert-heading">Fatura Cancelada</h5>
+						<p>Fatura Cancelada, consulte o <b>suporte</b> para mais informações!</p>
+					</div>
+					@endif
 					<!--MESSAGE ALERT-->
 
-					<div class="element-box">
-						<form method="POST" action="{!!route('client-generate-inovice')!!}">
-						{{ csrf_field() }}
-						{{ method_field('PUT') }}
-
-							<h5 class="element-box-header">Informações adicionais para pagamento</h5>
-							<div class="row">
-								<input type="hidden" name="security_key" value="{!!$key_auth!!}">
-								<div class="col-sm-5">
-									<div class="form-group">
-										<label for=""> Cupom de desconto</label>
-										<input name="discount" id="discount" class="form-control" placeholder="XXXXXXXXXXX" type="text">
-									</div>
-								</div>
-								<div class="col-sm-7">
-									<div class="form-group">
-										<label for="">Ciclo de pagamento</label>
-										<select id="cicle-payament" name="cicle-payament" class="form-control">
-											<option value="0">Mensal</option>
-											<option value="1">Trimestral (-5%)</option>
-											<option value="2">Anual (-15%)</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="form-group">
-										<label for="">Forma de pagamento</label>
-										<select id="method-payments" name="method-payments" class="form-control">
-											<option selected value="">Selecione</option>
-											<option value="method-1">Cartão de crédito</option>
-											<option value="method-2">Boleto báncario</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="method method-2 form-buttons-w text-right compact" style="display: none;">
-								<button type="submit" class="btn btn-primary" ><span>Gerar boleto</span><i class="os-icon os-icon-grid-18"></i></button>
-							</div>
-
-						</form>
-					</div>
 
 					<div id="select-method-payments" class="select-method-payments">
 
-						<div class="method method-1 element-box" style="display:none;">
-							<div class="cardpayment">
-								<form method="POST" action="">
-									<h5 class="element-box-header">Cartão de crédito</h5>
-									<div class="row">
-										<div class="col-sm-12">
-											<div class="card-wrapper"></div>
-											<div class="row">
-												<div class="col-sm-6">
-													<div class="form-group">
-														<label for=""> Número do cartão</label>
-														<input class="form-control" id="number" name="number" type="text">
-													</div>
-												</div>
-												<div class="col-sm-6">
-													<div class="form-group">
-														<label for=""> Nome completo (conforme impresso no cartão)</label>
-														<input class="form-control" id="name" name="name" type="text">
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-sm-6">
-													<div class="form-group">
-														<label for=""> Válidade do cartão</label>
-														<input class="form-control" id="expiry" name="expiry" type="text">
-													</div>
-												</div>
-												<div class="col-sm-6">
-													<div class="form-group">
-														<label for=""> CVC</label>
-														<input class="form-control" id="cvc" name="cvc" type="text">
-													</div>
-												</div>
-											</div>
-											<div class="form-buttons-w text-right compact">
-												<a class="btn btn-primary" href="#"><span>Enviar</span> <i class="icon-feather-check"></i></a>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-
-						<div class="method method-3 element-box" style="display:none;">
+						
+						<div class="method method-3 element-box" style="display:block;">
 							<h5 class="element-box-header">Boleto báncario</h5>
 							<div class="row">
 								<div class="col-sm-12">
-									<object data="https://www.boletobancario.com/boletofacil/img/boleto-facil-exemplo.pdf" 
-									type="application/pdf" width="100%" height="600px">
-									<iframe src="https://docs.google.com/viewer?url=www.boletobancario.com/boletofacil/img/boleto-facil-exemplo.pdf&embedded=true"></iframe>
+									<iframe style=" width:  100%; height:  500px; border:  none; " src="{!!$inovice->gateway_response!!}"></iframe>
 								</object>
+							</div>
+							<div class="row" style="margin-top: 15px;">
+								<div class="col-sm-6">
+									<button data-target=".bd-example-modal-lg" data-toggle="modal" class="mr-2 mb-2 btn btn-secondary" type="button"> 
+										<i class="os-icon os-icon-search"></i> Expandir Boleto
+									</button>
+									<div class="modal fade bd-example-modal-lg"tabindex="-1" style="display: none;" aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Boleto</h5>
+													<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+														<span aria-hidden="true"> ×</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<iframe style=" width:  100%; height:  700px; border:  none; " src="{!!$inovice->gateway_response!!}"></iframe>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

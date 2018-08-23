@@ -9,9 +9,9 @@ START - Breadcrumbs
 <ul class="breadcrumb">
 	<li class="breadcrumb-item">
 		<a href="{!!route('client-dashboard')!!}">Dashboard</a>
-	</li>
+	</li>	
 	<li class="breadcrumb-item">
-		<a href="{!!route('client-signature')!!}">Assinaturas</a>
+		<span>Assinaturas</span>
 	</li>
 	<li class="breadcrumb-item">
 		<span>Histórico de Faturas</span>
@@ -54,13 +54,7 @@ END - Breadcrumbs
 				-------------------->
 				<div class="controls-above-table">
 					<div class="row">
-						<div class="col-sm-6">
-							<a class="btn btn-sm btn-secondary" href="#">Arquivar</a>
-							<a class="btn btn-sm btn-danger" href="#">Deletar</a></div>
-							<div class="col-sm-6 form-inline justify-content-sm-end">
-								<a class="btn btn-sm btn-secondary" href="#">Exportar para Excel</a>
-							</div>
-						</div>
+						
 					</div>
 				<!--------------------
 				END - Controls Above Table
@@ -73,52 +67,44 @@ END - Breadcrumbs
 					<table class="table table-lightborder">
 						<thead>
 							<tr>
-								<th><input class="form-control" type="checkbox"></th>
+								
 								<th>ID</th>
 								<th>Nome do Produto</th>
 								<th>Vencimento</th>
 								<th>Paga em</th>
 								<th>Método de Pagamento</th>
+								<th>Valor</th>
 								<th class="text-center">Status</th>
 								<th class="text-right">Ações</th>
 							</tr>
 						</thead>
 
 						<tbody>
+							@foreach($inovices as $value)
 							<tr>
-								<td><input class="form-control" type="checkbox"></td>
-								<td>#GO-2</td>
-								<td>Plano III (Avançado)</td>
-								<td>21/08/2018</td>
+								
+								<td>#GO-{!!$value->inovice_id!!}</td>
+								<td>{!!$value->Plan->title!!}</td>
+								<td>
+									@php
+									$data = $value->created_at; 
+									echo date('d/m/Y', strtotime("+3 days",strtotime($data))); 
+									@endphp
+								</td>
 								<td>-</td>
-								<td>-</td>
+								<td>{!!$value->type()!!}</td>
+								<td>{!!$value->price()!!}</td>
 								<td class="text-center">
-									<span class="status-pill smaller orange"></span>
-									<span>Em Aberto</span>
+									<span class="status-pill smaller {!!$value->colorTarget()!!}"></span>
+									<span>{!!$value->status()!!}</span>
 								</td>
 								<td class="row-actions text-right">
-									<a href="">
+									<a href="{!!route('client-view-invoice', $value->inovice_id)!!}">
 										<i class="os-icon os-icon-ui-37"></i>
 									</a>
 								</td>
 							</tr>	
-							<tr>
-								<td><input class="form-control" type="checkbox"></td>
-								<td>#GO-1</td>
-								<td>Plano III (Avançado)</td>
-								<td>21/07/2018</td>
-								<td>20/07/2018</td>
-								<td>Boleto</td>
-								<td class="text-center">
-									<span class="status-pill smaller green"></span>
-									<span>Paga</span>
-								</td>
-								<td class="row-actions text-right">
-									<a href="">
-										<i class="os-icon os-icon-ui-37"></i>
-									</a>
-								</td>
-							</tr>					
+							@endforeach			
 						</tbody>
 					</table>
 					<!--------------------
@@ -132,7 +118,7 @@ END - Breadcrumbs
 
 						<div style="display: block;" class="table-records-info">
 						</div>
-   
+
 					</div>
 					<!--------------------
 					END - Controls Below Table

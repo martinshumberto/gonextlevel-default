@@ -49,6 +49,11 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 	Route::get('/assinatura/visualizar/fatura/{id}', array('as' => 'client-view-invoice', 'uses' => 'InovicesController@view'));
 	Route::get('/assinatura/historico-faturas', array('as' => 'client-historic-invoice', 'uses' => 'InovicesController@historic'));
 
+	# Visualizar Boleto
+	Route::get('/view/boleto/pdf/{id}', array('as' => 'client-view-boleto', 'uses' => 'InovicesController@boleto'));
+
+	# Cria Pagamento com Cartao
+	Route::post('/create/auth/credcard', array('as' => 'client-view-credcard', 'uses' => 'InovicesController@CredCard'));
 
 	/* Info Client */
 	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@info'));

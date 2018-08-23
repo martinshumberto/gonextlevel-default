@@ -38,6 +38,18 @@ class Discounts extends Authenticatable
             break;
         }
     }
+
+    public function resultValue()
+    {
+        switch ($this->type) {
+            case '2':
+            return '-'.$this->value;
+            break;
+            case '1':
+            return '-'.$this->value."%";
+            break;
+        }
+    }
     
     public function price()
     {

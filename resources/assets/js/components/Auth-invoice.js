@@ -82,20 +82,23 @@
                             type: 'error',
                             title: 'Ops...',
                             text: 'Codigo Invalido!'
-                        })
+                        });
+                        $("#discount").val();
                     }else if(data.result == "expired"){
                         swal({
                             type: 'error',
                             title: 'Ops...',
                             text: 'Cupom Vencido!'
-                        })
+                        });
+                        $("#discount").val();
 
                     }else if(data.result == "registered"){
                         swal({
                             type: 'error',
                             title: 'Ops...',
                             text: 'Cupom ja registrado em seu Cadastro!'
-                        })
+                        });
+                        $("#discount").val();
                     }else if(data.result == "success"){
                         swal({
                             type: 'success',
