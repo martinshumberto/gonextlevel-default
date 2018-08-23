@@ -19,6 +19,7 @@ class CreateTbPlansClientsTable extends Migration {
 			$table->integer('client_id');
 			$table->date('validate');
 			$table->integer('date_recurrent');
+			$table->integer('type_cicle')->nullable();
 			$table->integer('status');
 			$table->timestamps();
 		});
