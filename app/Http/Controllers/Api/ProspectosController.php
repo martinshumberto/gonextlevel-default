@@ -33,17 +33,17 @@ class ProspectosController extends ClientController
 
 		switch ($stage) {
 			case 1:
-				$stage_offset = 'Convidar';
-				break;
+			$stage_offset = 'Convidar';
+			break;
 			case 2:
-				$stage_offset = 'Apresentar';
-				break;
+			$stage_offset = 'Apresentar';
+			break;
 			case 3:
-				$stage_offset = 'Acompanhar';
-				break;
+			$stage_offset = 'Acompanhar';
+			break;
 			case 4:
-				$stage_offset = 'Fechamento';
-				break;
+			$stage_offset = 'Fechamento';
+			break;
 		}
 
 		# Registra Log de Atividade de Usuário
@@ -200,5 +200,16 @@ class ProspectosController extends ClientController
 		response()->
 		json(array('result' => "error"));
 		
+	}
+
+	public function graphDashboard()
+	{
+
+		return 
+		response()->
+		json(
+			array("meses" => array("Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho"), 
+				"cadastro" => array("12", "25", "52", "15", "20", "14", "7"),
+				"apresentacao" => array("5", "7", "20", "6", "2", "5", "9")));
 	}
 }

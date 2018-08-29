@@ -73,6 +73,9 @@
 											<td id="total-inovice" class="text-right" colspan="2">R$
 												@php
 												switch ($plan_client->type_cicle) {
+													case 1:
+													$precoAtual = $plan->price;
+													break;	
 													case 2:
 													$price = ($plan->price * 3);
 													$desconto = ($price * 0.05);
@@ -85,14 +88,17 @@
 													$precoAtual = ($price - $desconto);
 													break;	
 												}
-												switch ($discounts_client->discount->type) {
-													case 2:
-													$precoAtual = ($precoAtual - $discounts_client->discount->value);
-													break;	
-													case 1:
-													$descount_value = ($precoAtual*$discounts_client->discount->value/100);
-													$precoAtual = ($precoAtual - $descount_value);
-													break;	
+												if(!is_null($discounts_client)){
+
+													switch ($discounts_client->discount->type) {
+														case 2:
+														$precoAtual = ($precoAtual - $discounts_client->discount->value);
+														break;	
+														case 1:
+														$descount_value = ($precoAtual*$discounts_client->discount->value/100);
+														$precoAtual = ($precoAtual - $descount_value);
+														break;	
+													}
 												}
 
 												echo $precoAtual;

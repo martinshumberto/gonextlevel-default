@@ -25,4 +25,13 @@ return [
     'create-phone' => 'Telefone',
     'create-submit' => 'Realizar Cadastro',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Textos de Alerts
+    |--------------------------------------------------------------------------
+    */
+    'create-phone' => 'Telefone',
+    'create-submit' => 'Realizar Cadastro',
+
 ];

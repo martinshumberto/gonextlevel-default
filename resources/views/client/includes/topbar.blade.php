@@ -202,7 +202,7 @@ START - Main Menu
 	<h1 class="menu-page-header">Menu</h1>
 	<ul class="main-menu">
 		<li class="sub-header"><span>Navegação</span></li>
-		<li class="selected">
+		<li class="@if(Route::currentRouteName() == "client-dashboard") selected @endif">
 			<a href="{!!route('client-dashboard')!!}">
 				<div class="icon-w">
 					<div class="os-icon os-icon-layout"></div>

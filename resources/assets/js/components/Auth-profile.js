@@ -69,6 +69,7 @@
 		});
 
 	} 
-	new Profile();
+	new Profile();	
+
 
 }(jQuery));

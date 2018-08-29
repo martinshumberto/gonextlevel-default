@@ -4,43 +4,6 @@
 @section('content')
 
 
-{{--content here--}}
-
-<?php
-
-//	$dtToday = date("Y-m-d");
-//	$dtPrev = date("Y-m-d", strtotime("-1 months"));
-//
-//	$query = "<<< SQL
-//	SELECT COUNT(1), pipeline_id
-//	FROM pipeline_status
-//	WHERE active = 1
-//		AND MONTH(created_at) = MONTH({$dtToday})
-//		AND YEAR(created_at) = YEAR($dtToday())
-//	GROUP BY pipeline_id
-//";
-
-
-$status = [
-	'convidar' => [
-		'quantidade' => 90,
-		'percent' => 12,
-	],
-	'apresentar' => [
-		'quantidade' => 5,
-		'percent' => 12,
-	],
-	'acompanhar' => [
-		'quantidade' => 2,
-		'percent' => -9,
-	],
-	'fechamento' => [
-		'quantidade' => 5,
-		'percent' => -9,
-	]
-];
-?>
-
 	<!--------------------
 	START - Breadcrumbs
 	-------------------->
@@ -68,6 +31,23 @@ $status = [
 					</div>
 					@endif
 
+					@if($client->status == 1)
+						@if($plansClients->plan_id == 1)
+							<div class="alert alert-warning alert-dismissible fade show" role="alert">
+								
+								<strong>Atenção! </strong>
+								@php
+								$data_inicial = date("Y-m-d"); 
+								$data_final = $plansClients->validate; 
+								$diferenca = strtotime($data_final) - strtotime($data_inicial);
+								$prazo = floor($diferenca / (60 * 60 * 24));
+								@endphp
+								Faltam {!!$prazo!!} dias para o <b>Fim</b> do seu plano de GRATIS da nossa plataforma<br>
+								Realize agora um <a href="{!!route('client-plans')!!}">Upgrade</a>, e nao perca seus dados!
+							</div>
+						@endif
+					@endif
+
 					<div class="alert alert-warning alert-dismissible fade show" role="alert" style="display: none;">
 						<button aria-label="Close" class="close" data-dismiss="alert" type="button">
 							<span aria-hidden="true"> ×</span>
@@ -86,44 +66,36 @@ $status = [
 
 
 					<div class="element-wrapper">
-						<div class="element-actions">
-							<form class="form-inline justify-content-sm-end">
-								<select class="form-control form-control-sm rounded">
-									<option value="hoje">Hoje </option>
-									<option value="semana" selected>Semana </option>
-									<option value="mes">Mês </option>
-								</select>
-							</form>
-						</div>
+						
 						<h6 class="element-header">Dashboard</h6>
 						<div class="element-content">
 							<div class="row">
 								<div class="col-sm-3">
 									<a class="element-box el-tablo" href="#">
 										<div class="label">Convidar</div>
-										<div class="value"><?php echo $status['convidar']['quantidade']; ?></div>
-										<div class="trending <?php echo ($status['convidar']['percent'] > 0) ? 'trending-up-basic' : 'trending-down-basic'; ?>"><span><?php echo ($status['convidar']['percent'] > 0) ? $status['convidar']['percent'] : (-1*$status['convidar']['percent']); ?></span><i class="os-icon os-icon-arrow-up2"></i></div>
+										<div class="value"><?php echo $grafico['convidar']['quantidade']; ?></div>
+										
 									</a>
 								</div>
 								<div class="col-sm-3">
 									<a class="element-box el-tablo" href="#">
 										<div class="label">Apresentar</div>
-										<div class="value">5</div>
-										<div class="trending <?php echo ($status['apresentar']['percent'] > 0) ? 'trending-up-basic' : 'trending-down-basic'; ?>"><span><?php echo ($status['apresentar']['percent'] > 0) ? $status['apresentar']['percent'] : (-1*$status['apresentar']['percent']); ?></span><i class="os-icon os-icon-arrow-down"></i></div>
+										<div class="value"><?php echo $grafico['apresentar']['quantidade']; ?></div>
+										
 									</a>
 								</div>
 								<div class="col-sm-3">
 									<a class="element-box el-tablo" href="#">
 										<div class="label">Acompanhar</div>
-										<div class="value">2</div>
-										<div class="trending trending-down-basic"><span>9%</span><i class="os-icon os-icon-arrow-down"></i></div>
+										<div class="value"><?php echo $grafico['acompanhar']['quantidade']; ?></div>
+										
 									</a>
 								</div>
 								<div class="col-sm-3">
 									<a class="element-box el-tablo" href="#">
 										<div class="label">Fechamento</div>
-										<div class="value">5</div>
-										<div class="trending trending-down-basic"><span>9%</span><i class="os-icon os-icon-arrow-down"></i></div>
+										<div class="value"><?php echo $grafico['fechamento']['quantidade']; ?></div>
+										
 									</a>
 								</div>
 							</div>
@@ -135,13 +107,26 @@ $status = [
 				<div class="col-sm-12">
 					<div class="element-wrapper">
 						<h6 class="element-header">Desempenho Anual</h6>
-						<div class="element-box">
-							<h5 class="form-header">Apresentações e Cadastros</h5>
-							<div class="form-desc"><i class="fa fa-info-circle"></i> Para fazer <strong>1 cadastro</strong>, você apresentou <strong>14 APN(s)</strong> em média.</div>
-							<div class="el-chart-w">
-								<canvas height="145" id="barChart1" width="300"></canvas>
+
+						<div class="element-content">
+							<div class="row">		
+								<div class="col-md-12">								
+									<div class="element-wrapper">								
+										<div class="element-box">
+											<h5 class="form-header">
+												Apresentações e Cadastros
+											</h5>
+											<div class="form-desc">
+												Para fazer 1 cadastro, você apresentou 14 APN(s) em média.
+											</div>
+											<div class="el-chart-w">
+												<canvas height="145" id="analitycs-dashboard" width="300"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>						
 							</div>
-						</div>
+						</div>						
 					</div>
 				</div>
 			</div>

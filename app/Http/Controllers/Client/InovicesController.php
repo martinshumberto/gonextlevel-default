@@ -47,9 +47,43 @@ class InovicesController extends ClientController
 
 	public function inovice(Request $request, $id)
 	{
+
+		$client = Clients::where('client_id', Auth::user()->client_id)->first();
+
+		if($client->email == '' 
+			|| $client->name == ''  	
+			|| $client->cpf == ''  		
+			|| $client->cpf == NULL  	
+			|| $client->cpf == 'NULL'  	
+			|| $client->phone == ''  	
+			|| $client->phone == NULL  	
+			|| $client->phone == 'NULL'  	
+			|| $client->birthdate == ''  	
+			|| $client->birthdate == 'NULL'  	
+			|| $client->states_id == ''  	
+			|| $client->states_id == 'NULL'  	
+			|| $client->states_id == NULL  	
+			|| $client->cities_id == ''  	
+			|| $client->cities_id == 'NULL'  	
+			|| $client->cities_id == NULL  	
+			|| $client->district == ''  	
+			|| $client->district == 'NULL'  	
+			|| $client->district == NULL  	
+			|| $client->address == ''  	
+			|| $client->address == 'NULL'  	
+			|| $client->address == NULL  	
+			|| $client->number == ''  	
+			|| $client->number == 'NULL'  	
+			|| $client->number == NULL  	
+			|| $client->zipcode == ''  	
+			|| $client->zipcode == 'NULL'  	
+			|| $client->zipcode == NULL )
+		{
+			return redirect(route('client-info'))->withErrors(array("type" => "danger", "msg" => "Complete seu cadastro antes de realizar um compra!"));
+		}	
+
 		
 		$plan = Plans::where('status', '1')->where('plan_id', $id)->first();
-		$client = Clients::where('client_id', Auth::user()->client_id)->first();
 		$planClient = PlansClients::where('status', '1')->where('client_id', $client->client_id)->first();
 
 		$key = $plan->price() . ":" . $plan->plan_id . ":" . $client->client_id;
