@@ -14,6 +14,9 @@ Route::namespace('Guest')->group(function () {
 	Route::get('/cadastro', array('as' => 'guest-register', 'uses' => 'RegisterController@show'));	
 	Route::post('/cadastro', array('as' => 'guest-register-create', 'uses' => 'RegisterController@create'));
 
+
+	Route::get('/testes', array('as' => 'guest-tests', 'uses' => 'TestesController@index'));
+
 });
 /*
 |--------------------------------------------------------------------------
