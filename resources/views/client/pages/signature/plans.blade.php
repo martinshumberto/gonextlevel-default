@@ -40,7 +40,7 @@
 						<div class="plan-btn-w">
 							@if($planClient->plan_id == $value->plan_id)
 							<a class="btn btn-secondary btn-rounded" href="javascript:void(0);" >
-								Assinado
+								{!!($planClient->status())!!}
 							</a>
 							@else
 							<a class="btn btn-primary btn-rounded" 

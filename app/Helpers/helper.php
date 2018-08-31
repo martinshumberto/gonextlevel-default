@@ -127,3 +127,19 @@ function percentage($result, $count)
     $problem = (($result / $count) * 100);
     return  $problem;
 }
+
+if (!function_exists('policiesAgent')) {
+
+    function policiesAgent($modulo, $modules)
+    {
+        $modules = explode(':', $modules);
+
+        foreach ($modules as $key => $value) {
+            if($value == $modulo){
+                return true;
+            }
+        }
+
+    }
+
+}

@@ -14,7 +14,7 @@ class PlansController extends ClientController
 	public function show()
 	{
 		$plans = Plans::where('status', '1')->orderBy('plan_id', 'ASC')->take(3)->get();
-		$planClient = PlansClients::where('status', '1')->where('client_id', Auth::user()->client_id)->first();
+		$planClient = PlansClients::where('client_id', Auth::user()->client_id)->first();
 		$total = count($plans);
 
 		if(is_null($planClient)){		
@@ -26,7 +26,7 @@ class PlansController extends ClientController
 				'status' => 1
 			]);
 		}
-		$planClient = PlansClients::where('status', '1')->where('client_id', Auth::user()->client_id)->first();
+		$planClient = PlansClients::where('client_id', Auth::user()->client_id)->first();
 
 		return view("client/pages/signature/plans", array(
 			"plans" => $plans,

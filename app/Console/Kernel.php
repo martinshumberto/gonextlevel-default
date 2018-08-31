@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //Commands\getApresentations::class,
+        Commands\InoviceSchulled::class,
+        Commands\PlansSchulled::class,
         //
     ];
 
@@ -25,7 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-       
+       $schedule->command('inovice:cron')->everyMinute();
+       $schedule->command('plans:cron')->daily(); 
     }
 
     /**

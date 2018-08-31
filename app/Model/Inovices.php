@@ -17,6 +17,12 @@ class Inovices extends Authenticatable
     public function status()
     {   
         switch ($this->status) {
+            case '6':
+            return 'Estornado';
+            break;
+            case '5':
+            return 'Reembolso';
+            break;
             case '4':
             return 'Cancelado';
             break;
@@ -24,10 +30,10 @@ class Inovices extends Authenticatable
             return 'Expirado/Vencido';
             break;
             case '2':
-            return 'Paga';
+            return 'Pendente';
             break;
             case '1':
-            return 'Pedente';
+            return 'Paga';
             break;
         }
     }

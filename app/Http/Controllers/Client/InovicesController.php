@@ -512,4 +512,19 @@ class InovicesController extends ClientController
 		return file_get_contents($inovice->gateway_response);
 	}
 
+	public function verifyInovice(Request $request, $id)
+	{
+		echo "<pre>";
+		$moip = new Moip(new BasicAuth($this->token, $this->key), Moip::ENDPOINT_SANDBOX);
+
+		$payment = $moip->payments()->get($id);
+		$response = json_encode($payment);
+		$response = json_decode($response);
+
+		echo "<br>";
+		echo $response->status;
+
+		die;
+	}
+
 }

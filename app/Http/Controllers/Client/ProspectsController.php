@@ -8,14 +8,36 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Model\Prospects;
 use App\Model\Apresentations;
-use Auth;
+
 use DB;
+
+# CLIENTS & PLANS
+use App\Model\Clients;
+use App\Model\PlansClients;
+use App\Model\Plans;
+use Auth;
 
 class ProspectsController extends ClientController
 {
 
+	# Chaves do Modulo
+	private $module 			= "a";
+	private $reportProspect		= "d";
+	/* ~~~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~~~ */
+
+
 	public function index(Request $request)
 	{
+
+		$client = Clients::where('client_id', Auth::user()->client_id)->first();
+		$plansClient = PlansClients::where('client_id', $client->client_id)->first();
+		$plan = Plans::where('plan_id', $plansClient->plan_id)->first();
+
+		if(!policiesAgent($this->module, $plan->modules)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Você não tem permissão!"));
+			die;
+		}
+
 
 		$client_id = Auth::user()->client_id;
 		$prospects = Prospects::orderBy("prospect_id", "DESC")->where('client_id', $client_id);
@@ -57,6 +79,15 @@ class ProspectsController extends ClientController
 	}		
 	public function pipeline()
 	{
+		
+		$client = Clients::where('client_id', Auth::user()->client_id)->first();
+		$plansClient = PlansClients::where('client_id', $client->client_id)->first();
+		$plan = Plans::where('plan_id', $plansClient->plan_id)->first();
+
+		if(!policiesAgent($this->module, $plan->modules)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Você não tem permissão!"));
+			die;
+		}
 		# Listagem apenas de alguns status
 		$wherIn = [1,3,4];
 
@@ -96,6 +127,15 @@ class ProspectsController extends ClientController
 
 	public function trash(Request $request, $id)
 	{
+		
+		$client = Clients::where('client_id', Auth::user()->client_id)->first();
+		$plansClient = PlansClients::where('client_id', $client->client_id)->first();
+		$plan = Plans::where('plan_id', $plansClient->plan_id)->first();
+
+		if(!policiesAgent($this->module, $plan->modules)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Você não tem permissão!"));
+			die;
+		}
 		try {
 
 
@@ -115,6 +155,15 @@ class ProspectsController extends ClientController
 
 	public function ViewProspect(Request $request, $id)
 	{
+		
+		$client = Clients::where('client_id', Auth::user()->client_id)->first();
+		$plansClient = PlansClients::where('client_id', $client->client_id)->first();
+		$plan = Plans::where('plan_id', $plansClient->plan_id)->first();
+
+		if(!policiesAgent($this->module, $plan->modules)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Você não tem permissão!"));
+			die;
+		}
 
 		$prospect = Prospects::where('client_id', Auth::user()->client_id)->where('prospect_id', $id)->first();
 		$apresentations = Apresentations::where('client_id', Auth::user()->client_id)->where('prospect_id', $id)->orderBy('created_at', 'DESC')->get();

@@ -48,6 +48,7 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 	Route::put('/assinatura/gerar/fatura/', array('as' => 'client-generate-inovice', 'uses' => 'InovicesController@store'));
 	Route::get('/assinatura/visualizar/fatura/{id}', array('as' => 'client-view-invoice', 'uses' => 'InovicesController@view'));
 	Route::get('/assinatura/historico-faturas', array('as' => 'client-historic-invoice', 'uses' => 'InovicesController@historic'));
+	Route::get('/assinatura/verificar/{id}', array('as' => 'client-verify', 'uses' => 'InovicesController@verifyInovice'));
 
 	# Visualizar Boleto
 	Route::get('/view/boleto/pdf/{id}', array('as' => 'client-view-boleto', 'uses' => 'InovicesController@boleto'));

@@ -32,7 +32,8 @@
 					@endif
 
 					@if($client->status == 1)
-						@if($plansClients->plan_id == 1)
+						@if($plansClients->plan_id == "1")
+							@if($plansClients->status == "1")
 							<div class="alert alert-warning alert-dismissible fade show" role="alert">
 								
 								<strong>Atenção! </strong>
@@ -44,6 +45,29 @@
 								@endphp
 								Faltam {!!$prazo!!} dias para o <b>Fim</b> do seu plano de GRATIS da nossa plataforma<br>
 								Realize agora um <a href="{!!route('client-plans')!!}">Upgrade</a>, e nao perca seus dados!
+							</div>
+							@endif
+							@if($plansClients->status == "3")
+							<div class="alert alert-warning alert-dismissible fade show" role="alert">
+								
+								<strong>Atenção! </strong>
+								@php
+								$data_inicial = date("Y-m-d"); 
+								$data_final = $plansClients->date_block; 
+								$diferenca = strtotime($data_final) - strtotime($data_inicial);
+								$prazo = floor($diferenca / (60 * 60 * 24));
+								@endphp
+								Você tem {!!$prazo!!} dias para o <b>Atualizar</b> seu plano <br>
+								Realize agora um <a href="{!!route('client-plans')!!}">Upgrade</a>, e nao perca seus dados!
+							</div>
+							@endif
+						@endif
+						@if($plansClients->status == "2")
+							<div class="alert alert-warning alert-dismissible fade show" role="alert">
+								
+								<strong>Atenção! </strong>								
+								Sua fatura ainda não foi confirmada o pagamento. Está como <b>Pendente!</b><br>
+								Verifique agora <a href="{!!route('client-historic-invoice')!!}">suas faturas</a>!
 							</div>
 						@endif
 					@endif
@@ -58,8 +82,8 @@
 					</div>
 
 					<!-- ERROS DE SISTEMA -->
-					@if($errors->any())
-					<div style="padding-top: 6px;padding-bottom: 6px;padding-left: 7px;padding-right: 7px;background: #dc0000;color:  white;border: solid 1px #f51111;border-radius:  5px; margin-bottom: 10px;" class="alert alert-{{$errors->first('type')}}" role="alert">{{$errors->first('msg')}}</div>
+					@if($errors->any())            
+					<div style="padding-top: 15px; padding-bottom: 15px; margin-bottom:20px; font-size: 16px;" class="col-md-12  btn-{{$errors->first('type')}} " href="#">{{$errors->first('msg')}}</div>
 					@endif
 
 					<!-- Close Alerts -->

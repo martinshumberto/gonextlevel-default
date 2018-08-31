@@ -8,19 +8,27 @@ use App\Http\Controllers\ClientController;
 # CLIENTS & PLANS
 use App\Model\Clients;
 use App\Model\PlansClients;
+use App\Model\Plans;
 use Auth;
 
 
 class ScheduleController extends ClientController
 {
 
+	# Chave do Modulo
+	private $module = "h";
+	/* ~~~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~~~ */
+
+
 	public function show()
 	{
 		$client = Clients::where('client_id', Auth::user()->client_id)->first();
 		$plansClient = PlansClients::where('client_id', $client->client_id)->first();
+		$plan = Plans::where('plan_id', $plansClient->plan_id)->first();
 
-		if(($plansClient->plan_id == "1")){
+		if(!policiesAgent($this->module, $plan->modules)){
 			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Você não tem permissão!"));
+			die;
 		}
 
 		return view("client/pages/apps/schedule");

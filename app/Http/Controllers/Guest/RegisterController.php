@@ -28,6 +28,14 @@ class RegisterController extends GuestController
                 return redirect(route('guest-register'))->withErrors(array("type" => "error", "msg" => "As senhas não conferem!"));
                 die;
             }
+
+            # Verifica sem Email ja existe:
+            $client = Clients::where('email', $request->input('email'))->first();
+
+            if(!is_null($client)){
+                return redirect(route('guest-register'))->withErrors(array("type" => "error", "msg" => "Email ja Registrado no Sistema!"));
+                die;                
+            }
             
             $client = Clients::create([
                 'name' => $request->input('name'),
