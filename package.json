@@ -24,6 +24,7 @@
         "ajv": "^6.5.2",
         "ajv-keywords": "^3.2.0",
         "gulp-install": "^1.1.0",
-        "laravel-elixir": "^6.0.0-18"
+        "laravel-elixir": "^6.0.0-18",
+        "npm": "^6.4.1"
     }
 }
