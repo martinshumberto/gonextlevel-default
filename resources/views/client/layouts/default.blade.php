@@ -30,6 +30,9 @@
     <link href="{!!url("/")!!}/public/css/gonextlevel.css?version=4.4.0" rel="stylesheet">
     <script type="text/javascript" src="//assets.moip.com.br/v2/moip.min.js"></script>
 
+    <link href="{!!url("/")!!}/public/css/library.css?version=4.4.0" rel="stylesheet">
+
+
     <script>
         /* 
         function changeBody() {
@@ -45,7 +48,7 @@
 </head>
 <body class="menu-position-top full-screen with-content-panel">
     <div class="all-wrapper with-side-panel solid-bg-all">
-        
+
         <div class="layout-w">
             <!-- topbar/menu content -->
             @include('client.includes.topbar')
@@ -59,6 +62,8 @@
         <div class="display-type"></div>
     </div>
 
+    <!-- Chat Box -->
+    @include('client.includes.chat')
 
     <!-- Register Modal -->
     @include('client.includes.register')
@@ -105,9 +110,17 @@
     <!-- Include Card-->
     <script src="{!!url("/")!!}/public/libs/card/dist/jquery.card.js"></script>
 
+
+
+    <script src="{{asset('public'.elixir('js/app-libs.js'))}}"></script> 
+
     <script src="{!!url("/")!!}/public/js/main.js?version={!!time()!!}"></script>
-    <script src="{!!url("/")!!}/public/js/all.js?version={!!time()!!}"></script>
-    <script src="{!!url("/")!!}/public/js/app.js?version={!!time()!!}"></script>
+    @if (file_exists("public/js/".Route::currentRouteName().".js"))
+    <script src="{{asset('public'.elixir('js/'.Route::currentRouteName().'.js'))}}" async></script>  
+    @else
+    <script src="{{asset('public'.elixir('js/default.js'))}}" async></script>  
+    @endif
+
 
 </body>
 </html>

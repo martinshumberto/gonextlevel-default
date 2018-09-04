@@ -81,7 +81,7 @@ START - Mobile Menu
 						<span>Aplicativos</span>
 					</a>
 					<ul class="sub-menu">
-						<li><a href="/aplicativos/chat">Chat <strong class="badge badge-danger">Novo</strong></a></li>
+						<li><a href="{!!route('client-chat')!!}">Chat <strong class="badge badge-danger">Novo</strong></a></li>
 						<li><a href="{!!route('client-schedule')!!}">Agenda</a></li>
 						<li><a href="/aplicativos/equipe">Gestor de Equipe <strong class="badge badge-danger">Novo</strong></a></li>
 					</ul>
@@ -266,7 +266,7 @@ START - Main Menu
 				<div class="sub-menu-icon"><i class="icon-feather-zap"></i></div>
 				<div class="sub-menu-i">
 					<ul class="sub-menu">
-						<li><a href="/aplicativos/chat">Chat <strong class="badge badge-warning">Em breve</strong></a></li>
+						<li><a href="{!!route('client-chat')!!}">Chat <strong class="badge badge-warning">Em breve</strong></a></li>
 						<li><a href="{!!route('client-schedule')!!}">Agenda</a></li>
 						<li><a href="/aplicativos/gestor-de-equipe">Gestor de Equipe <strong class="badge badge-warning">Em breve</strong></a></li>
 					</ul>

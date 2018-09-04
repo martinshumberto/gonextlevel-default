@@ -177,4 +177,18 @@ class ProspectsController extends ClientController
 		));
 	}
 
+	public function report()
+	{
+		
+		
+		$client = Clients::where('client_id', Auth::user()->client_id)->first();
+		$plansClient = PlansClients::where('client_id', $client->client_id)->first();
+		$plan = Plans::where('plan_id', $plansClient->plan_id)->first();
+
+		if(!policiesAgent($this->reportProspect, $plan->modules)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Você não tem permissão!"));
+			die;
+		}
+	}
+
 }

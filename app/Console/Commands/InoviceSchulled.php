@@ -45,7 +45,7 @@ class InoviceSchulled extends Command
     public function handle()
     {
         $moip = new Moip(new BasicAuth('QRCHHIZYDFJPASWASI1DUC7FZ0UGH3ZO', 'AM7AS2B66JSB882MNCDPA9TQUDCY128ADKSQAQ2M'), Moip::ENDPOINT_SANDBOX);
-        $inovices = DB::table('tb_inovices')->where('status', '1')->orderBy("inovice_id", "DESC")->get();
+        $inovices = DB::table('tb_inovices')->where('status', '2')->orderBy("inovice_id", "DESC")->get();
 
         foreach ($inovices as $value) {
 

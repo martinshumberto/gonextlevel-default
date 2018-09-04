@@ -200,7 +200,12 @@
 
 											<input type="hidden" name="encrypted_value" id="encrypted_value">
 											<div class="form-buttons-w text-right compact">
-												<a class="btn btn-primary btn-send-card" href="#"><span>Enviar</span> <i class="icon-feather-check"></i></a>
+												<a class="btn btn-primary btn-send-card" href="#">
+													<span>Enviar</span> 
+													<i class="icon-feather-check"></i></a>
+													<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
+												</a>
+
 											</div>
 										</div>
 									</div>

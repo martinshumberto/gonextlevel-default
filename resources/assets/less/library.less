@@ -1,1 +1,23 @@
 @import "libs/sweetalert2.less";
+
+
+.icon-hover-tooltip{
+
+	span{
+		display: inline-block;
+		position: absolute;
+		background-color: #047bf8;
+		color: #fff;
+		padding: 4px 7px;
+		border-radius: 4px;
+		font-size: .81rem;
+		white-space: nowrap;
+		display: none;
+	}
+
+	&:hover{
+		span{
+			display: block;
+		}
+	}
+}

@@ -38,7 +38,11 @@
 		});
 
 
-		$("#upload_select").on("click", function() {
+		$("#upload_select").on("click", function(event) {
+			
+			event.preventDefault();
+           //do something
+           $(this).prop('disabled', true);
 
 			$("#selet-file").css("opacity", "0.5");
 			$(".loading").show();

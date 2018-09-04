@@ -16,7 +16,7 @@ class ActivityLog extends Model
         return $this->hasOne('App\Model\Clients', 'client_id', 'client_id');
     }
 
-    public function Action()
+    public function action()
     {
 
     	$acao = explode(':', $this->action);
@@ -47,6 +47,8 @@ class ActivityLog extends Model
             $acao = "Movido";
             break;
         }
+
+        return $module . " " . $acao;
     }
     /*
 	Explicacao

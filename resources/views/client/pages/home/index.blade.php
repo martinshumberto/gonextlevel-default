@@ -167,38 +167,16 @@
 				<h6 class="element-header">Atividade Recente</h6>
 				<div class="element-box-tp">
 					<div class="activity-boxes-w">
+						@foreach($activits as $value)
 						<div class="activity-box-w">
-							<div class="activity-time">10 Min</div>
+							<div class="activity-time">{!!getTimeLast($value->created_at)!!}</div>
 							<div class="activity-box">
 								<div class="activity-info">
-									<div class="activity-role">152.202.105.88</div><strong class="activity-title">Novo prospecto cadastrado</strong>
+									<div class="activity-role">{!!$value->ip!!}</div><strong class="activity-title">{!!$value->action()!!}</strong>
 								</div>
 							</div>
 						</div>
-						<div class="activity-box-w">
-							<div class="activity-time">2 Horas</div>
-							<div class="activity-box">
-								<div class="activity-info">
-									<div class="activity-role">152.202.105.88</div><strong class="activity-title">Nota adicionada a prospecto</strong>
-								</div>
-							</div>
-						</div>
-						<div class="activity-box-w">
-							<div class="activity-time">5 Horas</div>
-							<div class="activity-box">
-								<div class="activity-info">
-									<div class="activity-role">152.202.105.88</div><strong class="activity-title">Apresentação marcada</strong>
-								</div>
-							</div>
-						</div>
-						<div class="activity-box-w">
-							<div class="activity-time">2 Dias</div>
-							<div class="activity-box">
-								<div class="activity-info">
-									<div class="activity-role">152.202.105.88</div><strong class="activity-title">Nota adicionada a prospecto</strong>
-								</div>
-							</div>
-						</div>
+						@endforeach						
 					</div>
 				</div>
 			</div>
@@ -221,7 +199,7 @@
 							</div>
 							<div class="user-name">
 								<h6 class="user-title">{!!$client->name!!}</h6>
-								<div class="user-role">{{!!$client->stage()!!}}</div>
+								<div class="user-role">{!!$client->stage()!!}</div>
 							</div>
 							<a class="user-action" href="#">
 								<div class="os-icon os-icon-mail-07"></div>

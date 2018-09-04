@@ -226,7 +226,7 @@ class InovicesController extends ClientController
 				'price'				=> $price,
 				'gateway' 			=> 'MOIP',
 				'discount_code' 	=> $discount_code,
-				'status' 			=> 1
+				'status' 			=> 2
 			]);
 
 			# Procura Plano de Cliente
@@ -409,7 +409,7 @@ class InovicesController extends ClientController
 				'price'				=> $price,
 				'gateway' 			=> 'MOIP',
 				'discount_code' 	=> $discount_code,
-				'status' 			=> 1
+				'status' 			=> 2
 			]);
 
 			# Procura Plano de Cliente

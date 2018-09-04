@@ -18,6 +18,7 @@ class CreateTbPlansClientsTable extends Migration {
 			$table->integer('plan_id');
 			$table->integer('client_id');
 			$table->date('validate');
+			$table->date('date_block')->nullable();
 			$table->integer('date_recurrent');
 			$table->integer('type_cicle')->nullable();
 			$table->integer('status');

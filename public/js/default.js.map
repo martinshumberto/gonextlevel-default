@@ -1,0 +1,1 @@
+{"version":3,"sources":["Auth-default.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"default.js","sourcesContent":[";(function($){\r\n\r\n\tfunction Default(){\r\n\r\n\t}\r\n\r\n\tnew Default();\r\n\r\n}(jQuery));\r\n"],"sourceRoot":"/source/"}

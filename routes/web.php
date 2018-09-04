@@ -66,6 +66,10 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 	Route::get('/assinaturas', array('as' => 'client-signature', 'uses' => 'ClientsController@index'));
 	Route::get('/notificacoes', array('as' => 'client-notifications', 'uses' => 'ClientsController@index'));
 
+
+	/* Chat em Equipe */
+	Route::get('/chats', array('as' => 'client-chat', 'uses' => 'ChatController@index')); 
+
 });
 /*
 |--------------------------------------------------------------------------

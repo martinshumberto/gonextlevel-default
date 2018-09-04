@@ -96,12 +96,28 @@ END - Breadcrumbs
 								<td>{!!$value->price()!!}</td>
 								<td class="text-center">
 									<span class="status-pill smaller {!!$value->colorTarget()!!}"></span>
-									<span>{!!$value->status()!!}</span>
+								<span>{!!$value->status()!!}</span>
 								</td>
 								<td class="row-actions text-right">
+									@if($value->type == 2)
 									<a href="{!!route('client-view-invoice', $value->inovice_id)!!}">
 										<i class="os-icon os-icon-ui-37"></i>
 									</a>
+									@else
+										@if($value->status == 1)
+										<a href="#" class="icon-hover-tooltip">
+											<i class="fa fa-info-circle"></i>
+											<span>Informações</span>
+										</a>
+										@endif
+										@if($value->status == 2)
+										<a href="#" class="icon-hover-tooltip">
+											<i class="fa fa-refresh"></i>
+											<span>Solicitar Atualização</span>
+										</a>
+										
+										@endif
+									@endif
 								</td>
 							</tr>	
 							@endforeach			

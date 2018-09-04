@@ -59,10 +59,10 @@ class Inovices extends Authenticatable
             return ' ';
             break;
             case '2':
-            return 'green';
+            return 'yellow';
             break;
             case '1':
-            return 'yellow';
+            return 'green';
             break;
         }
     }

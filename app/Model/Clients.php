@@ -129,4 +129,9 @@ class Clients extends Authenticatable
         return $this->hasOne('App\Model\States', 'states_id', 'states_id');
     }
 
+    public function Messages()
+    {
+        return $this->hasMany('App\Model\Messages', 'client_id', 'from_id');
+    }
+
 }
