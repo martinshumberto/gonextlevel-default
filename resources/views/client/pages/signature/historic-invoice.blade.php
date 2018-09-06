@@ -64,7 +64,7 @@ END - Breadcrumbs
 					<!--------------------
 					START - Basic Table
 					-------------------->
-					<table class="table table-lightborder">
+					<table class="table table-lightborder">					
 						<thead>
 							<tr>
 								
@@ -91,12 +91,18 @@ END - Breadcrumbs
 									echo date('d/m/Y', strtotime("+3 days",strtotime($data))); 
 									@endphp
 								</td>
-								<td>-</td>
+								<td>
+									@if($value->update != "")
+									{!!extractDate($value->update)!!} às {!!extrateHour($value->update)!!}
+									@else
+									-
+									@endif
+								</td>
 								<td>{!!$value->type()!!}</td>
 								<td>{!!$value->price()!!}</td>
 								<td class="text-center">
 									<span class="status-pill smaller {!!$value->colorTarget()!!}"></span>
-								<span>{!!$value->status()!!}</span>
+									<span>{!!$value->status()!!}</span>
 								</td>
 								<td class="row-actions text-right">
 									@if($value->type == 2)
@@ -104,19 +110,78 @@ END - Breadcrumbs
 										<i class="os-icon os-icon-ui-37"></i>
 									</a>
 									@else
-										@if($value->status == 1)
-										<a href="#" class="icon-hover-tooltip">
-											<i class="fa fa-info-circle"></i>
-											<span>Informações</span>
-										</a>
-										@endif
-										@if($value->status == 2)
-										<a href="#" class="icon-hover-tooltip">
-											<i class="fa fa-refresh"></i>
-											<span>Solicitar Atualização</span>
-										</a>
-										
-										@endif
+									@if($value->status == 1)
+									<a  data-target="#in-{!!$value->inovice_id!!}" data-toggle="modal" href="javascript:void(0);" class="icon-hover-tooltip">
+										<i class="fa fa-info-circle"></i>
+										<span>Informações</span>
+									</a>
+
+									<div class="onboarding-modal modal fade animated" id="in-{!!$value->inovice_id!!}" role="dialog" tabindex="-1" aria-hidden="true" style="display: none;">
+										<div class="modal-dialog modal-centered" role="document">
+											<div class="modal-content text-center">
+												<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+													<span class="close-label">Fechar</span>
+													<span class="os-icon os-icon-close"></span>
+												</button>
+												<div class="onboarding-media">
+													<img alt="" src="img/bigicon2.png" width="200px">
+												</div>
+												<div class="onboarding-content with-gradient">
+													<h4 class="onboarding-title">Informações do Pagamento</h4>
+													<div class="row">
+														<div class="col-sm-6">
+															<div class="form-group">
+																<label for="">Data do Pagamento</label>
+																<input style="text-align: center;" class="form-control" type="text" value="{!!extractDate($value->update)!!} às {!!extrateHour($value->update)!!}" disabled="disabled">
+															</div>
+														</div>
+														<div class="col-sm-6">
+															<div class="form-group">
+																<label for="">Tipo</label>
+																<input style="text-align: center;" class="form-control" type="text" value="{!!$value->type()!!}" disabled="disabled">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-12">
+															<div class="form-group">
+																<label for="">Valor</label>
+																<input style="text-align: center;" class="form-control" type="text" value="{!!$value->price()!!}" disabled="disabled">
+															</div>
+														</div>														
+													</div>													
+												</div>
+											</div>
+										</div>
+									</div>
+									@endif
+									@if($value->status == 2)
+									<a href="#" class="icon-hover-tooltip">
+										<i class="fa fa-refresh"></i>
+										<span>Solicitar Atualização</span>
+									</a>
+
+									@endif
+									@if($value->status == 3)
+
+									<i class="fa fa-ban" aria-hidden="true"></i>
+
+									@endif
+									@if($value->status == 4)
+
+									<i class="fa fa-window-close" aria-hidden="true"></i>
+
+									@endif
+									@if($value->status == 5)
+
+									<i class="fa fa-reply" aria-hidden="true"></i>
+
+									@endif
+									@if($value->status == 6)
+
+									<i class="fa fa-times" aria-hidden="true"></i>
+
+									@endif
 									@endif
 								</td>
 							</tr>	
@@ -143,6 +208,5 @@ END - Breadcrumbs
 			</div>
 		</div>
 	</div>
-	
 
 	@endsection

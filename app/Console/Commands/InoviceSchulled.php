@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 
 use DB;
 use App\Model\Inovices;
+use App\Model\Plans;
+use App\Model\PlansClients;
 
 #MOIP REQUIRE
 use Moip\Moip;
@@ -36,7 +38,7 @@ class InoviceSchulled extends Command
     {
         parent::__construct();
     }
-
+ 
     /**
      * Execute the console command.
      *
@@ -45,7 +47,7 @@ class InoviceSchulled extends Command
     public function handle()
     {
         $moip = new Moip(new BasicAuth('QRCHHIZYDFJPASWASI1DUC7FZ0UGH3ZO', 'AM7AS2B66JSB882MNCDPA9TQUDCY128ADKSQAQ2M'), Moip::ENDPOINT_SANDBOX);
-        $inovices = DB::table('tb_inovices')->where('status', '2')->orderBy("inovice_id", "DESC")->get();
+        $inovices = DB::table('tb_inovices')->orderBy("inovice_id", "DESC")->get();
 
         foreach ($inovices as $value) {
 
@@ -55,19 +57,34 @@ class InoviceSchulled extends Command
             $response = json_decode($response);
 
             if($response->status == "IN_ANALYSIS"){
-                $inovice = DB::table('tb_inovices')->where('inovice_id', $value->inovice_id)->update(['status' => 1]);
+                $inovice = DB::table('tb_inovices')->where('inovice_id', $value->inovice_id)->update(['status' => 2]);
             }   
 
             if($response->status == "AUTHORIZED"){
-                $inovice = DB::table('tb_inovices')->where('inovice_id', $value->inovice_id)->update(['status' => 2]);
+
+                $day = date("Y-m-d h:i:s");
+                $inovice = DB::table('tb_inovices')->where('inovice_id', $value->inovice_id)->update(['status' => 1, 'update' => $day]);
+                $plan_client = DB::table('tb_plans_clients')
+                ->where('client_id', $value->client_id)
+                ->where('plan_id', $value->plan_id)
+                ->update(['status' => 1]);
+
             }
 
             if($response->status == "CANCELLED"){
                 $inovice = DB::table('tb_inovices')->where('inovice_id', $value->inovice_id)->update(['status' => 4]);
+                $plan_client = DB::table('tb_plans_clients')
+                ->where('client_id', $value->client_id)
+                ->where('plan_id', $value->plan_id)
+                ->update(['status' => 5]);
             }
 
             if($response->status == "REFUNDED"){
                 $inovice = DB::table('tb_inovices')->where('inovice_id', $value->inovice_id)->update(['status' => 5]);
+                $plan_client = DB::table('tb_plans_clients')
+                ->where('client_id', $value->client_id)
+                ->where('plan_id', $value->plan_id)
+                ->update(['status' => 4]);
             }
 
             if($response->status == "REVERSED"){

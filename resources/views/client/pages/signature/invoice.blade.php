@@ -202,10 +202,8 @@
 											<div class="form-buttons-w text-right compact">
 												<a class="btn btn-primary btn-send-card" href="#">
 													<span>Enviar</span> 
-													<i class="icon-feather-check"></i></a>
-													<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
+													<i class="icon-feather-check"></i></a>													
 												</a>
-
 											</div>
 										</div>
 									</div>

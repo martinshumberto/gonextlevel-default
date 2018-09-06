@@ -12,7 +12,7 @@ class Inovices extends Authenticatable
 	protected $table = 'tb_inovices';
 	protected $primaryKey  = 'inovice_id';
 	protected $fillable  = 
-	['plan_id', 'client_id', 'price', 'type','gateway','gateway_key', 'gateway_response', 'discount_code', 'status', 'created_at','updated_at'];
+	['plan_id', 'client_id', 'price', 'type','gateway','gateway_key', 'gateway_response', 'discount_code', 'status','update', 'created_at','updated_at'];
 
     public function status()
     {   
@@ -52,11 +52,17 @@ class Inovices extends Authenticatable
     public function colorTarget()
     {   
         switch ($this->status) {
+            case '6':
+            return 'yellow';
+            break;
+            case '5':
+            return 'green';
+            break;
             case '4':
             return 'red';
             break;
             case '3':
-            return ' ';
+            return 'red';
             break;
             case '2':
             return 'yellow';

@@ -20,6 +20,7 @@ elixir(function(mix) {
 	    mix.scripts([
 	    	'libs/sweetalert2.all.min.js',
 	    	'libs/jquery.mask.js',
+	    	'components/Auth-mask.js',
 	    	], 'public/js/app-libs.js');
 
 
@@ -33,47 +34,51 @@ elixir(function(mix) {
 	    // DASHBOARD
 	    mix.scripts([
 	    	'components/Auth-prospect.js',
-	    	'components/Auth-mask.js',
 	    	], 'public/js/client-dashboard.js');
 
 	    // PROSPECT 
 	    mix.scripts([
 	    	'components/Auth-prospect.js',
-	    	'components/Auth-mask.js',
 	    	], 'public/js/client-prospect.js');
 
 	    // PROSPECT PIPELINE 
 	    mix.scripts([
 	    	'components/Auth-prospect.js',
-	    	'components/Auth-mask.js',
 	    	'components/Auth-pipeline.js',
 	    	], 'public/js/client-prospect-pipeline.js');
 
 	    // PROSPECT VIEW 
 	    mix.scripts([
 	    	'components/Auth-prospect.js',
-	    	'components/Auth-mask.js',
 	    	], 'public/js/client-prospect-view.js');
 
 	    // CREATE INOVICE 
 	    mix.scripts([
-	    	'components/Auth-mask.js',
 	    	'components/Auth-invoice.js',
 	    	'components/Auth-moip.js',
 	    	'components/Auth-prospect.js',
 	    	], 'public/js/client-create-invoice.js');
 
+	    // CREATE INOVICE 
+	    mix.scripts([
+	    	'components/Auth-prospect.js',
+	    	], 'public/js/client-historic-invoice.js');
+
 	    // CLIENT PROFILE 
 	    mix.scripts([
 	    	'components/Auth-prospect.js',
-	    	'components/Auth-mask.js',
 	    	'components/Auth-profile.js',
 	    	], 'public/js/client-create-profile.js');
+
+	    // CLIENT PROFILE 
+	    mix.scripts([
+	    	'components/Auth-prospect.js',
+	    	'components/Auth-profile.js',
+	    	], 'public/js/client-info.js');
 
 
 	    mix.scripts([
 	    	'libs/sweetalert2.all.min.js',
-	    	'libs/jquery.mask.js',
 	    	'components/Auth-mask.js',
 	    	], 'public/js/guest.js');
 

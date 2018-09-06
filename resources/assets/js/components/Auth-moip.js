@@ -43,9 +43,6 @@
 
 
 		$(document).on('click', '.btn-send-card', function(e){
-
-      alert("ALGO");
-
 			e.preventDefault();
            //do something
            $(this).prop('disabled', true);
@@ -56,7 +53,6 @@
 				'success'
 				)
 		});
-
 
 	}
 	new AuthMoip();

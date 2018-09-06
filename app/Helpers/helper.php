@@ -45,7 +45,75 @@ if (!function_exists('in_arrayi')) {
     }
 }
 
-function criptBySystem( $string, $action = 'e' ) {
+if(!function_exists('extractDate')){
+
+    function extractDate($dateTime) {
+
+        if (isset($dateTime)) {
+
+            date_default_timezone_set("America/Sao_Paulo");
+
+            $dataNow = substr($dateTime, 0, 10);
+            $data = explode('-', $dataNow);
+            $data = $data[2] . '/' . $data[1] . '/' . $data[0];
+            return $data;
+        } else {
+            return false;
+        }
+    }
+}
+
+if(!function_exists('extrateHour')){
+
+
+    function extrateHour($dateTime) {
+        date_default_timezone_set("America/Sao_Paulo");
+
+        $hora = substr($dateTime, 11, 8);
+        return $hora;
+    }
+
+}
+
+if(!function_exists('stringTo')){
+
+
+    function stringTo($string) {
+
+
+        $string = preg_replace(
+            array(
+        //Maiúsculos
+                '/\xc3[\x80-\x85]/',
+                '/\xc3\x87/',
+                '/\xc3[\x88-\x8b]/',
+                '/\xc3[\x8c-\x8f]/',
+                '/\xc3([\x92-\x96]|\x98)/',
+                '/\xc3[\x99-\x9c]/',
+        //Minúsculos
+                '/\xc3[\xa0-\xa5]/',
+                '/\xc3\xa7/',
+                '/\xc3[\xa8-\xab]/',
+                '/\xc3[\xac-\xaf]/',
+                '/\xc3([\xb2-\xb6]|\xb8)/',
+                '/\xc3[\xb9-\xbc]/',
+            ), str_split('ACEIOUaceiou', 1), is_utf8($string) ? $string : utf8_encode($string)
+        );
+        $string = strtolower($string);
+
+        $what = array('(', ')', ',', ';', ':', '|', '!', '"', '#', '$', '%', '&', '/', '=', '?', '>', '<', 'ª', 'º', '“', '”');
+        $by = array('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+
+        $string = str_replace($what, $by, $string);
+
+        $string = str_replace(" ", "-", $string);
+
+        return $string;
+    }
+}
+
+if(!function_exists('criptBySystem')){
+    function criptBySystem( $string, $action = 'e' ) {
 
 
 	#EMPRCPT
@@ -54,22 +122,23 @@ function criptBySystem( $string, $action = 'e' ) {
 	//$decrypted = criptBySystem( 'RTlOMytOZStXdjdHbDZtamNDWFpGdz09', 'd' );
 
     // you may change these values to your own
-    $secret_key = 'IOF-1441';
-    $secret_iv = '-EDONIH';
+        $secret_key = 'IOF-1441';
+        $secret_iv = '-EDONIH';
 
-    $output = false;
-    $encrypt_method = "AES-256-CBC";
-    $key = hash( 'sha256', $secret_key );
-    $iv = substr( hash( 'sha256', $secret_iv ), 0, 16 );
+        $output = false;
+        $encrypt_method = "AES-256-CBC";
+        $key = hash( 'sha256', $secret_key );
+        $iv = substr( hash( 'sha256', $secret_iv ), 0, 16 );
 
-    if( $action == 'e' ) {
-        $output = base64_encode( openssl_encrypt( $string, $encrypt_method, $key, 0, $iv ) );
+        if( $action == 'e' ) {
+            $output = base64_encode( openssl_encrypt( $string, $encrypt_method, $key, 0, $iv ) );
+        }
+        else if( $action == 'd' ){
+            $output = openssl_decrypt( base64_decode( $string ), $encrypt_method, $key, 0, $iv );
+        }
+
+        return $output;
     }
-    else if( $action == 'd' ){
-        $output = openssl_decrypt( base64_decode( $string ), $encrypt_method, $key, 0, $iv );
-    }
-
-    return $output;
 }
 
 function dateGetExtencer($date){

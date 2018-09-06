@@ -183,9 +183,7 @@ $('#cicle-payament').on('change', function(){
 
 });
 
-$(document).on('click', '.btn-send-card', function(){
-            //alert("algo");
-        });
+
 }
 new ChangeMethod();
 

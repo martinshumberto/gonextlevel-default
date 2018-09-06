@@ -119,4 +119,4 @@
 
 }(jQuery));
 
-//# sourceMappingURL=client-prospect-view.js.map
+//# sourceMappingURL=client-historic-invoice.js.map

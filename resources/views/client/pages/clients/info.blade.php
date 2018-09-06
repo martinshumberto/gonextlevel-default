@@ -97,7 +97,7 @@
 									<div class="col-sm-4">
 										<div id="select-cities" class="form-group">
 											<label for=""> Selecione a Cidade</label>
-											<select name="cities_id" id="cities_select"  class="form-control" >
+											<select data-active="{!!$client->cities_id!!}" name="cities_id" id="cities_select"  class="form-control" >
 												<option selected="selected">--CIDADES--</option>
 											</select>
 										</div>
