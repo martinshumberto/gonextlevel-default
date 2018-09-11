@@ -1,4 +1,4 @@
-<div class="floated-chat-btn">
+<div class="floated-chat-btn" style="display: none;">
   <i class="os-icon os-icon-mail-07"></i><span>Demo Chat</span>
 </div>
 <div class="floated-chat-w">
@@ -50,4 +50,12 @@
       </div>
     </div>
   </div>
+</div>
+<div class="floated-colors-btn second-floated-btn">
+  <div class="os-toggler-w">
+    <div class="os-toggler-i">
+      <div class="os-toggler-pill"></div>
+    </div>
+  </div>
+  <span>Dark </span><span>Colors</span>
 </div>

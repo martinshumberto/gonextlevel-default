@@ -186,7 +186,7 @@
 			<!--------------------
 			START - Chat
 			-------------------->
-			<div class="element-wrapper">
+			<div class="element-wrapper" style="display: none;">
 				<h6 class="element-header">Chat</h6>
 				<div class="element-box-tp">
 					<div class="input-search-w">

@@ -47,5 +47,15 @@ class LoginController extends GuestController
 		return redirect(route('guest-login'))->withErrors(['Login Falhou, verifique suas informações!', 'error']);
 	}
 
+	public function recover()
+	{
+		return view("guest/pages/home/recover");
+	}
+
+	public function revoverpw()
+	{
+		
+	}
+
 
 }

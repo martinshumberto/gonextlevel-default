@@ -17,6 +17,10 @@ Route::namespace('Guest')->group(function () {
 
 	Route::get('/testes', array('as' => 'guest-tests', 'uses' => 'TestesController@index'));
 
+
+	Route::get('/recuperar-senha', array('as' => 'guest-recover', 'uses' => 'LoginController@recover'));
+	Route::post('/recuperar-senha', array('as' => 'guest-revoverpw', 'uses' => 'LoginController@revoverpw'));
+
 });
 /*
 |--------------------------------------------------------------------------

@@ -63,7 +63,7 @@
     </div>
 
     <!-- Chat Box -->
-    @include('client.includes.chat')
+    @include('client.includes.apps')
 
     <!-- Register Modal -->
     @include('client.includes.register')

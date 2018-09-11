@@ -30,7 +30,7 @@
 
 			</div>
 			<div class="form-group mt-10">
-				<a href="">{{ __('messages.passwordreset-login') }}</a>
+				<a href="{!!route('guest-recover')!!}">{{ __('messages.passwordreset-login') }}</a>
 			</div>
 		</form>
 	</div>
