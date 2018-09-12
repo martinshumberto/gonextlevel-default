@@ -26,7 +26,7 @@ Route::namespace('Guest')->group(function () {
 |--------------------------------------------------------------------------
 | Client Routs
 |--------------------------------------------------------------------------
-*/
+*/ 
 
 Route::prefix('apps')->middleware('client')->namespace('Client')->group(function(){
 
@@ -73,6 +73,14 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 
 	/* Chat em Equipe */
 	Route::get('/chats', array('as' => 'client-chat', 'uses' => 'ChatController@index')); 
+
+	/* Treinamentos */
+	Route::get('/treinamentos/convidar', array('as' => 'client-trainings-invite', 'uses' => 'TrainingsController@invite'));  
+	Route::get('/treinamentos/apresentar', array('as' => 'client-trainings-presentation', 'uses' => 'TrainingsController@presentation')); 
+	Route::get('/treinamentos/acompanhar', array('as' => 'client-trainings-along', 'uses' => 'TrainingsController@along')); 
+	Route::get('/treinamentos/fechamento', array('as' => 'client-trainings-closure', 'uses' => 'TrainingsController@closure')); 
+	Route::get('/treinamentos/seta', array('as' => 'client-trainings-arrow', 'uses' => 'TrainingsController@arrow')); 
+	Route::get('/treinamentos/material', array('as' => 'client-trainings-support', 'uses' => 'TrainingsController@support')); 
 
 });
 /*

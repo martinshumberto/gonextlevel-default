@@ -23,7 +23,12 @@ class ScheduleController extends ClientController
 	public function show()
 	{
 		$client = Clients::where('client_id', Auth::user()->client_id)->first();
-		$plansClient = PlansClients::where('client_id', $client->client_id)->first();
+		$plansClient = PlansClients::where('client_id', $client->client_id)->where('status', '1')->first();
+		if(is_null($plansClient)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Plano em Status pendente, aguarde alteração de status do seu plano!"));
+			die;
+		}
+
 		$plan = Plans::where('plan_id', $plansClient->plan_id)->first();
 
 		if(!policiesAgent($this->module, $plan->modules)){

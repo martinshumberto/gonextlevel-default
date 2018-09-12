@@ -152,10 +152,38 @@
 	    	var cOntainerStrutude = $(container).attr('data-strutude');
 	    	var auth = $("input[name='key-auth']").val();
 
+	    	//alert(EleMentStrutude);
+
+	    	var divContainer = cOntainerStrutude.split(':');
+	    	var ct = divContainer[0];
+
+	    	var id = EleMentStrutude.split(':');
+
+	    	alert(id[1]);
+
 	    	$.ajax({
 	    		url: $("#app_url").val() + "/api/prospectos/auth/pipeline",
 	    		type: 'POST',
-	    		data: { EleMentStrutude, cOntainerStrutude, auth}});
+	    		data: { EleMentStrutude, cOntainerStrutude, auth},
+	    		beforeSend: function()
+	    		{
+	    			if(ct == 2){
+	    				swal({
+	    					type: 'warning',
+	    					title: 'Oops...',
+	    					text: 'Por favor, marque a APN!'
+	    				});
+	    			}
+	    		},
+	    		success: function()
+	    		{
+	    			if(ct == 2){
+	    				$('#modal-new-apn').modal('show');	 
+	    				$("input[name='auth']").val(id[1]);   				
+	    			}
+
+	    		}
+	    	});
 
 	    }).on('over', function (el, container) {
 	    	$(container).closest('.pipeline-body').addClass('over');

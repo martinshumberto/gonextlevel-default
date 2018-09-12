@@ -57,5 +57,5 @@
       <div class="os-toggler-pill"></div>
     </div>
   </div>
-  <span>Dark </span><span>Colors</span>
+  <span>Tema </span><span>Escuro</span>
 </div>

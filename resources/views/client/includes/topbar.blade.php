@@ -64,12 +64,12 @@ START - Mobile Menu
 						<span>Treinamentos</span>
 					</a>
 					<ul class="sub-menu">
-						<li><a href="/treinamentos/convidar">Convidar</a></li>
-						<li><a href="/treinamentos/apresentar">Apresentar</a></li>
-						<li><a href="/treinamentos/acompanhar">Acompanhar</a></li>
-						<li><a href="/treinamentos/fechamento">Fechamento</a></li>
-						<li><a href="/treinamentos/seta">SETA</a></li>
-						<li><a href="/treinamentos/materiais-de-apoio">Materiais de Apoio <strong class="badge badge-danger">Novo</strong></a></li>
+						<li><a href="{!!route('client-trainings-invite')!!}">Convidar</a></li>
+						<li><a href="{!!route('client-trainings-presentation')!!}">Apresentar</a></li>
+						<li><a href="{!!route('client-trainings-along')!!}">Acompanhar</a></li>
+						<li><a href="{!!route('client-trainings-closure')!!}">Fechamento</a></li>
+						<li><a href="{!!route('client-trainings-arrow')!!}">SETA</a></li>
+						<li><a href="{!!route('client-trainings-support')!!}">Materiais de Apoio <strong class="badge badge-danger">Novo</strong></a></li>
 					</ul>
 				</li>
 				<li class="sub-header"><span>Apps</span></li>
@@ -198,12 +198,12 @@ START - Main Menu
 				<div class="sub-menu-icon"><i class="icon-feather-play-circle"></i></div>
 				<div class="sub-menu-i">
 					<ul class="sub-menu">
-						<li><a href="/treinamentos/convidar">Convidar</a></li>
-						<li><a href="/treinamentos/apresentar">Apresentar</a></li>
-						<li><a href="/treinamentos/acompanhar">Acompanhar</a></li>
-						<li><a href="/treinamentos/fechamento">Fechamento</a></li>
-						<li><a href="/treinamentos/seta">SETA</a></li>
-						<li><a href="/treinamentos/materiais-de-apoio">Materiais de Apoio <strong class="badge badge-danger">Novo</strong></a></li>
+						<li><a href="{!!route('client-trainings-invite')!!}">Convidar</a></li>
+						<li><a href="{!!route('client-trainings-presentation')!!}">Apresentar</a></li>
+						<li><a href="{!!route('client-trainings-along')!!}">Acompanhar</a></li>
+						<li><a href="{!!route('client-trainings-closure')!!}">Fechamento</a></li>
+						<li><a href="{!!route('client-trainings-arrow')!!}">SETA</a></li>
+						<li><a href="{!!route('client-trainings-support')!!}">Materiais de Apoio <strong class="badge badge-danger">Novo</strong></a></li>
 					</ul>
 				</div>
 			</div>

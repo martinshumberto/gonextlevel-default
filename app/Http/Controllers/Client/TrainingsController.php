@@ -12,16 +12,15 @@ use App\Model\Plans;
 use Auth;
 
 
-class ChatController extends ClientController
+class TrainingsController extends ClientController
 {
 
 	# Chave do Modulo
-	//private $module = "g";
-	private $module = "a";
+	private $module = "f";
 	/* ~~~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~~~ */
 
 
-	public function index()
+	public function invite()
 	{
 		$client = Clients::where('client_id', Auth::user()->client_id)->first();
 		$plansClient = PlansClients::where('client_id', $client->client_id)->where('status', '1')->first();
@@ -37,7 +36,7 @@ class ChatController extends ClientController
 			die;
 		}
 
-		return view("client/pages/apps/chat");
+		return view("client/pages/trainings/invite");
 
 	}	
 
