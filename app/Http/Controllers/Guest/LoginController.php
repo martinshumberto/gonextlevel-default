@@ -44,7 +44,7 @@ class LoginController extends GuestController
 				}				
 			}
 		}
-		return redirect(route('guest-login'))->withErrors(['Login Falhou, verifique suas informações!', 'error']);
+		return redirect(route('guest-login'))->withErrors(array("type" => "error", "msg" => "Úsuário/E-mail estão incorretos, verifique as informações e tente novamente!"));
 	}
 
 	public function recover()

@@ -21,8 +21,8 @@
 	        <div class="element-wrapper">
 	            <h6 class="element-header">Agenda</h6>
 	            <div class="element-box">
-	                <h5 class="form-header">Gerenciar Agenda</h5>
-	                <div class="form-desc">Gerencie suas apn's, reuniões e compromissos marcados através de nossa plataforma. </div>
+	                <h5 class="form-header">Gerenciar agenda</h5>
+	                <div class="form-desc">Gerencie suas apresentações, reuniões e compromissos marcados através de nossa plataforma. </div>
 	                <div id="fullCalendar"></div>
 	            </div>
 	        </div>

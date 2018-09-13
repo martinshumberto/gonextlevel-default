@@ -101,7 +101,6 @@ class InovicesController extends ClientController
 	{
 		try{
 
-			echo "<pre>";
 
 			$moip = new Moip(new BasicAuth($this->token, $this->key), Moip::ENDPOINT_SANDBOX);
 
@@ -280,9 +279,6 @@ class InovicesController extends ClientController
 			}
 
 
-
-
-			echo $inovice->inovice_id;
 			return redirect(route('client-view-invoice', $inovice->inovice_id))->withErrors(array("type" => "success", "msg" => "Fatura Criada Com Sucesso!"));
 
 			die;
@@ -299,7 +295,6 @@ class InovicesController extends ClientController
 	{
 
 		try{
-			echo "<pre>";
 
 			$moip = new Moip(new BasicAuth($this->token, $this->key), Moip::ENDPOINT_SANDBOX);
 
@@ -518,11 +513,12 @@ class InovicesController extends ClientController
 		$moip = new Moip(new BasicAuth($this->token, $this->key), Moip::ENDPOINT_SANDBOX);
 
 		$payment = $moip->payments()->get($id);
-		$response = json_encode($payment);
-		$response = json_decode($response);
+
+		var_dump($payment);
 
 		echo "<br>";
-		echo $response->status;
+
+		//echo $response->status;
 
 		die;
 	}

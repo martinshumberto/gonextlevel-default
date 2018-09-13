@@ -8,8 +8,8 @@
 	-------------------->
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-		<li class="breadcrumb-item"><a href="/assinatura">Assinatura</a></li>
-		<li class="breadcrumb-item"><a href="/assinatura/planos">Planos</a></li>
+		<li class="breadcrumb-item"><a href="{!!route('client-historic-invoice')!!}">Assinatura</a></li>
+		<li class="breadcrumb-item"><a href="{!!route('client-plans')!!}">Planos</a></li>
 		<li class="breadcrumb-item"><span>GO-#{!!$inovice->inovice_id!!}</span></li>
 	</ul>
 	<!--------------------
@@ -130,25 +130,25 @@
 					<!--MESSAGE ALERT-->
 					@if($inovice->status == 1)
 					<div class="alert alert-warning borderless" style="display: block;">
-						<h5 class="alert-heading">Fatura Pendente</h5>
+						<h5 class="alert-heading">Fatura pendente</h5>
 						<p>Efetue o pagamento ainda hoje e evite o bloqueio de acesso!</p>
 					</div>
 					@endif
 					@if($inovice->status == 2)
 					<div class="alert alert-success borderless" style="display: block;">
-						<h5 class="alert-heading">Fatura Paga</h5>
+						<h5 class="alert-heading">Fatura paga</h5>
 						<p>Abaixo Informações de Fatura ja <b>Paga</b>!</p>
 					</div>
 					@endif
 					@if($inovice->status == 3)
 					<div class="alert alert-danger borderless" style="display: block;">
-						<h5 class="alert-heading">Fatura Expirada</h5>
+						<h5 class="alert-heading">Fatura expirada</h5>
 						<p>Fatura Expirada, consulte o <b>suporte</b> para mais informações!</p>
 					</div>
 					@endif
 					@if($inovice->status == 4)
 					<div class="alert alert-danger borderless" style="display: block;">
-						<h5 class="alert-heading">Fatura Cancelada</h5>
+						<h5 class="alert-heading">Fatura cancelada</h5>
 						<p>Fatura Cancelada, consulte o <b>suporte</b> para mais informações!</p>
 					</div>
 					@endif
@@ -168,7 +168,7 @@
 							<div class="row" style="margin-top: 15px;">
 								<div class="col-sm-6">
 									<button data-target=".bd-example-modal-lg" data-toggle="modal" class="mr-2 mb-2 btn btn-secondary" type="button"> 
-										<i class="os-icon os-icon-search"></i> Expandir Boleto
+										<i class="os-icon os-icon-search"></i> Expandir boleto
 									</button>
 									<div class="modal fade bd-example-modal-lg"tabindex="-1" style="display: none;" aria-hidden="true">
 										<div class="modal-dialog modal-lg">

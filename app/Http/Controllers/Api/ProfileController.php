@@ -32,7 +32,7 @@ class ProfileController extends ClientController
 
 			$name_img = md5(time()).'.'.$file->getClientOriginalExtension();
 
-			$destinationPath = public_path('/img');
+			$destinationPath = public_path('/storage');
 
 			$file->move($destinationPath, $input['imagename']);
 

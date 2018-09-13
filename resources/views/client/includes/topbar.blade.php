@@ -16,7 +16,7 @@ START - Mobile Menu
 	</div>
 	<div class="menu-and-user">
 		<div class="logged-user-w">
-			<div class="avatar-w"><img alt="" src="{{ asset('public/img/avatar1.jpg') }}"></div>
+			<div class="avatar-w"><img alt="" src="{!!url("/")!!}/public/storage/{!!Auth::user()->image!!}"></div>
 			<div class="logged-user-info-w">
 				<div class="logged-user-name">{!!Auth::user()->name!!}</div>
 				<div class="logged-user-role">{!!Auth::user()->stage()!!}</div>
@@ -26,14 +26,6 @@ START - Mobile Menu
 		START - Mobile Menu List
 		-------------------->
 		<ul class="main-menu">
-			<li>
-				<a href="{!!route('client-dashboard')!!}">
-					<div class="icon-w">
-						<div class="os-icon os-icon-layout"></div>
-					</div>
-					<span>Dashboard</span>
-				</a>
-			</li>
 			<li class="selected has-sub-menu">
 				<a href="{!!route('client-dashboard')!!}">
 					<div class="icon-w">
@@ -51,8 +43,8 @@ START - Mobile Menu
 					</a>
 					<ul class="sub-menu">
 						<li><a href="{!!route('client-prospect-create')!!}" data-target="#modal-register" data-toggle="modal">Adicionar</a></li>
-						<li><a href="{!!route('client-prospect-pipeline')!!}">Pipeline de Prospectos</a></li>
-						<li><a href="{!!route('client-prospect')!!}">Visão Geral</a></li>
+						<li><a href="{!!route('client-prospect-pipeline')!!}">Pipeline de prospectos</a></li>
+						<li><a href="{!!route('client-prospect')!!}">Visão geral</a></li>
 						<li><a href="{!!route('client-prospect-reports')!!}">Relatório <strong class="badge badge-danger">Novidade</strong></a></li>
 					</ul>
 				</li>
@@ -69,7 +61,7 @@ START - Mobile Menu
 						<li><a href="{!!route('client-trainings-along')!!}">Acompanhar</a></li>
 						<li><a href="{!!route('client-trainings-closure')!!}">Fechamento</a></li>
 						<li><a href="{!!route('client-trainings-arrow')!!}">SETA</a></li>
-						<li><a href="{!!route('client-trainings-support')!!}">Materiais de Apoio <strong class="badge badge-danger">Novo</strong></a></li>
+						<li><a href="{!!route('client-trainings-support')!!}">Materiais de apoio <strong class="badge badge-danger">Novo</strong></a></li>
 					</ul>
 				</li>
 				<li class="sub-header"><span>Apps</span></li>
@@ -83,7 +75,7 @@ START - Mobile Menu
 					<ul class="sub-menu">
 						<li><a href="{!!route('client-chat')!!}">Chat <strong class="badge badge-danger">Novo</strong></a></li>
 						<li><a href="{!!route('client-schedule')!!}">Agenda</a></li>
-						<li><a href="/aplicativos/equipe">Gestor de Equipe <strong class="badge badge-danger">Novo</strong></a></li>
+						<li><a href="/aplicativos/equipe">Gestor de equipe <strong class="badge badge-danger">Novo</strong></a></li>
 					</ul>
 				</li>
 				<li class="sub-header"><span>Config</span></li>
@@ -96,7 +88,7 @@ START - Mobile Menu
 					</a>
 					<ul class="sub-menu">
 						<li><a href="/config/grupos">Grupos</a></li>
-						<li><a href="/config/modelos-de-email">Modelos de E-mail</a></li>
+						<li><a href="/config/modelos-de-email">Modelos de e-mail</a></li>
 					</ul>
 				</li>
 
@@ -128,7 +120,7 @@ START - Main Menu
 
 	<div class="logged-user-w avatar-inline">
 		<div class="logged-user-i">
-			<div class="avatar-w"><img alt="" src="{!!url("/")!!}/public/img/{!!Auth::user()->image!!}"></div>
+			<div class="avatar-w"><img alt="" src="{!!url("/")!!}/public/storage/{!!Auth::user()->image!!}"></div>
 			<div class="logged-user-info-w">
 				<div class="logged-user-name">{!!Auth::user()->name!!}</div>
 				<div class="logged-user-role">{!!Auth::user()->stage()!!}</div>
@@ -203,7 +195,7 @@ START - Main Menu
 						<li><a href="{!!route('client-trainings-along')!!}">Acompanhar</a></li>
 						<li><a href="{!!route('client-trainings-closure')!!}">Fechamento</a></li>
 						<li><a href="{!!route('client-trainings-arrow')!!}">SETA</a></li>
-						<li><a href="{!!route('client-trainings-support')!!}">Materiais de Apoio <strong class="badge badge-danger">Novo</strong></a></li>
+						<li><a href="{!!route('client-trainings-support')!!}">Materiais de apoio <strong class="badge badge-danger">Novo</strong></a></li>
 					</ul>
 				</div>
 			</div>
@@ -224,7 +216,7 @@ START - Main Menu
 					<ul class="sub-menu">
 						<li><a href="{!!route('client-chat')!!}">Chat <strong class="badge badge-warning">Em breve</strong></a></li>
 						<li><a href="{!!route('client-schedule')!!}">Agenda</a></li>
-						<li><a href="/aplicativos/gestor-de-equipe">Gestor de Equipe <strong class="badge badge-warning">Em breve</strong></a></li>
+						<li><a href="/aplicativos/gestor-de-equipe">Gestor de equipe <strong class="badge badge-warning">Em breve</strong></a></li>
 					</ul>
 				</div>
 			</div>
@@ -244,7 +236,7 @@ START - Main Menu
 				<div class="sub-menu-i">
 					<ul class="sub-menu">
 						<li><a href="/config/grupos">Grupos</a></li>
-						<li><a href="/config/modelos-de-email">Modelos de E-mail</a></li>
+						<li><a href="/config/modelos-de-email">Modelos de e-mail</a></li>
 					</ul>
 				</div>
 			</div>

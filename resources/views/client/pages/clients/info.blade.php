@@ -10,10 +10,10 @@
 			<a href="{!!route('client-dashboard')!!}">Home</a>
 		</li>
 		<li class="breadcrumb-item">
-			<a href="{!!route('client-info')!!}">Meus Dados</a>
+			<a href="{!!route('client-info')!!}">Meus dados</a>
 		</li>
 		<li class="breadcrumb-item">
-			<span>Informações Principais</span>
+			<span>Informações principais</span>
 		</li>
 	</ul>
 	<div class="content-i">
@@ -46,8 +46,8 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for=""> Nome Completo</label>
-									<input name="name" class="form-control" data-error="Informe seu Nome" placeholder="Entre com seu Nome" required="required" type="text" value="{!!$client->name!!}">
+									<label for=""> Nome completo</label>
+									<input name="name" class="form-control" data-error="Informe seu nome" placeholder="Entre com seu nome" required="required" type="text" value="{!!$client->name!!}">
 									<div class="help-block form-text with-errors form-control-feedback"></div>
 								</div>
 								<div class="row">
@@ -60,7 +60,7 @@
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for=""> E-mail</label><input class="form-control" data-error="Por favor coloque um email" placeholder="Informe seu email" required="required" value="{!!$client->email!!}" name="email" >
+											<label for=""> E-mail</label><input class="form-control" data-error="Por favor coloque um e-mail" placeholder="Informe seu e-mail" required="required" value="{!!$client->email!!}" name="email" >
 											<div class="help-block form-text with-errors form-control-feedback"></div>
 										</div>											
 									</div>
@@ -68,14 +68,14 @@
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for=""> Data de Aniversário</label><input class="MaskDate form-control" placeholder="Date of birth" type="text" value="{!!$client->birthdate!!}" name="birthdate">
+											<label for=""> Data de aniversário</label><input class="MaskDate form-control" placeholder="Data de nascimento" type="text" value="{!!$client->birthdate!!}" name="birthdate">
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="">Telefone</label>
 											<div class="input-group">													
-												<input required="required" data-error="Informe um Telefone Valido" class="form-control MaskPhone" placeholder="65 9 9999 9999" type="text" name="phone" value="{!!$client->phone!!}">
+												<input required="required" data-error="Informe um telefone valido" class="form-control MaskPhone" placeholder="65 9 9999 9999" type="text" name="phone" value="{!!$client->phone!!}">
 											</div>
 										</div>
 									</div>
@@ -83,9 +83,9 @@
 								<div class="row">
 									<div class="col-sm-4">
 										<div class="form-group">
-											<label for=""> Selecione o Estado</label>
-											<select name="states_id" id="state_select"  class="form-control">
-												<option selected="selected">--SELECIONE--</option>
+											<label for=""> Selecione o estado</label>
+											<select data-state="{!!$client->states_id!!}" name="states_id" id="state_select"  class="form-control">
+												<option selected="selected">--selecione--</option>
 												@foreach($states as $value)								
 												<option value="{!!$value->states_id!!}" @if($client->states_id == $value->states_id) selected="selected" @endif >
 													{!!$value->name!!}
@@ -95,17 +95,32 @@
 										</div>	
 									</div>
 									<div class="col-sm-4">
+										@if($client->cities_id == "")
 										<div id="select-cities" class="form-group">
-											<label for=""> Selecione a Cidade</label>
-											<select data-active="{!!$client->cities_id!!}" name="cities_id" id="cities_select"  class="form-control" >
-												<option selected="selected">--CIDADES--</option>
+											<label for=""> Selecione a cidade</label>
+											<select data-citie="{!!$client->cities_id!!}" name="cities_id" id="cities_select"  class="form-control" >
+												<option selected="selected">--selecione--</option>
 											</select>
 										</div>
+										@else
+										<div id="select-cities" class="form-group">
+											<label for=""> Selecione a cidade</label>
+											<select data-citie="{!!$client->cities_id!!}" name="cities_id" id="cities_select"  class="form-control" >
+												
+												@foreach($cities as $value)								
+												<option value="{!!$value->cities_id!!}" @if($client->cities_id == $value->cities_id) selected="selected" @endif >
+													{!!$value->name!!}
+												</option>
+												@endforeach
+											</select>
+										</div>
+
+										@endif
 									</div>
 									<div class="col-sm-4">
 										<div class="form-group">
 											<label for=""> Bairro</label>
-											<input name="district" class="form-control " data-error="Informe seu Bairro" placeholder="Entre com seu Bairro" required="required" type="text" value="{!!$client->district!!}">
+											<input name="district" class="form-control " data-error="Informe seu bairro" placeholder="Entre com seu bairro" required="required" type="text" value="{!!$client->district!!}">
 											<div class="help-block form-text with-errors form-control-feedback"></div>
 										</div>	
 									</div>
@@ -114,14 +129,14 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for=""> Endereço</label>
-											<input name="address" class="form-control" data-error="Informe seu endereço" placeholder="Entre com seu Endereço" required="required" type="text" value="{!!$client->address!!}">
+											<input name="address" class="form-control" data-error="Informe seu endereço" placeholder="Entre com seu endereço" required="required" type="text" value="{!!$client->address!!}">
 											<div class="help-block form-text with-errors form-control-feedback"></div>
 										</div>	
 									</div>
 									<div class="col-sm-1">
 										<div class="form-group">
-											<label for=""> Numero</label>
-											<input name="number" class="form-control" data-error="Numero da Casa" placeholder="Numero da Casa" required="required" type="text" value="{!!$client->number!!}">
+											<label for=""> Número</label>
+											<input name="number" class="form-control" data-error="Numero da casa" placeholder="Numero da casa" required="required" type="text" value="{!!$client->number!!}">
 											<div class="help-block form-text with-errors form-control-feedback"></div>
 										</div>
 									</div>
@@ -154,7 +169,7 @@
 								</div>
 								@endif
 								<div class="form-buttons-w">
-									<button class="btn btn-primary" type="submit"> Salvar Informações</button>
+									<button class="btn btn-primary" type="submit"> Salvar informações</button>
 								</div>
 							</form>
 						</div>

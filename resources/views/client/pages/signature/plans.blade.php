@@ -8,7 +8,7 @@
 	-------------------->
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-		<li class="breadcrumb-item"><a href="/assinatura">Assinatura</a></li>
+		<li class="breadcrumb-item"><a href="{!!route('client-historic-invoice')!!}">Assinatura</a></li>
 		<li class="breadcrumb-item"><span>Planos</span></li>
 	</ul>
 	<!--------------------
@@ -19,7 +19,7 @@
 	<div class="content-i">
 		<div class="content-box">
 			<div class="section-heading centered">
-				<h1>Nossos Planos</h1>
+				<h1>Nossos planos</h1>
 				<p>Para te trazer o maior resultado e te ajudar a prospectar com qualidade e eficiência. Trazemos a vocês uma variedade de planos para você escolher de acordo com seu bolso no momento.</p>
 			</div>
 			<div class="pricing-plans row no-gutters">

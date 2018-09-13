@@ -2,6 +2,19 @@
 
 	function Profile(){	
 
+		var state_ = $("#cities_select").attr('data-state');
+		var citie_ = $("#cities_select").attr('data-citie');
+
+
+		function updateCitie(state) {
+			$.ajax({
+				url: $("#app_url").val() + "/api/states/"+ state,
+				type: "POST",
+				states_id: code,
+				dataType: 'json',
+			})
+		}
+
 		$('#state_select').change(function(){
 
 			var code = $(this).val();
@@ -44,33 +57,33 @@
            //do something
            $(this).prop('disabled', true);
 
-			$("#selet-file").css("opacity", "0.5");
-			$(".loading").show();
+           $("#selet-file").css("opacity", "0.5");
+           $(".loading").show();
 
-			var key = $('#key_input').val();
-			var file_data = $('#sortpicture').prop('files')[0];   
-			var form_data = new FormData();                  
-			form_data.append('file', file_data);
+           var key = $('#key_input').val();
+           var file_data = $('#sortpicture').prop('files')[0];   
+           var form_data = new FormData();                  
+           form_data.append('file', file_data);
 
 
-			$.ajax({
-				url: $("#app_url").val() + "/api/update/photo/" + key,
-				type: 'post',
-				cache: false,
-				contentType: false,
-				processData: false,
-				data: form_data,
-				success: function(result)
-				{
-					location.reload();
-				},
-				error: function(data)
-				{
-					console.log(data);
-				}
-			}); 
+           $.ajax({
+           	url: $("#app_url").val() + "/api/update/photo/" + key,
+           	type: 'post',
+           	cache: false,
+           	contentType: false,
+           	processData: false,
+           	data: form_data,
+           	success: function(result)
+           	{
+           		location.reload();
+           	},
+           	error: function(data)
+           	{
+           		console.log(data);
+           	}
+           }); 
 
-		});
+       });
 
 	} 
 	new Profile();	

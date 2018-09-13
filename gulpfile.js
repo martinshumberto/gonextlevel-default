@@ -64,17 +64,23 @@ elixir(function(mix) {
 	    	'components/Auth-prospect.js',
 	    	], 'public/js/client-historic-invoice.js');
 
-	    // CLIENT PROFILE 
+	    // CLIENT CREATE PROFILE 
 	    mix.scripts([
 	    	'components/Auth-prospect.js',
 	    	'components/Auth-profile.js',
 	    	], 'public/js/client-create-profile.js');
 
-	    // CLIENT PROFILE 
+	    // CLIENT INFO 
 	    mix.scripts([
 	    	'components/Auth-prospect.js',
 	    	'components/Auth-profile.js',
 	    	], 'public/js/client-info.js');
+
+	    // CLIENT PROFILE 
+	    mix.scripts([
+	    	'components/Auth-prospect.js',
+	    	'components/Auth-profile.js',
+	    	], 'public/js/client-profile.js');
 
 
 	    // CLIENT TRAININGS INVITE

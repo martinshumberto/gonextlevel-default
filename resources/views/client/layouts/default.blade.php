@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <title>Go Next Level - Gerenciamento de Prospectos</title>
+    <title>Go Next Level - Gerenciamento de prospectos</title>
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="prospectos hinode" name="keywords">
@@ -69,6 +69,9 @@
     @include('client.includes.register')
 
     <input type="hidden" name="app_url" id="app_url" value="{!!url("/")!!}">
+
+    <!-- KEY AUTHORIZATION -->
+    <input type="hidden" name="app_key" id="app_key" value="{!!criptBySystem( Auth::user()->client_id, 'e' );!!}">
 
     <script src="{!!url("/")!!}/public/libs/jquery/dist/jquery.min.js"></script>
     <script src="{!!url("/")!!}/public/libs/popper.js/dist/umd/popper.min.js"></script>

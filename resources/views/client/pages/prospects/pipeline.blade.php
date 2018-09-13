@@ -7,8 +7,8 @@
 	-------------------->
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-		<li class="breadcrumb-item"><a href="/prospectos">Prospectos</a></li>
-		<li class="breadcrumb-item"><span>Pipeline de Prospectos</span></li>
+		<li class="breadcrumb-item"><a href="{!!route('client-prospect')!!}">Prospectos</a></li>
+		<li class="breadcrumb-item"><span>Pipeline de prospectos</span></li>
 	</ul>
 	<!--------------------
 	END - Breadcrumbs
@@ -20,8 +20,8 @@
 					<div class="col-6 col-lg-7">
 						<form action="#" class="form-inline">
 							<div class="form-group mr-4">
-								<a class="btn btn-sm btn-secondary btn-upper" href="/prospectos/visao-geral">
-									<i class="os-icon os-icon-phone-21"></i><span> Visão Geral</span>
+								<a class="btn btn-sm btn-secondary btn-upper" href="{!!route('client-prospect')!!}">
+									<i class="os-icon os-icon-phone-21"></i><span> Visão geral</span>
 								</a>
 							</div>
 							<div class="form-group d-none d-md-flex">
@@ -67,7 +67,7 @@
 													<li>
 														<a href="#">
 															<i class="os-icon os-icon-ui-49"></i>
-															<span>Ver Prospecto</span>
+															<span>Ver prospecto</span>
 														</a>
 													</li>
 													<li>
@@ -102,7 +102,7 @@
 											<div class="el-infos pi-sub">
 												<div class="infos-value-w">
 													<div class="infos-pin"><i class="os-icon os-icon-ui-02"></i></div>
-													<div class="infos-value">{!!$convit->count_pont()!!} Pontos</div>
+													<div class="infos-value">{!!$convit->count_pont()!!} pontos</div>
 												</div>
 											</div>
 										</div>
@@ -152,7 +152,7 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver Prospecto</span></a></li>
+													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
 													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
 													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
 												</ul>
@@ -227,7 +227,7 @@
 											<div class="el-infos pi-sub">
 												<div class="infos-value-w">
 													<div class="infos-pin"><i class="os-icon os-icon-ui-02"></i></div>
-													<div class="infos-value">{!!$show->count_pont()!!} Pontos</div>
+													<div class="infos-value">{!!$show->count_pont()!!} pontos</div>
 												</div>
 											</div>
 										</div>
@@ -254,7 +254,7 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver Prospecto</span></a></li>
+													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
 													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
 													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
 												</ul>
@@ -331,7 +331,7 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver Prospecto</span></a></li>
+													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
 													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
 													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
 												</ul>
@@ -393,7 +393,7 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver Prospecto</span></a></li>
+													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
 													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
 													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
 												</ul>
@@ -479,7 +479,7 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver Prospecto</span></a></li>
+													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
 													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
 													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
 												</ul>
@@ -526,7 +526,7 @@
 				<div class="onboarding-slide">
 					<div class="onboarding-side-by-side">
 						<div class="onboarding-content with-gradient">
-							<h4 class="onboarding-title">Qualificar e Convidar</h4>
+							<h4 class="onboarding-title">Qualificar e convidar</h4>
 							<div class="onboarding-text">
 								<p>
 									Qualificar o prospecto dentro das habilidades é o primeiro passo do sucesso, a plataforma irá ordernar automáticamente os prospectos que você precisa dar atenção, de acordo com cada perfil cadastrado.
@@ -574,7 +574,8 @@
 				<div class="onboarding-slide">
 					<div class="onboarding-side-by-side">
 						<div class="onboarding-content with-gradient">
-							<h4 class="onboarding-title">Apresentar</h4>
+							<h4 class="onboarding-title">Marcar apresentação</h4>
+							<div class="onboarding-text">Parar marcar apresentação com o respectivo prospecto preencha as informações abaixo</div>
 							<div class="onboarding-text">
 								<p>
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a nulla rutrum, viverra erat ut, ultricies purus. In mi quam, accumsan at gravida ac, dapibus non erat. Morbi lobortis tincidunt tristique. Pellentesque facilisis vehicula sollicitudin. Curabitur rutrum tellus non efficitur tempor. Sed pulvinar leo libero, sed vehicula dolor consectetur id. Duis elit lorem, eleifend sit amet turpis et, tincidunt tincidunt dui. Maecenas tincidunt arcu ut mi porttitor lacinia.
@@ -668,7 +669,7 @@
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for="">Horario</label>
+											<label for="">Horário</label>
 											<div class="date-input">
 												<input class="MaskHour timepicker timepicker-without-dropdown form-control" placeholder="00:00" name="hour" type="text">
 											</div>
@@ -703,7 +704,7 @@
 				<div class="onboarding-slide">
 					<div class="onboarding-side-by-side">
 						<div class="onboarding-content with-gradient">
-							<h4 class="onboarding-title">Alterar Apresentação</h4>
+							<h4 class="onboarding-title">Alterar apresentação</h4>
 							<div class="onboarding-text">Parar alterar dia e local da apresentação insira as informações abaixo</div>
 							<form class="form-apn-update">
 								<div class="row">
@@ -719,7 +720,7 @@
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for="">Horario</label>
+											<label for="">Horário</label>
 											<div class="date-input">
 												<input class="MaskHour timepicker timepicker-without-dropdown form-control" placeholder="00:00" name="hour" type="text">
 											</div>
@@ -754,7 +755,7 @@
 				<div class="onboarding-slide">
 					<div class="onboarding-side-by-side">
 						<div class="onboarding-content with-gradient">
-							<h4 class="onboarding-title">Qualificar Prospecto</h4>
+							<h4 class="onboarding-title">Qualificar prospecto</h4>
 							<div class="onboarding-text">Para qualificar o prospectado que está cadastrando, preencha as informações abaixo.</div>
 							<form>
 								<div class="form-group row">
@@ -762,11 +763,11 @@
 									<div class="col-sm-9">
 										<select class="form-control">
 											<option selected>Selecione</option>
-											<option>Muito Baixo (1) </option>
+											<option>Muito baixo (1) </option>
 											<option>Baixo (2)</option>
 											<option>Médio (3)</option>
 											<option>Alto (4)</option>
-											<option>Muito Alto (5)</option>
+											<option>Muito alto (5)</option>
 										</select>
 									</div>
 								</div>
@@ -775,11 +776,11 @@
 									<div class="col-sm-9">
 										<select class="form-control">
 											<option selected>Selecione</option>
-											<option>Muito Baixo (1) </option>
+											<option>Muito baixo (1) </option>
 											<option>Baixo (2)</option>
 											<option>Médio (3)</option>
 											<option>Alto (4)</option>
-											<option>Muito Alto (5)</option>
+											<option>Muito alto (5)</option>
 										</select>
 									</div>
 								</div>
@@ -788,11 +789,11 @@
 									<div class="col-sm-9">
 										<select class="form-control">
 											<option selected>Selecione</option>
-											<option>Muito Baixo (1) </option>
+											<option>Muito baixo (1) </option>
 											<option>Baixo (2)</option>
 											<option>Médio (3)</option>
 											<option>Alto (4)</option>
-											<option>Muito Alto (5)</option>
+											<option>Muito alto (5)</option>
 										</select>
 									</div>
 								</div>
@@ -801,11 +802,11 @@
 									<div class="col-sm-9">
 										<select class="form-control">
 											<option selected>Selecione</option>
-											<option>Muito Baixo (1) </option>
+											<option>Muito baixo (1) </option>
 											<option>Baixo (2)</option>
 											<option>Médio (3)</option>
 											<option>Alto (4)</option>
-											<option>Muito Alto (5)</option>
+											<option>Muito alto (5)</option>
 										</select>
 									</div>
 								</div>
@@ -814,11 +815,11 @@
 									<div class="col-sm-9">
 										<select class="form-control">
 											<option selected>Selecione</option>
-											<option>Muito Baixo (1) </option>
+											<option>Muito baixo (1) </option>
 											<option>Baixo (2)</option>
 											<option>Médio (3)</option>
 											<option>Alto (4)</option>
-											<option>Muito Alto (5)</option>
+											<option>Muito alto (5)</option>
 										</select>
 									</div>
 								</div>
@@ -827,11 +828,11 @@
 									<div class="col-sm-9">
 										<select class="form-control">
 											<option selected>Selecione</option>
-											<option>Muito Baixo (1) </option>
+											<option>Muito baixo (1) </option>
 											<option>Baixo (2)</option>
 											<option>Médio (3)</option>
 											<option>Alto (4)</option>
-											<option>Muito Alto (5)</option>
+											<option>Muito alto (5)</option>
 										</select>
 									</div>
 								</div>
@@ -869,7 +870,7 @@
 				</div>
 				<div class="onboarding-content with-gradient">
 					<h4 class="onboarding-title">
-						Notas do Prospecto
+						Notas do prospecto
 					</h4>
 					<div class="onboarding-text">
 						Abaixo você pode visualizar todas as notas referente a esse prospecto, e inserir quantas quiser.
@@ -898,12 +899,6 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	window.onload = function () {
-		changeBody();
-	}
-</script>
 
 
 @endsection

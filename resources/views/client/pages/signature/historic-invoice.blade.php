@@ -11,10 +11,10 @@ START - Breadcrumbs
 		<a href="{!!route('client-dashboard')!!}">Dashboard</a>
 	</li>	
 	<li class="breadcrumb-item">
-		<span>Assinaturas</span>
+		<span>Assinatura</span>
 	</li>
 	<li class="breadcrumb-item">
-		<span>Histórico de Faturas</span>
+		<span>Histórico de faturas</span>
 	</li>
 </ul>
 <!--------------------
@@ -47,7 +47,7 @@ END - Breadcrumbs
 		@endif
 
 		<div class="element-box">
-			<h5 class="form-header">Histórico de Faturas</h5>
+			<h5 class="form-header">Histórico de faturas</h5>
 			<div class="form-desc">Veja seu histórica do faturas referente a sua assinatura. </div>
 				<!--------------------
 				START - Controls Above Table
@@ -69,10 +69,10 @@ END - Breadcrumbs
 							<tr>
 								
 								<th>ID</th>
-								<th>Nome do Produto</th>
+								<th>Nome do produto</th>
 								<th>Vencimento</th>
 								<th>Paga em</th>
-								<th>Método de Pagamento</th>
+								<th>Método de pagamento</th>
 								<th>Valor</th>
 								<th class="text-center">Status</th>
 								<th class="text-right">Ações</th>

@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'welcome-login' => 'Seja Bem-vindo!',
+    'welcome-login' => 'Seja bem-vindo!',
     'login-login' => 'Usuário/E-mail',
     'password-login' => 'Senha',
     'enter-login' => 'Entrar',
@@ -16,14 +16,14 @@ return [
     'passwordreset-login' => 'Esqueceu sua senha?',
 
 
-    'create-header' => 'Realizar Cadastro',
+    'create-header' => 'Realizar cadastro',
     'create-name' => 'Nome',
     'create-email' => 'E-mail',
     'create-idhinode' => 'ID Hinode',
     'create-password' => 'Senha',
-    'create-repassword' => 'Confirma Senha',
+    'create-repassword' => 'Confirma senha',
     'create-phone' => 'Telefone',
-    'create-submit' => 'Realizar Cadastro',
+    'create-submit' => 'Realizar cadastro',
 
 
     /*
@@ -32,6 +32,6 @@ return [
     |--------------------------------------------------------------------------
     */
     'create-phone' => 'Telefone',
-    'create-submit' => 'Realizar Cadastro',
+    'create-submit' => 'Realizar cadastro',
 
 ];

@@ -289,16 +289,19 @@ new ChangeMethod();
 
 	function graph(){	
 
+
 		var graphID = $('#analitycs-dashboard');
+		var app_key = $("#app_key").val();
 		var mesesGraph;
 		var CadastroGraph;
 		var ApresentacaoGraph;
 
 		$.ajax({
-			url: $("#app_url").val() + "/api/prospectos/auth/graph",
+			url: $("#app_url").val() + "/api/prospectos/auth/graph/"+app_key,
 			method: "POST",
 			dataType: 'json',
 			success: function(dados){
+				$("#media_apns").append(dados.medias);
 				mesesGraph = dados.meses;
 				CadastroGraph     = dados.cadastro;       
 				ApresentacaoGraph = dados.apresentacao;			

@@ -170,7 +170,7 @@
 								<div class="support-tickets-header">
 									<div class="tickets-control">
 										<h5>
-											Historico de apresentações
+											Histórico de apresentações
 										</h5>
 									</div>								
 								</div>

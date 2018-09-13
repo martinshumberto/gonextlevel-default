@@ -3,14 +3,22 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+use App\Http\Requests;
+
 use App\Http\Controllers\ClientController;
 
 use App\Model\Prospects;
 use App\Model\Apresentations;
+use App\Model\Clients;
 
 use Auth;
 use App\Model\ActivityLog;
+
+use DateTime;
+use DatePeriod;
+use DateInterval;
 
 
 
@@ -202,17 +210,73 @@ class ProspectosController extends ClientController
 		
 	}
 
-	public function graphDashboard()
+	public function graphDashboard(Request $request, $id)
 	{	
-		
+		$client_id =  criptBySystem( $id, 'd' );
+
+		# Buscando Cliente
+		$client = Clients::where('client_id', $client_id)->first();
+
+
+		$startDate = strtotime($client->created_at);
+		$endDate   = strtotime(date("Y-m-d"));
+
+		$currentDate = $endDate;
+
+		$meses = array();
+		$cadastros = array();
+		$apresentacoes = array();
+
+
+		while ($currentDate >= $startDate) {
+
+			$mes = getMonth(date('m',$currentDate));
+			
+			# Contar Numero de Prospect por Mês
+			$mes_atual = date('m',$currentDate);
+
+			$cad = Prospects::where('client_id', $client_id)
+			->whereMonth('created_at', $mes_atual)
+			->where('stage', '4')
+			->count();
+			$cadastros[] = $cad;
+
+			$apn = Prospects::where('client_id', $client_id)
+			->whereMonth('created_at', $mes_atual)
+			->where('stage', '2')
+			->count();
+			$apresentacoes[] = $apn;
+			
+
+
+			$meses[] = $mes;
+			//echo getMonth(date('m',$currentDate));
+			$currentDate = strtotime( date('Y/m/01/',$currentDate).' -1 month');
+		}
+
+
+		$apns = Prospects::where('stage', '2')->where('client_id', $client_id)->count();
+		$cads = Prospects::where('stage', '4')->where('client_id', $client_id)->count();
+
+		$media = 0;
+
+		if(($apns != 0) && ($cads != 0)){
+			$media = ($apns / $cads);	
+			$media = round($media);	
+
+		}
+
+
 
 
 
 		return 
 		response()->
 		json(
-			array("meses" => array("Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho"), 
-				"cadastro" => array("12", "25", "52", "15", "20", "14", "7"),
-				"apresentacao" => array("5", "7", "20", "6", "2", "5", "9")));
+			array("meses" => $meses, 
+				"cadastro" => $cadastros,
+				"apresentacao" => $apresentacoes,
+				"medias" => $media
+			));
 	}
 }

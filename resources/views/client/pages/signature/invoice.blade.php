@@ -8,9 +8,9 @@
 	-------------------->
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-		<li class="breadcrumb-item"><a href="/assinatura">Assinatura</a></li>
-		<li class="breadcrumb-item"><a href="/assinatura/planos">Planos</a></li>
-		<li class="breadcrumb-item"><span>Nova Fatura</span></li>
+		<li class="breadcrumb-item"><a href="{!!route('client-historic-invoice')!!}">Assinatura</a></li>
+		<li class="breadcrumb-item"><a href="{!!route('client-plans')!!}">Planos</a></li>
+		<li class="breadcrumb-item"><span>Nova fatura</span></li>
 	</ul>
 	<!--------------------
 	END - Breadcrumbs
@@ -71,7 +71,7 @@
 									</tfoot>
 								</table>
 								<div class="terms">
-									<div class="terms-header">Assinando você estará concordando com os <a href="#">Termos e Condições</a></div>
+									<div class="terms-header">Assinando você estará concordando com os <a href="#">termos e condições</a></div></div>
 									<div class="terms-content">Daremos automaticamente continuidade à sua assinatura e cobraremos ${!!$plan->price()!!} até você cancelar ou alterar.</div>
 									<div class="terms-content">Não haverá reembolsos ou créditos por meses parciais.</div>
 									<div class="terms-content">Após vencimento da fatura, será cobrado uma multa no valor de R$ 2,00.</div>

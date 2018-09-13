@@ -26,8 +26,8 @@
 							<span aria-hidden="true"> ×</span>
 						</button>
 						<strong>Atenção! </strong>
-						Seu cadastro não está <b>Completo</b>, por favor preencha todas as informações necessárias para concluir.
-						<br>Acesse <a href="{!!route('client-info')!!}"><b><i class="os-icon os-icon-cv-2"></i> Minhas Informações</b></a> para completar.
+						Seu cadastro não está <b>completo</b>, por favor preencha todas as informações necessárias para concluir.
+						<br>Acesse <a href="{!!route('client-info')!!}"><b><i class="os-icon os-icon-cv-2"></i> "minhas informações"</b></a> para completar.
 					</div>
 					@endif
 
@@ -43,8 +43,8 @@
 								$diferenca = strtotime($data_final) - strtotime($data_inicial);
 								$prazo = floor($diferenca / (60 * 60 * 24));
 								@endphp
-								Faltam {!!$prazo!!} dias para o <b>Fim</b> do seu plano de GRATIS da nossa plataforma<br>
-								Realize agora um <a href="{!!route('client-plans')!!}">Upgrade</a>, e nao perca seus dados!
+								Faltam {!!$prazo!!} dias para o <b>fim</b> do seu <b>plano gratuito</b> da nossa plataforma<br>
+								Realize agora um <a href="{!!route('client-plans')!!}">upgrade</a>, e não perca seus dados!
 							</div>
 							@endif
 							@if($plansClients->status == "3")
@@ -77,8 +77,8 @@
 							<span aria-hidden="true"> ×</span>
 						</button>
 						<strong>Atenção! </strong>
-						Seu plano está para vencer, não fique sem usar o <b>Sistema</b>.
-						<br>Acesse <a href="{!!route('client-plans')!!}"><b>Planos</b></a> e ecolha.
+						Seu plano está para vencer, não fique sem usar o <b>sistema</b>.
+						<br>Acesse <a href="{!!route('client-plans')!!}"><b>planos</b></a> e escolha.
 					</div>
 
 					<!-- ERROS DE SISTEMA -->
@@ -130,7 +130,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="element-wrapper">
-						<h6 class="element-header">Desempenho Anual</h6>
+						<h6 class="element-header">Desempenho anual</h6>
 
 						<div class="element-content">
 							<div class="row">		
@@ -138,10 +138,10 @@
 									<div class="element-wrapper">								
 										<div class="element-box">
 											<h5 class="form-header">
-												Apresentações e Cadastros
+												Apresentações e cadastros
 											</h5>
 											<div class="form-desc">
-												Para fazer 1 cadastro, você apresentou 14 APN(s) em média.
+												Para fazer 1 cadastro, você apresentou <span id="media_apns"></span> APN(s) em média.
 											</div>
 											<div class="el-chart-w">
 												<canvas height="145" id="analitycs-dashboard" width="300"></canvas>
@@ -164,8 +164,12 @@
 			START - Recent Activity
 			-------------------->
 			<div class="element-wrapper">
-				<h6 class="element-header">Atividade Recente</h6>
-				<div class="element-box-tp">
+				<h6 class="element-header">Atividade recente</h6>
+				<div class="element-box-tp" style="overflow-y: scroll; height: 100px;">
+					@php
+					$count_activ = count($activits);
+					@endphp
+					@if($count_activ > 0)
 					<div class="activity-boxes-w">
 						@foreach($activits as $value)
 						<div class="activity-box-w">
@@ -178,6 +182,11 @@
 						</div>
 						@endforeach						
 					</div>
+					@else
+					<div class="alert alert-warning alert-dismissible fade show" role="alert" style="display: block; font-size: 12px; opacity: 0.5">
+						Nenhuma atividade recente
+					</div>
+					@endif
 				</div>
 			</div>
 			<!--------------------

@@ -131,7 +131,7 @@ END - Breadcrumbs
 							<tr>
 								<th><input class="form-control" type="checkbox"></th>
 								<th>ID</th>
-								<th>Nome do Prospecto</th>
+								<th>Nome do prospecto</th>
 								<th>Etapa</th>
 								<th class="text-center">Status</th>
 								<th class="text-right">Ações</th>

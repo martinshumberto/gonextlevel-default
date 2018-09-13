@@ -214,4 +214,4 @@
 
 
 }(jQuery));
-//# sourceMappingURL=client-create-profile.js.map
+//# sourceMappingURL=client-profile.js.map

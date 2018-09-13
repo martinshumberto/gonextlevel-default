@@ -10,7 +10,7 @@ START - Modal - Register
 					<div class="onboarding-slide">
 						<div class="onboarding-side-by-side">
 							<div class="onboarding-content with-gradient">
-								<h4 class="onboarding-title">Novo Prospecto</h4>
+								<h4 class="onboarding-title">Novo prospecto</h4>
 								<div class="onboarding-text">Para adicionar um novo prospecto, preencha as informações abaixo.</div>
 								@csrf
 								<input type="hidden" name="key" value="{!!criptBySystem( Auth::user()->client_id, 'e' );!!}">
@@ -18,7 +18,7 @@ START - Modal - Register
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="">Nome</label>
-											<input class="form-control" placeholder="Nome do Prospecto" type="text" value="" name="name">
+											<input class="form-control" placeholder="Nome do prospecto" type="text" value="" name="name">
 										</div>
 									</div>
 									<div class="col-sm-6">
@@ -30,7 +30,7 @@ START - Modal - Register
 									<div class="col-sm-12">
 										<div class="form-group">
 											<label for="">E-mail</label>
-											<input class="form-control" placeholder="Email do Prospecto" type="email" value="" name="email">
+											<input class="form-control" placeholder="Email do prospecto" type="email" value="" name="email">
 										</div>
 									</div>
 								</div>
@@ -41,7 +41,7 @@ START - Modal - Register
 					<div class="onboarding-slide">
 						<div class="onboarding-side-by-side">
 							<div class="onboarding-content with-gradient">
-								<h4 class="onboarding-title">Qualificar Prospecto</h4>
+								<h4 class="onboarding-title">Qualificar prospecto</h4>
 								<div class="onboarding-text">Para qualificar o prospectado que está cadastrando, preencha as informações abaixo.</div>
 								<form>
 									<div class="form-group row">
@@ -49,11 +49,11 @@ START - Modal - Register
 										<div class="col-sm-9">
 											<select name="network" class="form-control">
 												<option selected>Selecione</option>
-												<option value="1">Muito Baixo (1) </option>
+												<option value="1">Muito baixo (1) </option>
 												<option value="2">Baixo (2)</option>
 												<option value="3">Médio (3)</option>
 												<option value="4">Alto (4)</option>
-												<option value="5">Muito Alto (5)</option>
+												<option value="5">Muito alto (5)</option>
 											</select>
 										</div>
 									</div>
@@ -62,11 +62,11 @@ START - Modal - Register
 										<div class="col-sm-9">
 											<select name="credibility" class="form-control">
 												<option selected>Selecione</option>
-												<option value="1">Muito Baixo (1) </option>
+												<option value="1">Muito baixo (1) </option>
 												<option value="2">Baixo (2)</option>
 												<option value="3">Médio (3)</option>
 												<option value="4">Alto (4)</option>
-												<option value="5">Muito Alto (5)</option>
+												<option value="5">Muito alto (5)</option>
 											</select>
 										</div>
 									</div>
@@ -75,11 +75,11 @@ START - Modal - Register
 										<div class="col-sm-9">
 											<select name="entrepreneur" class="form-control">
 												<option selected>Selecione</option>
-												<option value="1">Muito Baixo (1) </option>
+												<option value="1">Muito baixo (1) </option>
 												<option value="2">Baixo (2)</option>
 												<option value="3">Médio (3)</option>
 												<option value="4">Alto (4)</option>
-												<option value="5">Muito Alto (5)</option>
+												<option value="5">Muito alto (5)</option>
 											</select>
 										</div>
 									</div>
@@ -88,11 +88,11 @@ START - Modal - Register
 										<div class="col-sm-9">
 											<select name="energy" class="form-control">
 												<option selected>Selecione</option>
-												<option value="1">Muito Baixo (1) </option>
+												<option value="1">Muito baixo (1) </option>
 												<option value="2">Baixo (2)</option>
 												<option value="3">Médio (3)</option>
 												<option value="4">Alto (4)</option>
-												<option value="5">Muito Alto (5)</option>
+												<option value="5">Muito alto (5)</option>
 											</select>
 										</div>
 									</div>
@@ -101,11 +101,11 @@ START - Modal - Register
 										<div class="col-sm-9">
 											<select name="dreamer" class="form-control">
 												<option selected>Selecione</option>
-												<option value="1">Muito Baixo (1) </option>
+												<option value="1">Muito baixo (1) </option>
 												<option value="2">Baixo (2)</option>
 												<option value="3">Médio (3)</option>
 												<option value="4">Alto (4)</option>
-												<option value="5">Muito Alto (5)</option>
+												<option value="5">Muito alto (5)</option>
 											</select>
 										</div>
 									</div>
@@ -114,16 +114,16 @@ START - Modal - Register
 										<div class="col-sm-9">
 											<select name="resource" class="form-control">
 												<option selected>Selecione</option>
-												<option value="1">Muito Baixo (1) </option>
+												<option value="1">Muito baixo (1) </option>
 												<option value="2">Baixo (2)</option>
 												<option value="3">Médio (3)</option>
 												<option value="4">Alto (4)</option>
-												<option value="5">Muito Alto (5)</option>
+												<option value="5">Muito alto (5)</option>
 											</select>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-form-label col-sm-3" for=""> Tipo de Contato</label>
+										<label class="col-form-label col-sm-3" for=""> Tipo de contato</label>
 										<div class="col-sm-9">
 											<select name="contact" class="form-control">
 												<option selected>Selecione</option>

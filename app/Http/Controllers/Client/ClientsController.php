@@ -11,6 +11,8 @@ use App\Http\Requests;
 
 use App\Model\Clients;
 use App\Model\States;
+use App\Model\Cities;
+use App\Model\ActivityLog;
 use Auth;
 
 #MOIP REQUIRE
@@ -32,16 +34,25 @@ class ClientsController extends ClientController
 			require_once($helper);
 		}
 
+
+
 		$client_id = Auth::user()->client_id;
 		$usuario = Clients::where('client_id', $client_id)->first();
 		$states = States::orderBy("name", "ASC")->get();
 
 		$client_id = criptBySystem($client_id, 'e');
 
+		$cities = Cities::where("states_id", $usuario->states_id)->get();
+
+		# Atividades Recents
+		$activits = ActivityLog::where('client_id', $usuario->client_id)->orderBy('activity_id', 'DESC')->take(8)->get();
+
 		return view("client/pages/clients/index", array(
 			"states"    => $states,
 			"client" => $usuario,
-			"client_id" => $client_id
+			"client_id" => $client_id,
+			"cities" => $cities,
+			"activits" => $activits
 		));
 	}
 
@@ -52,9 +63,12 @@ class ClientsController extends ClientController
 		$usuario = Clients::where('client_id', $client_id)->first();
 		$states = States::orderBy("name", "ASC")->get();
 
+		$cities = Cities::where("states_id", $usuario->states_id)->get();
+
 		return view("client/pages/clients/info", array(
 			"states"    => $states,
-			"client" => $usuario
+			"client" => $usuario,
+			"cities" => $cities,
 		));
 	}
 
