@@ -1150,6 +1150,7 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
 .chat-search input.search-member-chat {
   background-color: #ffffff !important;
   border-radius: 0 !important;
+  margin-bottom: 12px;
 }
 
 /*# sourceMappingURL=library.css.map */

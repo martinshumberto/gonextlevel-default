@@ -91,6 +91,13 @@ elixir(function(mix) {
 	    	], 'public/js/client-trainings-invite.js');
 
 
+	    // CLIENT SCHEDULE
+	    mix.scripts([
+	    	'components/Auth-prospect.js',
+	    	'components/Auth-schedule.js',	    	
+	    	], 'public/js/client-schedule.js');
+
+
 	    mix.scripts([
 	    	'libs/sweetalert2.all.min.js',
 	    	'libs/jquery.mask.js',

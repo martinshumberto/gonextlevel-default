@@ -16,7 +16,7 @@
 			<div class="element-box">
 				<h5 class="form-header">Gerenciar agenda</h5>
 				<div class="form-desc">Gerencie suas apresentações, reuniões e compromissos marcados através de nossa plataforma. </div>
-				<div id="fullCalendar"></div>
+				<div id="schedule"></div>
 			</div>
 		</div>
 	</div>

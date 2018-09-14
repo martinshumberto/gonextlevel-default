@@ -26,3 +26,6 @@ Route::post('update/photo/{key}', 'Api\ProfileController@uploadPhoto');
 
 // Inovices
 Route::post('inovices/auth/discount', 'Api\InovicesController@discount');
+
+
+Route::post('agenda/auth/show/{auth}', 'Api\ScheduleController@index');
