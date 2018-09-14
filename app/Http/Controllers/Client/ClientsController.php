@@ -13,12 +13,13 @@ use App\Model\Clients;
 use App\Model\States;
 use App\Model\Cities;
 use App\Model\ActivityLog;
+use App\Model\Prospects;
 use Auth;
 
 #MOIP REQUIRE
 use Moip\Moip;
 use Moip\Auth\BasicAuth;
-
+ 
 class ClientsController extends ClientController
 {
 
@@ -47,12 +48,23 @@ class ClientsController extends ClientController
 		# Atividades Recents
 		$activits = ActivityLog::where('client_id', $usuario->client_id)->orderBy('activity_id', 'DESC')->take(8)->get();
 
+		# Conta Prospects 
+		$cadastros = Prospects::where('client_id', $usuario->client_id)
+		->count();
+
+		$captados = Prospects::where('client_id', $usuario->client_id)
+		->where('status', "3")
+		->count(); 
+ 
 		return view("client/pages/clients/index", array(
 			"states"    => $states,
 			"client" => $usuario,
 			"client_id" => $client_id,
 			"cities" => $cities,
-			"activits" => $activits
+			"activits" => $activits,
+			"cadastros" => $cadastros,
+			"captados" => $captados,
+
 		));
 	}
 

@@ -5,6 +5,7 @@ START - Modal - Register
 	<div class="modal-dialog modal-lg modal-centered" role="document">
 		<div class="modal-content text-center">
 			<form id="register-new-prospect">
+				<input type="hidden" name="key" value="{!!criptBySystem( Auth::user()->client_id, 'e' );!!}">
 				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span class="close-label">Fechar</span><span class="os-icon os-icon-close"></span></button>
 				<div class="onboarding-slider-w">
 					<div class="onboarding-slide">
@@ -13,7 +14,6 @@ START - Modal - Register
 								<h4 class="onboarding-title">Novo prospecto</h4>
 								<div class="onboarding-text">Para adicionar um novo prospecto, preencha as informações abaixo.</div>
 								@csrf
-								<input type="hidden" name="key" value="{!!criptBySystem( Auth::user()->client_id, 'e' );!!}">
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="form-group">

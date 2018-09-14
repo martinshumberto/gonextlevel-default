@@ -165,7 +165,7 @@
 			-------------------->
 			<div class="element-wrapper">
 				<h6 class="element-header">Atividade recente</h6>
-				<div class="element-box-tp" style="overflow-y: scroll; height: 100px;">
+				<div class="element-box-tp" >
 					@php
 					$count_activ = count($activits);
 					@endphp

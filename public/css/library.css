@@ -1144,5 +1144,12 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
 .icon-hover-tooltip:hover span {
   display: block;
 }
+.floated-colors-btn {
+  right: 20px !important;
+}
+.chat-search input.search-member-chat {
+  background-color: #ffffff !important;
+  border-radius: 0 !important;
+}
 
 /*# sourceMappingURL=library.css.map */

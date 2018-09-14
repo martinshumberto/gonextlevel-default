@@ -58,20 +58,20 @@
 									<div class="col-sm-6 b-r b-b">
 										<div class="el-tablo centered padded-v">
 											<div class="value">
-												315
+												{!!$cadastros!!}
 											</div>
 											<div class="label">
-												Prospecto captados
+												Cadastros
 											</div>
 										</div>
 									</div>
 									<div class="col-sm-6 b-b">
 										<div class="el-tablo centered padded-v">
 											<div class="value">
-												690
+												{!!$captados!!}
 											</div>
 											<div class="label">
-												Cadastros
+												Prospecto captados
 											</div>
 										</div>
 									</div>

@@ -14,7 +14,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   &.second-floated-btn {
-  	right: 20px;
+  	right: 20px !important;
   }
   span {
     vertical-align: middle;

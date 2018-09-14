@@ -46,7 +46,9 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 	Route::get('/prospectos/ver/{id}', array('as' => 'client-prospect-view', 'uses' => 'ProspectsController@ViewProspect'));
 
 	/* Apps */
-	Route::get('/aplicativos/agenda', array('as' => 'client-schedule', 'uses' => 'ScheduleController@show'));
+	Route::get('/agenda', array('as' => 'client-schedule', 'uses' => 'ScheduleController@show'));
+	/* Chat em Equipe */
+	Route::get('/chats', array('as' => 'client-chat', 'uses' => 'ChatController@index')); 
 
 	/* Signature */
 	Route::get('/assinatura/planos', array('as' => 'client-plans', 'uses' => 'PlansController@show'));
@@ -71,8 +73,6 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 	Route::get('/notificacoes', array('as' => 'client-notifications', 'uses' => 'ClientsController@index'));
 
 
-	/* Chat em Equipe */
-	Route::get('/chats', array('as' => 'client-chat', 'uses' => 'ChatController@index')); 
 
 	/* Treinamentos */
 	Route::get('/treinamentos/convidar', array('as' => 'client-trainings-invite', 'uses' => 'TrainingsController@invite'));  

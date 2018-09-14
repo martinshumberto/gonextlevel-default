@@ -68,6 +68,9 @@ class Prospects extends Authenticatable
     public function stage()
     {   
         switch ($this->stage) {
+            case '5':
+            return 'Concluido';
+            break;
             case '4':
             return 'Fechamento';
             break;

@@ -18,6 +18,7 @@ elixir(function(mix) {
 
 	    //JAVASCRIPT  LIBS
 	    mix.scripts([
+	    	'libs/color.theme.js',
 	    	'libs/sweetalert2.all.min.js',
 	    	'libs/jquery.mask.js',
 	    	'components/Auth-mask.js',

@@ -237,7 +237,7 @@ class ProspectosController extends ClientController
 
 			$cad = Prospects::where('client_id', $client_id)
 			->whereMonth('created_at', $mes_atual)
-			->where('stage', '4')
+			->where('status', '3')
 			->count();
 			$cadastros[] = $cad;
 
