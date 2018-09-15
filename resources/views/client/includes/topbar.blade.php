@@ -18,7 +18,7 @@ START - Mobile Menu
 		<div class="logged-user-w">
 			<div class="avatar-w"><img alt="" src="{!!url("/")!!}/public/storage/{!!Auth::user()->image!!}"></div>
 			<div class="logged-user-info-w">
-				<div class="logged-user-name">{!!Auth::user()->name!!}</div>
+				<div class="logged-user-name">{!!getName(Auth::user()->name)!!}</div>
 				<div class="logged-user-role">{!!Auth::user()->stage()!!}</div>
 			</div>
 		</div>
@@ -161,7 +161,7 @@ START - Main Menu
 		<div class="logged-user-i">
 			<div class="avatar-w"><img alt="" src="{!!url("/")!!}/public/storage/{!!Auth::user()->image!!}"></div>
 			<div class="logged-user-info-w">
-				<div class="logged-user-name">{!!Auth::user()->name!!}</div>
+				<div class="logged-user-name">{!!getName(Auth::user()->name)!!}</div>
 				<div class="logged-user-role">{!!Auth::user()->stage()!!}</div>
 			</div>
 			<div class="logged-user-toggler-arrow">
@@ -169,7 +169,7 @@ START - Main Menu
 			</div>
 			<div class="logged-user-menu color-style-bright">
 				<div class="logged-user-avatar-info">
-					<div class="avatar-w"><img alt="" src="{!!url("/")!!}/public/img/{!!Auth::user()->image!!}"></div>
+					<div class="avatar-w"><img alt="" src="{!!url("/")!!}/public/storage/{!!Auth::user()->image!!}"></div>
 					<div class="logged-user-info-w">
 						<div class="logged-user-name">{!!Auth::user()->name!!}</div>
 						<div class="logged-user-role">{!!Auth::user()->stage()!!}</div>

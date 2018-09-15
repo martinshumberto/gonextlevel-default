@@ -19,14 +19,14 @@ use Auth;
 #MOIP REQUIRE
 use Moip\Moip;
 use Moip\Auth\BasicAuth;
- 
+
 class ClientsController extends ClientController
 {
 
 	private $token = 'QRCHHIZYDFJPASWASI1DUC7FZ0UGH3ZO';
 	private $key = 'AM7AS2B66JSB882MNCDPA9TQUDCY128ADKSQAQ2M';
 
-	public function index()
+	public function profile()
 	{	
 
 
@@ -55,8 +55,8 @@ class ClientsController extends ClientController
 		$captados = Prospects::where('client_id', $usuario->client_id)
 		->where('status', "3")
 		->count(); 
- 
-		return view("client/pages/clients/index", array(
+
+		return view("client/pages/clients/profile", array(
 			"states"    => $states,
 			"client" => $usuario,
 			"client_id" => $client_id,
@@ -84,7 +84,7 @@ class ClientsController extends ClientController
 		));
 	}
 
-	public function update(Request $request)
+	public function updateInfo(Request $request)
 	{
 
 		# Debu
@@ -126,9 +126,9 @@ class ClientsController extends ClientController
 				->setTaxDocument($cpf)
 				->setPhone($ddd, $phone)
 				->addAddress('BILLING',
-					$client->address, $client->number,
-					$client->district, $client->citie->name, $client->state->code,
-					$client->zipcode, 8)
+					'Rua Pernambuco', 133,
+					'Centro Sul', 'Varzea Grande', 'MT',
+					'78135595', 8)
 				->create();
 
 				# DEBUG CLIENT
@@ -153,5 +153,13 @@ class ClientsController extends ClientController
 		}
 
 	}	
+
+	public function updateProfile(Request $request)
+	{
+		$client = Clients::where('client_id', Auth::user()->client_id)->first();
+		# Atualza Informações Necessárias
+		$client->update($request->all());
+		return redirect(route('client-profile'))->withErrors(array("type" => "success", "msg" => "Informacoes atualizada com sucesso!"));
+	}
 
 }

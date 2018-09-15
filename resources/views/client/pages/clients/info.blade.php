@@ -28,12 +28,12 @@
 
 					<div class="element-wrapper">
 						<div class="element-box">
-							<form id="formValidate" method="post" action="{!!route('client-profile-update')!!}">
+							<form id="formValidate" method="post" action="{!!route('client-info-update')!!}">
 								@csrf
 								<div class="element-info">
 									<div class="element-info-with-icon">
 										<div class="element-info-icon">
-											<div class="os-icon os-icon-wallet-loaded"></div>
+											<div class="os-icon os-icon-wallet-loaded"></div> 
 										</div>
 										<div class="element-info-text">
 											<h5 class="element-inner-header">
@@ -79,8 +79,41 @@
 											</div>
 										</div>
 									</div>
-								</div>							
+								</div>	
 								<div class="row">
+									
+
+									<div class="col-sm-3">
+										<div class="form-group">
+											<label for=""> CEP</label>
+											<input name="zipcode" class="form-control MaskZipcode" data-error="Informe seu CEP" placeholder="Entre com seu CEP" required="required" type="text" value="{!!$client->zipcode!!}">
+											<div class="help-block form-text with-errors form-control-feedback"></div>
+										</div>
+									</div>
+									<div class="col-sm-8">
+										<div class="form-group">
+											<label for=""> Endereço</label>
+											<input name="address" class="form-control" data-error="Informe seu endereço" placeholder="Entre com seu endereço" required="required" type="text" value="{!!$client->address!!}">
+											<div class="help-block form-text with-errors form-control-feedback"></div>
+										</div>	
+									</div>
+									<div class="col-sm-1">
+										<div class="form-group">
+											<label for=""> Número</label>
+											<input name="number" class="form-control" data-error="Numero da casa" placeholder="Numero da casa" required="required" type="text" value="{!!$client->number!!}">
+											<div class="help-block form-text with-errors form-control-feedback"></div>
+										</div>
+									</div>
+
+								</div>						
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label for=""> Bairro</label>
+											<input name="district" class="form-control " data-error="Informe seu bairro" placeholder="Entre com seu bairro" required="required" type="text" value="{!!$client->district!!}">
+											<div class="help-block form-text with-errors form-control-feedback"></div>
+										</div>	
+									</div>
 									<div class="col-sm-4">
 										<div class="form-group">
 											<label for=""> Selecione o estado</label>
@@ -117,37 +150,8 @@
 
 										@endif
 									</div>
-									<div class="col-sm-4">
-										<div class="form-group">
-											<label for=""> Bairro</label>
-											<input name="district" class="form-control " data-error="Informe seu bairro" placeholder="Entre com seu bairro" required="required" type="text" value="{!!$client->district!!}">
-											<div class="help-block form-text with-errors form-control-feedback"></div>
-										</div>	
-									</div>
 								</div>			
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label for=""> Endereço</label>
-											<input name="address" class="form-control" data-error="Informe seu endereço" placeholder="Entre com seu endereço" required="required" type="text" value="{!!$client->address!!}">
-											<div class="help-block form-text with-errors form-control-feedback"></div>
-										</div>	
-									</div>
-									<div class="col-sm-1">
-										<div class="form-group">
-											<label for=""> Número</label>
-											<input name="number" class="form-control" data-error="Numero da casa" placeholder="Numero da casa" required="required" type="text" value="{!!$client->number!!}">
-											<div class="help-block form-text with-errors form-control-feedback"></div>
-										</div>
-									</div>
-									<div class="col-sm-5">
-										<div class="form-group">
-											<label for=""> CEP</label>
-											<input name="zipcode" class="form-control MaskZipcode" data-error="Informe seu CEP" placeholder="Entre com seu CEP" required="required" type="text" value="{!!$client->zipcode!!}">
-											<div class="help-block form-text with-errors form-control-feedback"></div>
-										</div>
-									</div>
-								</div>
+								
 
 								
 								

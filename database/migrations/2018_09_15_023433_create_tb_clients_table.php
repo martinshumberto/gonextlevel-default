@@ -23,6 +23,11 @@ class CreateTbClientsTable extends Migration {
 			$table->text('password', 65535);
 			$table->string('phone', 25)->nullable();
 			$table->date('birthdate')->nullable();
+			$table->text('biography', 65535)->nullable();
+			$table->string('facebook', 150)->nullable();
+			$table->string('instagram', 100)->nullable();
+			$table->string('twitter', 100)->nullable();
+			$table->string('whatsapp', 100)->nullable();
 			$table->string('hinode_id', 50)->nullable();
 			$table->string('image')->nullable()->default('default_user.png');
 			$table->integer('states_id')->nullable();

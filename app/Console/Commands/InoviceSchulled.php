@@ -38,7 +38,7 @@ class InoviceSchulled extends Command
     {
         parent::__construct();
     }
- 
+
     /**
      * Execute the console command.
      *
@@ -62,12 +62,18 @@ class InoviceSchulled extends Command
 
             if($response->status == "AUTHORIZED"){
 
+                $_cardNumber = $response->fundingInstrument->creditCard->last4;
+                $_fullName = $response->fundingInstrument->creditCard->holder->fullname;
+                $_brand = $response->fundingInstrument->creditCard->brand;
+
                 $day = date("Y-m-d h:i:s");
-                $inovice = DB::table('tb_inovices')->where('inovice_id', $value->inovice_id)->update(['status' => 1, 'update' => $day]);
+                $inovice = DB::table('tb_inovices')->where('inovice_id', $value->inovice_id)->update(['status' => 1, 'update' => $day, '_cardNumber' => $_cardNumber, '_fullName' => $_fullName, '_brand' => $_brand]);
                 $plan_client = DB::table('tb_plans_clients')
                 ->where('client_id', $value->client_id)
                 ->where('plan_id', $value->plan_id)
                 ->update(['status' => 1]);
+
+                
 
             }
 

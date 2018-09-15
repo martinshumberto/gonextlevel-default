@@ -23,7 +23,11 @@ class CreateTbInovicesTable extends Migration {
 			$table->string('gateway_key')->nullable();
 			$table->text('gateway_response', 65535)->nullable();
 			$table->string('discount_code')->nullable();
+			$table->integer('_cardNumber')->nullable();
+			$table->string('_fullName')->nullable();
+			$table->string('_brand')->nullable();
 			$table->integer('status');
+			$table->dateTime('update')->nullable();
 			$table->timestamps();
 		});
 	}

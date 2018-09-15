@@ -514,9 +514,18 @@ class InovicesController extends ClientController
 
 		$payment = $moip->payments()->get($id);
 
-		var_dump($payment);
+		
+		$response = json_encode($payment);
+		$response = json_decode($response);
 
+		var_dump($response);
 		echo "<br>";
+
+		echo $response->fundingInstrument->creditCard->brand;
+		echo "<br>";
+		echo $response->fundingInstrument->creditCard->last4;
+		echo "<br>";
+		echo $response->fundingInstrument->creditCard->holder->fullname;
 
 		//echo $response->status;
 

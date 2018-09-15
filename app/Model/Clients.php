@@ -14,7 +14,7 @@ class Clients extends Authenticatable
 	protected $table = 'tb_clients';
 	protected $primaryKey  = 'client_id';
 	protected $fillable  = 
-	['moip_id','name', 'cpf','email','login','password','phone','birthdate','hinode_id',
+	['moip_id','name', 'cpf','email','login','password','phone','birthdate','biography','facebook', 'instagram', 'twitter', 'whatsapp','hinode_id',
     'states_id','cities_id', 'district', 'address', 'number', 'zipcode', 'status', 'stage','remember_token','created_at','updated_at'];
     
     public function setPasswordAttribute($password)

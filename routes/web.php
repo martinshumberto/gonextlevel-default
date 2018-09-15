@@ -67,8 +67,11 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 
 	/* Info Client */
 	Route::get('/meus-dados', array('as' => 'client-info', 'uses' => 'ClientsController@info'));
-	Route::get('/perfil', array('as' => 'client-profile', 'uses' => 'ClientsController@index'));
-	Route::post('/perfil/atualizar', array('as' => 'client-profile-update', 'uses' => 'ClientsController@update'));
+	Route::post('/meus-dados/atualizar', array('as' => 'client-info-update', 'uses' => 'ClientsController@updateInfo'));
+
+	Route::get('/perfil', array('as' => 'client-profile', 'uses' => 'ClientsController@profile'));
+	Route::post('/perfil/atualizar', array('as' => 'client-profile-update', 'uses' => 'ClientsController@updateProfile'));
+	
 	Route::get('/assinaturas', array('as' => 'client-signature', 'uses' => 'ClientsController@index'));
 	Route::get('/notificacoes', array('as' => 'client-notifications', 'uses' => 'ClientsController@index'));
 

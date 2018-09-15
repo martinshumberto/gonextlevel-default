@@ -143,6 +143,23 @@ END - Breadcrumbs
 														</div>
 													</div>
 													<div class="row">
+														<div class="col-sm-6">
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	<div class="input-group-text">
+																		<i class="fa fa-{!!$value->brand()!!}" aria-hidden="true"></i>
+																	</div>
+																</div>
+																<input class="form-control" placeholder="**** **** **** {!!$value->_cardNumber!!}" type="text" disabled="disabled">
+															</div>
+														</div>
+														<div class="col-sm-6">
+															<div class="form-group">
+																<input style="text-align: center; text-transform: uppercase;" class="form-control" type="text" value="{!!$value->_fullName!!}" disabled="disabled">
+															</div>
+														</div>														
+													</div>
+													<div class="row">
 														<div class="col-sm-12">
 															<div class="form-group">
 																<label for="">Valor</label>

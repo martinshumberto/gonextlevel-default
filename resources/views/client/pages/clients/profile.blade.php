@@ -135,6 +135,9 @@
 							</div>
 						</div>
 						<div class="element-wrapper">
+							@if($errors->any())
+					<div class="alert alert-{{$errors->first('type')}}" role="alert">{{$errors->first('msg')}}</div>
+					@endif
 							<div class="element-box">
 								<form id="formValidate" method="post" action="{!!route('client-profile-update')!!}">
 									@csrf
@@ -154,18 +157,8 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for=""> Sobre Você</label>
-										<textarea class="form-control" rows="3"></textarea>
-										<div class="help-block form-text with-errors form-control-feedback"></div>
-									</div>
-									<div class="form-group">
-										<label for=""> Seu Twitter</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<div class="input-group-text"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-											</div>
-											<input class="form-control" placeholder="Twitter Username" type="text">
-										</div>
+										<label for=""> Biografia</label>
+										<textarea name="biography" class="form-control" rows="3">{!!$client->biography!!}</textarea>
 										<div class="help-block form-text with-errors form-control-feedback"></div>
 									</div>
 									<div class="form-group">
@@ -174,10 +167,40 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text"><i class="fa fa-facebook" aria-hidden="true"></i></div>
 											</div>
-											<input class="form-control" placeholder="Twitter Username" type="text">
+											<input value="{!!$client->facebook!!}" name="facebook" class="form-control" placeholder="facebook.com/Usuario" type="text">
 										</div>
 										<div class="help-block form-text with-errors form-control-feedback"></div>
-									</div>		
+									</div>
+									<div class="form-group">
+										<label for=""> Seu Instagram</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<div class="input-group-text"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+											</div>
+											<input value="{!!$client->instagram!!}" name="instagram" class="form-control" placeholder="@usuário" type="text">
+										</div>
+										<div class="help-block form-text with-errors form-control-feedback"></div>
+									</div>	
+									<div class="form-group">
+										<label for=""> Seu Twitter</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<div class="input-group-text"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+											</div>
+											<input value="{!!$client->twitter!!}" name="twitter" class="form-control" placeholder="@usuário" type="text">
+										</div>
+										<div class="help-block form-text with-errors form-control-feedback"></div>
+									</div>	
+									<div class="form-group">
+										<label for=""> Seu Whatsapp</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<div class="input-group-text"><i class="fa fa-whatsapp" aria-hidden="true"></i></div>
+											</div>
+											<input value="{!!$client->whatsapp!!}" name="whatsapp" class="form-control MaskPhone" placeholder="(99) 9 9999-9999" type="text">
+										</div>
+										<div class="help-block form-text with-errors form-control-feedback"></div>
+									</div>	
 									<div class="form-buttons-w">
 										<button class="btn btn-primary" type="submit"> Salvar Informações</button>
 									</div>

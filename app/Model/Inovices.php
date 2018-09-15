@@ -12,7 +12,7 @@ class Inovices extends Authenticatable
 	protected $table = 'tb_inovices';
 	protected $primaryKey  = 'inovice_id';
 	protected $fillable  = 
-	['plan_id', 'client_id', 'price', 'type','gateway','gateway_key', 'gateway_response', 'discount_code', 'status','update', 'created_at','updated_at'];
+	['plan_id', 'client_id', 'price', 'type','gateway','gateway_key', 'gateway_response', 'discount_code','_cardNumber', '_fullName', '_brand', 'status','update', 'created_at','updated_at'];
 
     public function status()
     {   
@@ -69,6 +69,24 @@ class Inovices extends Authenticatable
             break;
             case '1':
             return 'green';
+            break;
+        }
+    }
+
+    public function brand()
+    {   
+        switch ($this->_brand) {
+            case 'DINERS':
+            return 'cc-diners-club';
+            break;
+            case 'AMEX':
+            return 'cc-amex';
+            break;
+            case 'VISA':
+            return 'cc-visa';
+            break;
+            case 'MASTERCARD':
+            return 'cc-mastercard';
             break;
         }
     }

@@ -234,3 +234,11 @@ if(!function_exists('getMonth')){
         return $month;
     }
 }
+
+
+if(!function_exists('getName')){
+    function getName($string){
+        $reabitt = explode(' ', $string);
+        return array_shift($reabitt);
+    }
+}
