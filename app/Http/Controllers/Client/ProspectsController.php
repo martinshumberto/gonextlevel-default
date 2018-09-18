@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Model\Prospects;
 use App\Model\Apresentations;
+use App\Model\Notes;
 
 use DB;
 
@@ -182,13 +183,16 @@ class ProspectsController extends ClientController
 
 		$prospect = Prospects::where('client_id', Auth::user()->client_id)->where('prospect_id', $id)->first();
 		$apresentations = Apresentations::where('client_id', Auth::user()->client_id)->where('prospect_id', $id)->orderBy('created_at', 'DESC')->get();
+		$notes = Notes::where('client_id', $client->client_id)
+		->where('prospect_id', $prospect->prospect_id)->orderBy('notes_id', 'DESC')->take(25)->get();
 		
 		if(empty($prospect)) {
 			abort(404);
 		}
 		return view("client/pages/prospects/show", array(
 			"prospect" => $prospect,
-			"apresentations" => $apresentations
+			"apresentations" => $apresentations,
+			"notes" => $notes,
 		));
 	}
 
@@ -209,6 +213,77 @@ class ProspectsController extends ClientController
 			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Você não tem permissão!"));
 			die;
 		}
+	}
+
+	public function note(Request $request, $id)
+	{
+		
+		
+		$client = Clients::where('client_id', Auth::user()->client_id)->first();
+		$plansClient = PlansClients::where('client_id', $client->client_id)->where('status', '1')->first();
+		if(is_null($plansClient)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Plano em Status pendente, aguarde alteração de status do seu plano!"));
+			die;
+		}
+
+		$plan = Plans::where('plan_id', $plansClient->plan_id)->first();
+
+		if(!policiesAgent($this->reportProspect, $plan->modules)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Você não tem permissão!"));
+			die;
+		}
+
+		$prospects = Prospects::where('prospect_id', $id)->where('client_id', $client->client_id)->first();
+
+		if(is_null($prospects)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Erro, proteção ativada!"));
+			die;
+		}
+
+		$request->merge(array(
+			'prospect_id' =>  $prospects->prospect_id,
+			'client_id' =>  $client->client_id,
+		));
+
+
+		Notes::create($request->all());
+
+		return redirect(route('client-prospect-view', $prospects->prospect_id))->withErrors(array("type" => "success", "msg" => "Nota criada com sucesso!"));
+
+
+	}
+
+	public function update(Request $request, $id)
+	{
+		
+		
+		$client = Clients::where('client_id', Auth::user()->client_id)->first();
+		$plansClient = PlansClients::where('client_id', $client->client_id)->where('status', '1')->first();
+		if(is_null($plansClient)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Plano em Status pendente, aguarde alteração de status do seu plano!"));
+			die;
+		}
+
+		$plan = Plans::where('plan_id', $plansClient->plan_id)->first();
+
+		if(!policiesAgent($this->reportProspect, $plan->modules)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Você não tem permissão!"));
+			die;
+		}
+
+		$prospects = Prospects::where('prospect_id', $id)->where('client_id', $client->client_id)->first();
+
+		if(is_null($prospects)){
+			return redirect(route('client-dashboard'))->withErrors(array("type" => "danger", "msg" => "Erro, proteção ativada!"));
+			die;
+		}
+
+		Prospects::find($id)->update($request->all());
+
+
+		return redirect(route('client-prospect-view', $prospects->prospect_id))->withErrors(array("type" => "success", "msg" => "Prospecto atualizado com sucesso!"));
+
+
 	}
 
 }

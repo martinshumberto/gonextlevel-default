@@ -44,6 +44,8 @@ Route::prefix('apps')->middleware('client')->namespace('Client')->group(function
 	Route::get('/prospectos/arquivar/{id}', array('as' => 'client-prospect-archivament', 'uses' => 'ProspectsController@archivament'));
 	Route::get('/prospectos/apagar/{id}', array('as' => 'client-prospect-trash', 'uses' => 'ProspectsController@trash'));
 	Route::get('/prospectos/ver/{id}', array('as' => 'client-prospect-view', 'uses' => 'ProspectsController@ViewProspect'));
+	Route::post('/prospectos/atualizar/dados/{id}', array('as' => 'client-prospect-update', 'uses' => 'ProspectsController@update'));
+	Route::post('/prospectos/ver/add/nota/{id}', array('as' => 'client-prospect-note', 'uses' => 'ProspectsController@note'));
 
 	/* Apps */
 	Route::get('/agenda', array('as' => 'client-schedule', 'uses' => 'ScheduleController@show'));

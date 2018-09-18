@@ -38,7 +38,6 @@
 
 	    	var id = EleMentStrutude.split(':');
 
-	    	alert(id[1]);
 
 	    	$.ajax({
 	    		url: $("#app_url").val() + "/api/prospectos/auth/pipeline",
@@ -78,7 +77,7 @@
 		$('.datepicker ').css("z-index", "999999");
 		var prospct_id = $(this).attr('data-reference');
 		$("input[name='auth']").val(prospct_id);
-		$('.create-apn-btn').click( function(){
+		$(document).on('click', '.create-apn-btn', function(){
 			var dados = $(".form-apn").serialize();
 			$.ajax({
 				type: "POST",

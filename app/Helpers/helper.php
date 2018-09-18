@@ -66,7 +66,7 @@ if(!function_exists('extractDate')){
 if(!function_exists('extrateHour')){
 
 
-    function extrateHour($dateTime) {
+    function extrateHour($dateTime, $secunts = false) {
         date_default_timezone_set("America/Sao_Paulo");
 
         $hora = substr($dateTime, 11, 8);

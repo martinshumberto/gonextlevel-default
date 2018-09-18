@@ -133,5 +133,10 @@ class Clients extends Authenticatable
     {
         return $this->hasMany('App\Model\Messages', 'client_id', 'from_id');
     }
+    
+    public function notes()
+    {
+        return $this->hasMany('App\Model\Notes', 'client_id', 'client_id');
+    }
 
 }

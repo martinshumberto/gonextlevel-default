@@ -65,19 +65,19 @@
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
 													<li>
-														<a href="#">
+														<a href="{!!route('client-prospect-view',$convit->prospect_id)!!}">
 															<i class="os-icon os-icon-ui-49"></i>
 															<span>Ver prospecto</span>
 														</a>
 													</li>
 													<li>
-														<a href="#">
+														<a href="{!!route('client-prospect-archivament',$convit->prospect_id)!!}">
 															<i class="os-icon os-icon-ui-44"></i>
 															<span>Arquivar</span>
 														</a>
 													</li>
 													<li>
-														<a href="#">
+														<a href="{!!route('client-prospect-trash',$convit->prospect_id)!!}">
 															<i class="os-icon os-icon-ui-15"></i>
 															<span>Remover</span>
 														</a>
@@ -152,9 +152,9 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
+													<li><a href="{!!route('client-prospect-view',$show->prospect_id)!!}"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
+													<li><a href="{!!route('client-prospect-archivament',$show->prospect_id)!!}"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
+													<li><a href="{!!route('client-prospect-trash',$show->prospect_id)!!}"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
 												</ul>
 											</div>
 										</div>
@@ -254,9 +254,9 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
+													<li><a href="{!!route('client-prospect-view',$show->prospect_id)!!}"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
+													<li><a href="{!!route('client-prospect-archivament',$show->prospect_id)!!}"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
+													<li><a href="{!!route('client-prospect-trash',$show->prospect_id)!!}"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
 												</ul>
 											</div>
 										</div>
@@ -331,9 +331,9 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
+													<li><a href="{!!route('client-prospect-view',$mananger->prospect_id)!!}"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
+													<li><a href="{!!route('client-prospect-archivament',$mananger->prospect_id)!!}"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
+													<li><a href="{!!route('client-prospect-trash',$mananger->prospect_id)!!}"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
 												</ul>
 											</div>
 										</div>
@@ -393,9 +393,7 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
+												
 												</ul>
 											</div>
 										</div>
@@ -479,9 +477,9 @@
 											<div class="os-dropdown">
 												<div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 												<ul>
-													<li><a href="#"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
-													<li><a href="#"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
+													<li><a href="{!!route('client-prospect-view',$close->prospect_id)!!}"><i class="os-icon os-icon-ui-49"></i><span>Ver prospecto</span></a></li>
+													<li><a href="{!!route('client-prospect-archivament',$close->prospect_id)!!}"><i class="os-icon os-icon-ui-15"></i><span>Remover</span></a></li>
+													<li><a href="{!!route('client-prospect-trash',$close->prospect_id)!!}"><i class="os-icon os-icon-ui-44"></i><span>Arquivar</span></a></li>
 												</ul>
 											</div>
 										</div>
